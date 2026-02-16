@@ -9,10 +9,10 @@
   width: fit-content;
   height: fit-content;
 
-  padding-block: 0.5lh;
-  padding-inline: 2ch;
+  padding-block: 0.625rem;
+  padding-inline: 1.5ch;
 
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
 
   color: var(--clr-text-white);
   background: oklch(from var(--clr-text-black) 0.05 c h);
@@ -102,6 +102,6 @@
     transition: translate var(--_transition-duration);
   }
   &:hover svg {
-    translate: 0.5ch;
+    translate: 25%;
   }
 }

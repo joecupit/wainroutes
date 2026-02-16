@@ -27,13 +27,13 @@ export function generateMetadata() {
 
 export default function Home() {
   const featuredWalkSlugs = [
-    "a-high-raise-round",
-    "glenridding-dodd-over-ullswater",
-    "the-four-summits-of-dodd-wood",
+    "the-fairfield-horseshoe",
+    "binsey",
+    "the-old-man-of-coniston",
   ];
   const walks = tempwalks as unknown as Walk[];
   const featuredWalks = featuredWalkSlugs.map((slug) =>
-    walks.find((w) => w.slug === slug)
+    walks.find((w) => w.slug === slug),
   );
 
   const hillMarkers = getHillMarkers();

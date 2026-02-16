@@ -54,7 +54,7 @@ export default function Footer() {
         </div>
 
         <div className={`${styles.row} ${styles.base}`}>
-          <p>&#169; 2025 Wainroutes</p>
+          <p>&#169; {new Date().getFullYear()} Wainroutes</p>
           <p>A site by Joe Cupit.</p>
         </div>
       </div>

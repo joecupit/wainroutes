@@ -1,6 +1,6 @@
 .breadcrumbs {
   display: flex;
-  gap: 0.75ch;
+  gap: 0.5ch;
 
   list-style: none;
   color: var(--clr-text-muted);
