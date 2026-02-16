@@ -61,14 +61,15 @@ export const locations: Locations = {
     distScale: 2.75,
   },
   "bassenthwaite": { name: "Bassenthwaite", coords: [-3.1953, 54.6795] },
+  "tarn-hows": { name: "Tarn Hows", coords: [-3.0368, 54.3881] },
 };
 
 export const distanceValues = Object.fromEntries(
   distanceDelimiters.map((k, i) =>
     i + 1 < distanceDelimiters.length
       ? [k + "-" + distanceDelimiters[i + 1], [k, distanceDelimiters[i + 1]]]
-      : [k + "+", [k]]
-  )
+      : [k + "+", [k]],
+  ),
 );
 export const distanceOptions: { [key: string]: string } = {
   any: "Any",
@@ -81,7 +82,7 @@ export const distanceOptions: { [key: string]: string } = {
           (v.length > 1 ? "-" + getDistanceValue(v[1], 0) : "")) +
         getDistanceUnit() +
         (v.length == 1 ? "+" : ""),
-    ])
+    ]),
   ),
 };
 
@@ -89,8 +90,8 @@ export const elevationValues = Object.fromEntries(
   elevationDelimiters.map((k, i) =>
     i + 1 < elevationDelimiters.length
       ? [k + "-" + elevationDelimiters[i + 1], [k, elevationDelimiters[i + 1]]]
-      : [k + "+", [k]]
-  )
+      : [k + "+", [k]],
+  ),
 );
 export const elevationOptions: { [key: string]: string } = {
   any: "Any",
@@ -105,6 +106,6 @@ export const elevationOptions: { [key: string]: string } = {
             : "")) +
         getElevationUnit() +
         (v.length == 1 ? "+" : ""),
-    ])
+    ]),
   ),
 };

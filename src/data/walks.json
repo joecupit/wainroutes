@@ -1647,5 +1647,69 @@
     "coverImage": "01",
 
     "tags": ["point-to-point"]
+  },
+  {
+    "slug": "esk-hause-via-angle-tarn",
+    "title": "Esk Hause via Angle Tarn",
+    "recommendedScore": 77,
+    "type": "Circular",
+    "summary": "",
+    "wainwrights": ["rossett-pike", "esk-pike", "bowfell"],
+    "length": 15.11,
+    "elevation": 1069,
+    "date": "2026-01-24",
+    "startLocation": {
+      "location": "Dungeon Ghyll",
+      "latitude": 54.445341,
+      "longitude": -3.102385,
+      "postcode": "LA22 9JY",
+      "gridRef": "NY286061"
+    },
+    "busConnections": {
+      "516": ""
+    },
+    "terrain": {
+      "gradient": 3,
+      "path": 2,
+      "exposure": 2,
+      "scrambling": 1,
+      "desc": ""
+    },
+
+    "images": [{ "slug": "01", "title": "", "caption": "", "size": 4 }],
+    "coverImage": "01",
+
+    "tags": ["circular"]
+  },
+  {
+    "slug": "black-fell-via-tarn-hows",
+    "title": "Black Fell via Tarn Hows",
+    "recommendedScore": 72,
+    "type": "Circular",
+    "summary": "",
+    "wainwrights": ["black-fell"],
+    "length": 6.42,
+    "elevation": 258,
+    "date": "2026-01-25",
+    "startLocation": {
+      "location": "Tarn Hows",
+      "latitude": 54.38688,
+      "longitude": -3.038947,
+      "postcode": "LA21 8DP",
+      "gridRef": "SD326995"
+    },
+    "busConnections": {},
+    "terrain": {
+      "gradient": 1,
+      "path": 1,
+      "exposure": 1,
+      "scrambling": 1,
+      "desc": ""
+    },
+
+    "images": [{ "slug": "01", "title": "", "caption": "", "size": 4 }],
+    "coverImage": "01",
+
+    "tags": ["circular"]
   }
 ]
