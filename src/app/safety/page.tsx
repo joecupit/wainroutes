@@ -93,7 +93,6 @@ export default async function Safety() {
             </div>
             <div className={styles.image}>
               <LazyImage
-                newBase={true}
                 name="safety/sun-setting-on-lake-district-fells.webp"
                 sizes="(min-width: 832px) 480px, 100vw"
                 alt="On a mountain top looking towards a setting sun"
@@ -104,7 +103,6 @@ export default async function Safety() {
           <div className={`${styles.group} ${styles.reversed}`}>
             <div className={styles.image}>
               <LazyImage
-                newBase={true}
                 name="safety/hiker-in-full-winter-gear-on-a-snow-covered-lake-district-fell.webp"
                 sizes="(min-width: 832px) 480px, 100vw"
                 alt="A well prepared walker on top of a snow-covered mountain"
@@ -147,7 +145,6 @@ export default async function Safety() {
             </div>
             <div className={styles.image}>
               <LazyImage
-                newBase={true}
                 name="safety/walker-navigating-a-foggy-lake-district-mountain-top.webp"
                 sizes="(min-width: 832px) 480px, 100vw"
                 alt="A walker navigating through a foggy mountaintop"

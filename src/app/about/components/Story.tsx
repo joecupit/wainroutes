@@ -9,7 +9,6 @@ export default function Story() {
       <div className={styles.storyContainer}>
         <div className={styles.storyImage}>
           <LazyPicture
-            newBase={true}
             names={[
               "about/walla-crag-summit-view-portrait.webp",
               "about/walla-crag-summit-view-landscape.webp",

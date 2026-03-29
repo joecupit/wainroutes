@@ -52,7 +52,6 @@ export default function page() {
               </div>
               <div className={styles.image}>
                 <LazyImage
-                  newBase={true}
                   name="support/lake-district-fells-on-a-misty-morning.webp"
                   sizes="(min-width: 1250px) 780px, 70vw"
                   alt="Misty morning mountains behind a cobblestone wall"

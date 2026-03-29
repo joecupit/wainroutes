@@ -40,7 +40,7 @@ export default function page() {
           <div style={{ display: "grid", gap: "0.5rem" }}>
             <Breadcrumbs
               crumbs={{
-                Safety: "/safety",
+                "Safety": "/safety",
                 "Terrain Icons": "/safety/terrain-icons",
               }}
             />
@@ -158,7 +158,6 @@ export default function page() {
 
           <div className={styles.noteImage}>
             <LazyImage
-              newBase={true}
               name="terrain/jacks-rake-on-pavey-ark.webp"
               sizes="(min-width: 832px) 480px, 100vw"
               alt="Jack's Rake on Pavey Ark"

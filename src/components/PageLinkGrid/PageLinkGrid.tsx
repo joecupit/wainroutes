@@ -40,7 +40,6 @@ function PageCard({ page }: { page: Page }) {
     <Link href={page.href} className={styles.card} title={page.title}>
       <div className={styles.cardImage}>
         <LazyImage
-          newBase={true}
           name={page.imageSrc}
           sizes="(min-width: 47rem) 26rem, 100vw"
           alt={page.imageAlt}

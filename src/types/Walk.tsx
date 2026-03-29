@@ -10,6 +10,7 @@ export type Image = {
 
 type Walk = {
   slug: string;
+  aliases?: string[];
 
   title: string;
   recommendedScore?: number;

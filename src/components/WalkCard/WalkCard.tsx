@@ -37,7 +37,7 @@ export default function WalkCard({
       <Link href={"/walks/" + walk.slug} className={styles.walkCard}>
         <div className={styles.image}>
           <LazyImage
-            name={walk?.slug + "_" + walk?.coverImage}
+            name={`walks/${walk?.slug}/${walk?.coverImage}`}
             sizes="(min-width: 22rem) 22rem, 100vw"
             maxWidth={512}
           />

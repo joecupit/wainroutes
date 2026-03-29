@@ -26,7 +26,6 @@ export default function Support() {
         </div>
         <div className={styles.supportImage}>
           <LazyImage
-            newBase={true}
             name="about/a-herdwick-sheep-on-a-hillside.webp"
             sizes="(min-width: 832px) 480px, 100vw"
             alt="A Herdwick sheep on a hillside"

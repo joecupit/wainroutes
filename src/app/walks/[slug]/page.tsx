@@ -1,7 +1,7 @@
 import styles from "./Walk.module.css";
 
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { createPageMetadata } from "@/utils/metadata";
 
 import Summary from "./components/Summary";
@@ -28,20 +28,14 @@ type WalkProps = {
 export async function generateMetadata({ params }: WalkProps) {
   const { slug } = await params;
   const walkData = (walksJson as unknown as Walk[]).find(
-    (w) => w.slug === slug
+    (w) => w.slug === slug,
   );
   if (!walkData) return {};
 
-  const title = `${walkData.title} (${walkData.length.toFixed(
-    1
-  )}km) – Lake District Walk & Route Guide`;
-  const description = `Route details for ${
-    walkData.title
-  }, a Lake District walk featuring ${walkData.wainwrights.length} Wainwright${
-    walkData.wainwrights.length !== 1 ? "s" : ""
-  }, with maps, terrain info, and photos.`;
+  const title = `${walkData.title} (${walkData.length.toFixed(1)}km) – Lake District Walk & Route Guide`;
+  const description = `Route details for ${walkData.title}, a Lake District walk featuring ${walkData.wainwrights.length} Wainwright${walkData.wainwrights.length !== 1 ? "s" : ""}, with maps, terrain info, and photos.`;
   const path = `/walks/${walkData.slug}`;
-  const imageURL = `https://images.wainroutes.co.uk/wainroutes_${walkData.slug}_${walkData.coverImage}_1024w.webp`;
+  const imageURL = `https://images.wainroutes.co.uk/walks/${walkData.slug}/${walkData.coverImage}_1024w.webp`;
 
   return createPageMetadata({
     title,
@@ -54,23 +48,30 @@ export async function generateMetadata({ params }: WalkProps) {
 export function generateStaticParams() {
   const walks = walksJson as unknown as Walk[];
 
-  return walks.map((walk) => ({ slug: walk.slug }));
+  return walks.map((walk) => [
+    { slug: walk.slug },
+    ...(walk.aliases?.map((alias) => ({ slug: alias })) ?? []),
+  ]);
 }
 
 export default async function WalkPage({ params }: WalkProps) {
   const { slug } = await params;
 
   const walkData = (walksJson as unknown as Walk[]).find(
-    (w) => w.slug === slug
+    (w) => w.slug === slug || w.aliases?.includes(slug),
   );
   if (!walkData) {
     return notFound();
   }
 
+  if (walkData.slug !== slug) {
+    redirect(`/walks/${walkData.slug}`);
+  }
+
   const estimatedWalkTimes = estimateWalkTime(
     walkData.length,
     walkData.elevation,
-    walkData.terrain?.gradient ?? 2
+    walkData.terrain?.gradient ?? 2,
   );
 
   return (
@@ -88,7 +89,7 @@ export default async function WalkPage({ params }: WalkProps) {
         <div className={styles.top}>
           <div className={styles.topImage}>
             <LazyImage
-              name={walkData.slug + "_" + walkData.coverImage}
+              name={`walks/${walkData.slug}/${walkData.coverImage}`}
               sizes="(min-width: 1100px) 1100px, 100vw"
             />
           </div>
