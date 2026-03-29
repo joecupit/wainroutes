@@ -70,7 +70,7 @@ export default function Home() {
           <div className={styles.heroImageOverlay} />
           <div className={styles.heroImage}>
             <LazyPicture
-              names={["home_01", "home_02"]}
+              names={["home/01", "home/02"]}
               widths={[700]}
               sizes="200vw"
               eager={true}
@@ -140,7 +140,6 @@ export default function Home() {
           <div className={styles.about}>
             <div className={styles.aboutImage}>
               <LazyPicture
-                newBase={true}
                 names={[
                   "home/a-hiker-stood-at-the-cairn-on-high-street.webp",
                   "home/a-hiker-stood-at-the-cairn-on-high-street-mobile.webp",

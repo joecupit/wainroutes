@@ -11,7 +11,6 @@ type LazyPictureProps = {
   alt?: string;
   maxWidth?: number;
   eager?: boolean;
-  newBase?: boolean;
 };
 
 export default function LazyPicture({
@@ -22,18 +21,9 @@ export default function LazyPicture({
   alt = "",
   maxWidth,
   eager = false,
-  newBase = false,
 }: LazyPictureProps) {
-  let base_path: string;
-  let extension: string;
-  if (newBase) {
-    const ext = names[0].split(".")[1];
-    base_path = BASE_PATH;
-    extension = `.${ext}`;
-  } else {
-    base_path = BASE_PATH + "wainroutes_";
-    extension = ".webp";
-  }
+  const base_path = BASE_PATH;
+  const extension = ".webp";
 
   const src = base_path + names[0].split(".")[0] + "_1024w" + extension;
   const blurURL =
@@ -45,8 +35,8 @@ export default function LazyPicture({
         key={index}
         media={"(max-width: " + widths[index] + "px)"}
         srcSet={generateSrcSet(
-          base_path + name + (newBase ? "" : ".webp"),
-          maxWidth
+          `${base_path}${name.split(".")[0]}${extension}`,
+          maxWidth,
         )}
         sizes={sizes}
         type="image/webp"
@@ -60,8 +50,8 @@ export default function LazyPicture({
       SourceElements={SourceElements}
       fallbackSrc={src}
       fallbackSrcSet={generateSrcSet(
-        base_path + names[0] + (newBase ? "" : ".webp"),
-        maxWidth
+        `${base_path}${names[0].split(".")[0]}${extension}`,
+        maxWidth,
       )}
       sizes={sizes}
       alt={alt}

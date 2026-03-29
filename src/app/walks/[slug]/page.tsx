@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: WalkProps) {
   const title = `${walkData.title} (${walkData.length.toFixed(1)}km) – Lake District Walk & Route Guide`;
   const description = `Route details for ${walkData.title}, a Lake District walk featuring ${walkData.wainwrights.length} Wainwright${walkData.wainwrights.length !== 1 ? "s" : ""}, with maps, terrain info, and photos.`;
   const path = `/walks/${walkData.slug}`;
-  const imageURL = `https://images.wainroutes.co.uk/wainroutes_${walkData.slug}_${walkData.coverImage}_1024w.webp`;
+  const imageURL = `https://images.wainroutes.co.uk/walks/${walkData.slug}/${walkData.coverImage}_1024w.webp`;
 
   return createPageMetadata({
     title,
@@ -89,7 +89,7 @@ export default async function WalkPage({ params }: WalkProps) {
         <div className={styles.top}>
           <div className={styles.topImage}>
             <LazyImage
-              name={walkData.slug + "_" + walkData.coverImage}
+              name={`walks/${walkData.slug}/${walkData.coverImage}`}
               sizes="(min-width: 1100px) 1100px, 100vw"
             />
           </div>

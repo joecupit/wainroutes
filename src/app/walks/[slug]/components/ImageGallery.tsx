@@ -89,7 +89,7 @@ function GalleryCarousel({
 
       setDisplay(false);
     },
-    [setDisplay]
+    [setDisplay],
   );
 
   useEffect(() => {
@@ -106,7 +106,7 @@ function GalleryCarousel({
       } else if (event.key === "ArrowRight") {
         event.preventDefault();
         setCurrIndex(
-          (prev) => (prev + 1) % (galleryContext?.images?.length ?? 1)
+          (prev) => (prev + 1) % (galleryContext?.images?.length ?? 1),
         );
       } else if (event.key === "Escape") {
         event.preventDefault();
@@ -155,7 +155,7 @@ function GalleryCarousel({
             title="Next Image"
             onClick={() =>
               setCurrIndex(
-                (prev) => (prev + 1) % (galleryContext?.images?.length ?? 1)
+                (prev) => (prev + 1) % (galleryContext?.images?.length ?? 1),
               )
             }
           >
@@ -181,7 +181,7 @@ function CorouselImage({ index }: { index: number }) {
   return (
     <div className={styles.galleryCarouselImage}>
       <LazyImage
-        name={`${galleryContext.slug}_${galleryContext.images[index].slug}`}
+        name={`walks/${galleryContext.slug}/${galleryContext.images[index].slug}`}
       />
     </div>
   );
@@ -226,7 +226,7 @@ function GalleryImage({
       className={`${styles.galleryImage} ${
         styles[`image-${sizeMap[size].name}`]
       } ${className ? className : ""}`}
-      name={`${galleryContext.slug}_${galleryContext.images[index].slug}`}
+      name={`walks/${galleryContext.slug}/${galleryContext.images[index].slug}`}
       sizes={sizeMap[size].sizes}
       maxWidth={size === 0 ? 1024 : undefined}
       onClick={() => galleryContext.openCarousel(index)}

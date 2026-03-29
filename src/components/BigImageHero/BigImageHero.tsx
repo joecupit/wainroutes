@@ -22,7 +22,6 @@ export default function BigImageHero({
       <div className={styles.hero}>
         {srcSmall ? (
           <LazyPicture
-            newBase={true}
             className={styles.image}
             names={[src, srcSmall]}
             widths={[700]}
@@ -31,7 +30,6 @@ export default function BigImageHero({
           />
         ) : (
           <LazyImage
-            newBase={true}
             className={styles.image}
             name={src}
             sizes="100vw"

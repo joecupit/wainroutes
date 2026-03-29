@@ -9,7 +9,6 @@ type LazyImageProps = {
   sizes?: string;
   alt?: string;
   maxWidth?: number;
-  newBase?: boolean;
   onClick?: () => void;
 };
 
@@ -19,19 +18,11 @@ export default function LazyImage({
   sizes = "100vw",
   alt = "",
   maxWidth,
-  newBase = false,
   onClick,
 }: LazyImageProps) {
-  let path: string;
-  let extension: string;
-  if (newBase) {
-    const [src, ext] = name.split(".");
-    path = BASE_PATH + src;
-    extension = `.${ext}`;
-  } else {
-    path = BASE_PATH + "wainroutes_" + name;
-    extension = ".webp";
-  }
+  const [nameMain, nameExt] = name.split(".");
+  const path = BASE_PATH + nameMain;
+  const extension = nameExt !== undefined ? `.${nameExt}` : ".webp";
 
   const src = path + "_1024w" + extension;
   const srcSet = generateSrcSet(path + extension, maxWidth);
