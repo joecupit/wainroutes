@@ -284,8 +284,9 @@
     "tags": ["horseshoe", "circular"]
   },
   {
-    "slug": "great-gable",
-    "title": "Great Gable",
+    "slug": "great-gable-from-seatoller",
+    "aliases": ["great-gable"],
+    "title": "Great Gable from Seatoller",
     "recommendedScore": 92,
     "type": "Circular",
     "summary": "",
@@ -425,8 +426,9 @@
     "tags": ["point-to-point"]
   },
   {
-    "slug": "scafell-pike",
-    "title": "Scafell Pike",
+    "slug": "scafell-pike-from-wasdale-head",
+    "aliases": ["scafell-pike"],
+    "title": "Scafell Pike from Wasdale Head",
     "recommendedScore": 78,
     "type": "There-and-back",
     "summary": "",
@@ -698,7 +700,8 @@
     "tags": ["circular"]
   },
   {
-    "slug": "skiddaw",
+    "slug": "skiddaw-and-little-man",
+    "aliases": ["skiddaw"],
     "title": "Skiddaw and Little Man",
     "recommendedScore": 76,
     "type": "There-and-back",
@@ -775,8 +778,9 @@
     "tags": ["point-to-point"]
   },
   {
-    "slug": "walla-crag",
-    "title": "Walla Crag",
+    "slug": "walla-crag-from-keswick",
+    "aliases": ["walla-crag"],
+    "title": "Walla Crag from Keswick",
     "recommendedScore": 66,
     "type": "There-and-back",
     "summary": "",
@@ -969,8 +973,9 @@
     "tags": ["there-and-back"]
   },
   {
-    "slug": "latrigg",
-    "title": "Latrigg",
+    "slug": "latrigg-from-keswick",
+    "aliases": ["latrigg"],
+    "title": "Latrigg from Keswick",
     "recommendedScore": 78,
     "type": "There-and-back",
     "summary": "",
@@ -999,7 +1004,7 @@
       "X5": ""
     },
     "terrain": {
-      "gradient": 1,
+      "gradient": 2,
       "path": 1,
       "exposure": 1,
       "scrambling": 1,
@@ -1147,8 +1152,9 @@
     "tags": ["there-and-back"]
   },
   {
-    "slug": "whinlatter-peak",
-    "title": "Whinlatter Peak",
+    "slug": "whinlatter-summit",
+    "aliases": ["whinlatter-peak"],
+    "title": "Whinlatter Summit",
     "recommendedScore": 44,
     "type": "There-and-back",
     "summary": "",
@@ -1312,8 +1318,9 @@
     "tags": ["there-and-back"]
   },
   {
-    "slug": "stone-arthur",
-    "title": "Stone Arthur",
+    "slug": "stone-arthur-from-grasmere",
+    "aliases": ["stone-arthur"],
+    "title": "Stone Arthur from Grasmere",
     "recommendedScore": 56,
     "type": "There-and-back",
     "summary": "",
