@@ -32,8 +32,8 @@ export default function Travel() {
             <div className={styles.resources}>
               <div className={styles.resourcesGroup}>
                 <h3 className={fontStyles.subheading}>Stagecoach Buses</h3>
-                <ResourceLink to="https://tiscon-maps-stagecoachbus.s3.amazonaws.com/Timetables/Cumbria/Lakes%20Connection/Winter25/Lakes%20by%20Bus%20Guide%20Winter%202025%2026%20WEB.pdf">
-                  The Lakes by Bus Winter 25/26 Timetables (until 22nd March)
+                <ResourceLink to="https://tiscon-maps-stagecoachbus.s3.amazonaws.com/Timetables/Cumbria/Lakes%20Connection/Summer26/Lakes_by_Bus_Summer26_WEB.pdf">
+                  The Lakes by Bus Summer Timetables (until 1st November)
                 </ResourceLink>
                 <ResourceLink to="https://www.stagecoachbus.com/promos-and-offers/cumbria-and-north-lancashire/explore-the-lakes-by-bus">
                   Stagecoach Lake District Bus Info

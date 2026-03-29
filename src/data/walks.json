@@ -1718,5 +1718,38 @@
     "coverImage": "01",
 
     "tags": ["circular"]
+  },
+  {
+    "slug": "lingmoor-fell-from-elterwater",
+    "title": "Lingmoor Fell from Elterwater",
+    "recommendedScore": 68,
+    "type": "Circular",
+    "summary": "",
+    "wainwrights": ["lingmoor-fell"],
+    "length": 12.13,
+    "elevation": 631,
+    "date": "2026-03-06",
+    "startLocation": {
+      "location": "Elterwater",
+      "latitude": 54.43408,
+      "longitude": -3.037921,
+      "postcode": "LA22 9HP",
+      "gridRef": "NY327047"
+    },
+    "busConnections": {
+      "516": ""
+    },
+    "terrain": {
+      "gradient": 2,
+      "path": 2,
+      "exposure": 1,
+      "scrambling": 1,
+      "desc": ""
+    },
+
+    "images": [{ "slug": "01", "title": "", "caption": "", "size": 4 }],
+    "coverImage": "01",
+
+    "tags": ["circular"]
   }
 ]

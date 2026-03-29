@@ -27,9 +27,9 @@ export function generateMetadata() {
 
 export default function Home() {
   const featuredWalkSlugs = [
-    "the-fairfield-horseshoe",
-    "binsey",
-    "the-old-man-of-coniston",
+    "lingmoor-fell-from-elterwater",
+    "blencathra-via-halls-fell-ridge",
+    "the-kentmere-horseshoe",
   ];
   const walks = tempwalks as unknown as Walk[];
   const featuredWalks = featuredWalkSlugs.map((slug) =>
@@ -64,7 +64,7 @@ export default function Home() {
               href="/walks"
               className={`${buttonStyles.button} ${buttonStyles.underlined}`}
             >
-              View all walks
+              See all walks
             </Link>
           </div>
           <div className={styles.heroImageOverlay} />
@@ -92,7 +92,7 @@ export default function Home() {
               className={`${buttonStyles.button} ${buttonStyles.primary}`}
               draggable="false"
             >
-              View all walks
+              See all walks
             </Link>
           </div>
         </section>
