@@ -2076,7 +2076,11 @@
       "postcode": "CA12 4QD",
       "gridRef": "NY235281"
     },
-    "busConnections": {},
+    "busConnections": {
+      "553": "",
+      "554": "",
+      "X4": ""
+    },
     "terrain": {
       "gradient": 2,
       "path": 1,

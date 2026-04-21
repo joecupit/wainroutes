@@ -27,9 +27,9 @@ export function generateMetadata() {
 
 export default function Home() {
   const featuredWalkSlugs = [
-    "lingmoor-fell-from-elterwater",
-    "blencathra-via-halls-fell-ridge",
-    "the-kentmere-horseshoe",
+    "buttermere-to-keswick",
+    "dodd-and-dodd-wood",
+    "uldale-fells-circular",
   ];
   const walks = tempwalks as unknown as Walk[];
   const featuredWalks = featuredWalkSlugs.map((slug) =>
