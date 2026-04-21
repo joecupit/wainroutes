@@ -1751,5 +1751,472 @@
     "coverImage": "01",
 
     "tags": ["circular"]
+  },
+  {
+    "slug": "a-mungrisdale-round",
+    "title": "A Mungrisdale Round",
+    "recommendedScore": 67,
+    "type": "Circular",
+    "summary": "",
+    "wainwrights": ["bowscale-fell", "bannerdale-crags", "souther-fell"],
+    "length": 12.84,
+    "elevation": 731,
+    "date": "2026-04-12",
+    "startLocation": {
+      "location": "Mungrisdale",
+      "latitude": 54.663242,
+      "longitude": -2.987944,
+      "postcode": "CA11 0XQ",
+      "gridRef": "NY363302"
+    },
+    "busConnections": {},
+    "terrain": {
+      "gradient": 2,
+      "path": 3,
+      "exposure": 2,
+      "scrambling": 1,
+      "desc": ""
+    },
+
+    "images": [
+      {
+        "slug": "bannerdale-crags-from-above-mungrisdale",
+        "title": "Bannerdale Crags from above Mungrisdale",
+        "caption": "",
+        "size": 3
+      },
+      {
+        "slug": "boggy-approach-to-bowscale-fell",
+        "title": "Approach to Bowscale Fell",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "looking-towards-bannerdale-crags",
+        "title": "Looking towards Bannerdale Crags",
+        "caption": "",
+        "size": 1
+      },
+      {
+        "slug": "great-mell-fell-from-bannerdale-crags",
+        "title": "Great Mell Fell from Bannerdale Crags",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "descending-the-valley-below-blencathra",
+        "title": "Descending down the valley",
+        "caption": "",
+        "size": 0
+      }
+    ],
+    "coverImage": "bannerdale-crags-from-above-mungrisdale",
+
+    "tags": ["circular"]
+  },
+  {
+    "slug": "buttermere-to-keswick",
+    "title": "Buttermere to Keswick",
+    "recommendedScore": 95,
+    "type": "Point-to-point",
+    "summary": "",
+    "wainwrights": [
+      "robinson",
+      "hindscarth",
+      "dale-head",
+      "high-spy",
+      "maiden-moor",
+      "catbells"
+    ],
+    "length": 19.8,
+    "elevation": 1319,
+    "date": "2026-04-13",
+    "startLocation": {
+      "location": "Buttermere",
+      "latitude": 54.541036,
+      "longitude": -3.277363,
+      "postcode": "CA13 9UZ",
+      "gridRef": "NY174169"
+    },
+    "busConnections": {
+      "77": "",
+      "77A": "",
+      "77C": ""
+    },
+    "terrain": {
+      "gradient": 3,
+      "path": 2,
+      "exposure": 2,
+      "scrambling": 1,
+      "desc": ""
+    },
+
+    "images": [
+      {
+        "slug": "robinson-ascent",
+        "title": "Steep Robinson ascent",
+        "caption": "",
+        "size": 2
+      },
+      {
+        "slug": "buttermere-lake",
+        "title": "Buttermere Lake from the Robinson ascent",
+        "caption": "",
+        "size": 1
+      },
+      {
+        "slug": "robinson-summit-view",
+        "title": "The view from Robinson Summit",
+        "caption": "Featuring Great Gable and various others.",
+        "size": 0
+      },
+      {
+        "slug": "skiddaw-and-keswick-from-hindscarth",
+        "title": "Skiddaw and Keswick from Hindscarth summit",
+        "caption": "With the rest of the route visible on the right.",
+        "size": 0
+      },
+      {
+        "slug": "dale-head-from-hindscarth",
+        "title": "Approaching Dale Head from Hindscarth",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "dale-head-summit-cairn",
+        "title": "Cairn on Dale Head summit",
+        "caption": "",
+        "size": 3
+      },
+      {
+        "slug": "descending-dale-head",
+        "title": "Descending Dale Head",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "along-high-spy-summit",
+        "title": "Along the High Spy summit plateau",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "catbells-keswick-and-derwent-water-from-maiden-moor",
+        "title": "Catbells, Keswick, and Derwent Water from Maiden Moor summit",
+        "caption": "",
+        "size": 1
+      },
+      {
+        "slug": "newlands-valley-from-catbells",
+        "title": "Looking back over the Newlands Valley from Catbells",
+        "caption": "With both Robinson and Hindscarth visible.",
+        "size": 0
+      },
+      {
+        "slug": "final-return-to-keswick",
+        "title": "Final return to Keswick",
+        "caption": "",
+        "size": 0
+      }
+    ],
+    "coverImage": "skiddaw-and-keswick-from-hindscarth",
+
+    "tags": ["point-to-point"]
+  },
+  {
+    "slug": "knott-rigg-and-ard-crags",
+    "title": "Knott Rigg and Ard Crags",
+    "recommendedScore": 65,
+    "type": "There-and-back",
+    "summary": "",
+    "wainwrights": ["knott-rigg", "ard-crags"],
+    "length": 5.62,
+    "elevation": 394,
+    "date": "2026-04-14",
+    "startLocation": {
+      "location": "Buttermere",
+      "latitude": 54.547328,
+      "longitude": -3.249448,
+      "postcode": "CA13 9XA",
+      "gridRef": "NY192176"
+    },
+    "busConnections": {},
+    "terrain": {
+      "gradient": 2,
+      "path": 2,
+      "exposure": 2,
+      "scrambling": 1,
+      "desc": ""
+    },
+
+    "images": [
+      {
+        "slug": "knott-rigg-ascent",
+        "title": "Knott Rigg ascent",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "knott-rigg-ridge-to-ard-crags",
+        "title": "Knott Rigg ridge walk to Ard Crags",
+        "caption": "",
+        "size": 3
+      },
+      {
+        "slug": "knott-rigg-descent",
+        "title": "Descending Knott Rigg",
+        "caption": "",
+        "size": 2
+      },
+      {
+        "slug": "knott-rigg-ridge",
+        "title": "Knott Rigg ridge",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "whiteless-pike-from-knott-rigg",
+        "title": "Looking back towards Whiteless Pike",
+        "caption": "",
+        "size": 0
+      }
+    ],
+    "coverImage": "knott-rigg-ridge-to-ard-crags",
+
+    "tags": ["there-and-back"]
+  },
+  {
+    "slug": "uldale-fells-circular",
+    "title": "Uldale Fells Circular",
+    "recommendedScore": 77,
+    "type": "Circular",
+    "summary": "",
+    "wainwrights": [
+      "longlands-fell",
+      "brae-fell",
+      "great-sca-fell",
+      "meal-fell",
+      "great-cockup"
+    ],
+    "length": 11.15,
+    "elevation": 661,
+    "date": "2026-04-16",
+    "startLocation": {
+      "location": "Longlands",
+      "latitude": 54.712546,
+      "longitude": -3.140522,
+      "postcode": "CA7 1HJ",
+      "gridRef": "NY266358"
+    },
+    "busConnections": {},
+    "terrain": {
+      "gradient": 2,
+      "path": 3,
+      "exposure": 1,
+      "scrambling": 1,
+      "desc": ""
+    },
+
+    "images": [
+      {
+        "slug": "longlands-fell-ascent",
+        "title": "Longlands Fell ascent",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "uldale-fells-hills",
+        "title": "The fields of the Uldale Fells",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "approaching-brae-fell",
+        "title": "The approach to Brae Fell",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "descending-great-sca-fell",
+        "title": "Descending Great Sca Fell",
+        "caption": "",
+        "size": 1
+      },
+      {
+        "slug": "towards-great-sca-fell",
+        "title": "Approaching Great Sca Fell",
+        "caption": "With Skiddaw in the distance.",
+        "size": 0
+      },
+      {
+        "slug": "return-to-longlands",
+        "title": "Returning to the car park at Longlands",
+        "caption": "",
+        "size": 0
+      }
+    ],
+    "coverImage": "uldale-fells-hills",
+
+    "tags": ["circular"]
+  },
+  {
+    "slug": "dodd-and-dodd-wood",
+    "title": "Dodd and Dodd Wood",
+    "recommendedScore": 82,
+    "type": "Circular",
+    "summary": "",
+    "wainwrights": ["dodd"],
+    "length": 6.07,
+    "elevation": 435,
+    "date": "2026-04-17",
+    "startLocation": {
+      "location": "Dodd Wood",
+      "latitude": 54.642882,
+      "longitude": -3.186679,
+      "postcode": "CA12 4QD",
+      "gridRef": "NY235281"
+    },
+    "busConnections": {},
+    "terrain": {
+      "gradient": 2,
+      "path": 1,
+      "exposure": 1,
+      "scrambling": 1,
+      "desc": ""
+    },
+
+    "images": [
+      {
+        "slug": "acending-dodd-wood",
+        "title": "Initial ascent in Dodd Wood",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "final-dodd-summit-climb",
+        "title": "Final climb to Dodd summit",
+        "caption": "",
+        "size": 2
+      },
+      {
+        "slug": "view-towards-derwent-water-from-dodd",
+        "title": "View from Dodd summit",
+        "caption": "Looking towards Keswick and Derwent Water.",
+        "size": 0
+      },
+      {
+        "slug": "dodd-summit-view-of-coledale-horseshoe-and-other-mountains",
+        "title": "View from Dodd summit",
+        "caption": "Looking towards the Coledale Horseshoe and surrounding mountains.",
+        "size": 0
+      },
+      {
+        "slug": "dodd-summit-cairn",
+        "title": "Dodd summit cairn",
+        "caption": "",
+        "size": 1
+      },
+      {
+        "slug": "descending-dodd-wood",
+        "title": "Descending Dodd Wood",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "dodd-summit-trail-signpost",
+        "title": "Dodd summit trail signpost",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "towering-dodd-wood-trees",
+        "title": "Towering Dodd Wood trees",
+        "caption": "",
+        "size": 0
+      }
+    ],
+    "coverImage": "acending-dodd-wood",
+
+    "tags": ["circular"]
+  },
+  {
+    "slug": "coledale-ridge-round",
+    "title": "Coledale Ridge Round",
+    "recommendedScore": 73,
+    "type": "Circular",
+    "summary": "",
+    "wainwrights": ["causey-pike", "scar-crags", "outerside", "barrow"],
+    "length": 8.95,
+    "elevation": 797,
+    "date": "2026-04-18",
+    "startLocation": {
+      "location": "Stoneycroft",
+      "latitude": 54.580116,
+      "longitude": -3.188299,
+      "postcode": "CA12 5UF",
+      "gridRef": "NY232211"
+    },
+    "busConnections": {},
+    "terrain": {
+      "gradient": 3,
+      "path": 2,
+      "exposure": 2,
+      "scrambling": 1,
+      "desc": ""
+    },
+
+    "images": [
+      {
+        "slug": "causey-pike-ascent",
+        "title": "Ascending Causey Pike",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "causey-pike-summit-scramble",
+        "title": "View of the final Causey Pike scramble",
+        "caption": "",
+        "size": 2
+      },
+      {
+        "slug": "ridge-route-from-causey-pike-to-scar-crags",
+        "title": "Ridge route from Causey Pike to Scar Crags",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "descending-scar-crags-looking-at-sail",
+        "title": "Descending Scar Crags looking towards Sail",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "path-towards-outerside",
+        "title": "Path towards Outerside",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "outerside-summit-view-of-derwent-water",
+        "title": "Outerside summit view",
+        "caption": "Looking at Keswick and Derwent Water.",
+        "size": 1
+      },
+      {
+        "slug": "outerside-from-barrow",
+        "title": "Looking back at Outerside from Barrow",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "descending-barrow-valley",
+        "title": "Final valley descent",
+        "caption": "",
+        "size": 0
+      }
+    ],
+    "coverImage": "ridge-route-from-causey-pike-to-scar-crags",
+
+    "tags": ["circular"]
   }
 ]

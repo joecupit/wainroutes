@@ -63,6 +63,9 @@ export const locations: Locations = {
   "bassenthwaite": { name: "Bassenthwaite", coords: [-3.1953, 54.6795] },
   "tarn-hows": { name: "Tarn Hows", coords: [-3.0368, 54.3881] },
   "elterwater": { name: "Elterwater", coords: [-3.0378, 54.4342] },
+  "mungrisdale": { name: "Mungrisdale", coords: [-2.9883, 54.6645] },
+  "stoneycroft": { name: "Stoneycroft", coords: [-3.1889, 54.5809] },
+  "longlands": { name: "Longlands", coords: [-3.1391, 54.7139] },
 };
 
 export const distanceValues = Object.fromEntries(
