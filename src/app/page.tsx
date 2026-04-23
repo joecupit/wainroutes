@@ -29,6 +29,7 @@ export default function Home() {
   const featuredWalkSlugs = [
     "buttermere-to-keswick",
     "dodd-and-dodd-wood",
+    "helvellyn-via-striding-edge",
     "uldale-fells-circular",
   ];
   const walks = tempwalks as unknown as Walk[];
@@ -80,20 +81,32 @@ export default function Home() {
         <section>
           <div className={styles.featured}>
             <div className={styles.featuredTitle}>
-              <h2 className={fontStyles.heading}>Featured Routes</h2>
+              <div>
+                <h2 className={fontStyles.subheading}>Featured Routes</h2>
+                <p>New and popular walks from Wainroutes.</p>
+              </div>
+              <div>
+                <Link
+                  href="/walks"
+                  className={`${buttonStyles.button} ${buttonStyles.text} ${buttonStyles.animate}`}
+                  draggable="false"
+                >
+                  View all walks <ArrowRightIcon />
+                </Link>
+              </div>
             </div>
-            <div className={WalkCardStyles.group}>
+            <div className={styles.featuredGroup}>
               {featuredWalks.map((walk, index) => {
                 return walk && <WalkCard key={index} walk={walk} />;
               })}
             </div>
-            <Link
+            {/* <Link
               href="/walks"
-              className={`${buttonStyles.button} ${buttonStyles.primary}`}
+              className={`${buttonStyles.button}`}
               draggable="false"
             >
-              See all walks
-            </Link>
+              Browse all walks
+            </Link> */}
           </div>
         </section>
         <section className={styles.wainwrightsSection}>

@@ -1,4 +1,5 @@
 import styles from "./WalkCard.module.css";
+import fontStyles from "@/styles/fonts.module.css";
 
 import Link from "next/link";
 
@@ -13,6 +14,7 @@ import {
   getDistanceValue,
 } from "@/utils/unitConversions";
 import { HikingIcon, ElevationIcon, MountainIcon } from "@/icons/PhosphorIcons";
+import { BookTitles } from "@/types/Hill";
 
 type WalkCardProps = {
   walk: Walk | SimpleWalk;
@@ -50,9 +52,11 @@ export default function WalkCard({
           )}
         </div>
         <div className={styles.text}>
-          <div>
-            <h3 className={`${styles.subheading}`}>{walk.title}</h3>
+          <div className={styles.titles}>
+            <h3 className={styles.subheading}>{walk.title}</h3>
+            <p className={fontStyles.subtext}>{BookTitles[walk.region]}</p>
           </div>
+          <hr />
           <div className={styles.icons}>
             <div className={`${styles.iconsIcon} ${styles.wide}`}>
               <HikingIcon />

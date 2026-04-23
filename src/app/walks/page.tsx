@@ -45,6 +45,7 @@ export type SimpleWalk = {
   length: number;
   elevation: number;
   date?: string;
+  region: Walk["region"];
   startLocation?: {
     latitude?: number;
     longitude?: number;
@@ -68,6 +69,7 @@ export default async function WalksPage({ searchParams }: MetadataProps) {
         length: walk.length,
         elevation: walk.elevation,
         date: walk.date,
+        region: walk.region,
         startLocation: {
           latitude: walk.startLocation?.latitude,
           longitude: walk.startLocation?.longitude,
@@ -75,11 +77,11 @@ export default async function WalksPage({ searchParams }: MetadataProps) {
         intro: walk.intro,
         busConnections: walk.busConnections,
         coverImage: walk.coverImage,
-      } as SimpleWalk)
+      }) as SimpleWalk,
   );
 
   const wainNames = Object.fromEntries(
-    wainsJson.map((hill) => [hill.slug, hill.name])
+    wainsJson.map((hill) => [hill.slug, hill.name]),
   );
 
   return (
