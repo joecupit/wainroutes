@@ -1,13 +1,14 @@
 .navbar,
 .mobile {
-  font-size: calc((var(--fs-400) + var(--fs-600)) / 2);
+  font-size: var(--fs-400);
   font-weight: var(--fw-medium);
   color: var(--clr-text-white);
   background: var(--clr-bg-black);
+  /* text-transform: uppercase; */
 }
 
 .navbar {
-  --content-max-width: 1350px;
+  --content-max-width: 1400px;
 
   --_inline-padding: var(--gap-500);
 
@@ -42,15 +43,20 @@
 
 .logo {
   display: flex;
-  gap: 0.375ch;
+  gap: 0.5ch;
   align-items: center;
+
+  font-family: var(--ff-heading);
+  font-size: calc((var(--fs-600) + var(--fs-800)) / 2);
+  font-weight: var(--fw-bold);
   text-transform: lowercase;
+  line-height: 1.1;
 }
 .logo svg {
   color: var(--clr-primary-400);
 
-  width: 1.5ch;
-  height: 1.5ch;
+  width: 1.625ch;
+  height: 1.625ch;
 
   margin-block-start: 0.1lh;
 
@@ -70,11 +76,21 @@
 }
 .nav {
   display: flex;
-  gap: var(--gap-500);
+  align-items: center;
+  gap: var(--gap-600);
   margin-block-start: var(--gap-300);
 }
 .navbar .nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.625ch;
   transition: opacity 150ms ease;
+
+  & svg {
+    width: 1.75ch;
+    height: 1.75ch;
+    margin-block-end: 0.1lh;
+  }
 }
 .navbar .nav:has(a:hover) a:not(:hover) {
   opacity: 0.5;
@@ -180,7 +196,7 @@
 
 /*  */
 
-@media (max-width: 52rem) {
+@media (max-width: 57rem) {
   .navbar {
     top: -5rem;
   }
