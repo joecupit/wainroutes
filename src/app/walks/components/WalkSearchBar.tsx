@@ -12,15 +12,7 @@ import {
   SearchIcon,
 } from "@/icons/PhosphorIcons";
 
-type WalkSearchBarProps = {
-  showFilters: boolean;
-  setShowFilters: React.Dispatch<React.SetStateAction<boolean>>;
-};
-
-export default function WalksSearchBar({
-  showFilters,
-  setShowFilters,
-}: WalkSearchBarProps) {
+export default function WalksSearchBar() {
   const searchParams = useSearchParams();
   const searchRef = useRef<HTMLInputElement>(null);
 
@@ -33,7 +25,7 @@ export default function WalksSearchBar({
       return;
     }
     const handler = setTimeout(() => {
-      setSearchTerm(inputValue);
+      setSearchTerm(inputValue.trim());
     }, 300);
     return () => clearTimeout(handler);
   }, [inputValue]);
@@ -54,38 +46,27 @@ export default function WalksSearchBar({
   }, [searchParams]);
 
   return (
-    <div className={styles.filterSearch}>
-      <div
-        className={styles.searchBar}
-        onClick={() => searchRef.current?.focus()}
-      >
-        <SearchIcon />
-        <input
-          type="search"
-          ref={searchRef}
-          placeholder="Search for a walk"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-        />
-        {inputValue.length > 0 && (
-          <button
-            className={styles.searchBarButton}
-            onClick={() => setInputValue("")}
-            title="Clear text"
-          >
-            <CloseIconSmall />
-          </button>
-        )}
-      </div>
-      <button
-        className={styles.filterButton}
-        onClick={() => setShowFilters((prev) => !prev)}
-        data-open={showFilters}
-        title="Toggle filter visibility"
-      >
-        <span>Filters</span>
-        {showFilters ? <CloseIcon /> : <FilterIcon />}
-      </button>
+    <div
+      className={styles.searchBar}
+      onClick={() => searchRef.current?.focus()}
+    >
+      <SearchIcon />
+      <input
+        type="search"
+        ref={searchRef}
+        placeholder="Search for a walk or Wainwright..."
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+      />
+      {inputValue.length > 0 && (
+        <button
+          className={styles.searchBarButton}
+          onClick={() => setInputValue("")}
+          title="Clear text"
+        >
+          <CloseIconSmall />
+        </button>
+      )}
     </div>
   );
 }

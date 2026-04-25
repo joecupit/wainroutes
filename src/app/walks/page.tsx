@@ -10,6 +10,7 @@ import WalksClient from "./components/WalksClient";
 import walksJson from "@/data/walks.json";
 import wainsJson from "@/data/hills.json";
 import { locations } from "./components/WalkFilterValues";
+import LazyImage from "@/components/LazyImage/LazyImage";
 
 type MetadataProps = {
   searchParams: Promise<{
@@ -88,13 +89,30 @@ export default async function WalksPage({ searchParams }: MetadataProps) {
     <main className={styles.walks}>
       <BackToTopButton minHeight={600} />
 
-      <section>
-        <div className="flex-column">
+      <section className={styles.heroSection}>
+        <div className={styles.hero}>
           <h1 id="walks-title" className={fontStyles.title}>
             {town && locations[town]
               ? `Walks near ${locations[town].name}`
               : "Walks in the Lake District"}
           </h1>
+          <p>
+            Browse every walk on Wainroutes. Use the filters to find the perfect
+            route for your day in the Lake District.
+          </p>
+        </div>
+        <div>
+          <LazyImage
+            className={styles.heroImage}
+            name={"walks/the-kentmere-horseshoe/13.webp"}
+            sizes="100vw"
+            alt={""}
+          />
+        </div>
+      </section>
+
+      <section>
+        <div className="flex-column">
           <WalksClient allWalks={simplifiedWalks} wainNames={wainNames} />
         </div>
       </section>

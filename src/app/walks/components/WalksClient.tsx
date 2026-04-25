@@ -13,6 +13,9 @@ import WalkFilters from "./WalkFilters";
 import { distanceValues, elevationValues, locations } from "./WalkFilterValues";
 import haversineDistance from "@/utils/haversineDistance";
 
+import { BookTitles } from "@/types/Hill";
+import WalkSearchAndFilter from "./WalkSearchAndFilter";
+
 type WalksClientProps = {
   allWalks: SimpleWalk[];
   wainNames: { [slug: string]: string };
@@ -72,8 +75,13 @@ export default function WalksClient({ allWalks, wainNames }: WalksClientProps) {
           ]) / 1000;
       }
       newWalks = newWalks.filter(
-        (walk) => walk.distance! < (locations[town]?.distScale ?? 1) * 10
+        (walk) => walk.distance! < (locations[town]?.distScale ?? 1) * 10,
       );
+    }
+
+    const region = searchParams.get("region");
+    if (region && region in BookTitles) {
+      newWalks = newWalks.filter((w) => String(w.region) === region);
     }
 
     const distance = searchParams.get("distance");
@@ -100,14 +108,14 @@ export default function WalksClient({ allWalks, wainNames }: WalksClientProps) {
       console.log(wainwrights, validSlugs);
       if (validSlugs.length > 0)
         newWalks = newWalks.filter((w) =>
-          w.wainwrights.some((s) => validSlugs.includes(s))
+          w.wainwrights.some((s) => validSlugs.includes(s)),
         );
     }
 
     const byBus = searchParams.get("byBus");
     if (byBus === "yes") {
       newWalks = newWalks.filter(
-        (w) => Object.keys(w.busConnections ?? {}).length > 0
+        (w) => Object.keys(w.busConnections ?? {}).length > 0,
       );
     }
 
@@ -116,7 +124,7 @@ export default function WalksClient({ allWalks, wainNames }: WalksClientProps) {
 
   return (
     <div className={styles.main}>
-      <div style={{ zIndex: "9999" }}>
+      {/* <div style={{ zIndex: "9999" }}>
         <WalksSearchBar
           showFilters={showFilters}
           setShowFilters={setShowFilters}
@@ -124,7 +132,8 @@ export default function WalksClient({ allWalks, wainNames }: WalksClientProps) {
         {showFilters && (
           <WalkFilters className={styles.filters} wainNames={wainNames} />
         )}
-      </div>
+      </div> */}
+      <WalkSearchAndFilter />
       <WalkGrid
         walks={filteredWalks}
         wainNames={wainNames}
