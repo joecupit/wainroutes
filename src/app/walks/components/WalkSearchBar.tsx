@@ -54,7 +54,7 @@ export default function WalksSearchBar() {
       <input
         type="search"
         ref={searchRef}
-        placeholder="Search for a walk or Wainwright..."
+        placeholder="Search walks or Wainwrights..."
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
       />

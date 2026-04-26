@@ -102,10 +102,12 @@ export default function WalkSearchAndFilter({
     ),
   };
 
+  const [hideFilters, setHideFilters] = useState(true);
+
   return (
     <div className={styles.searchAndFilter}>
       <WalksSearchBar />
-      <div className={styles.filters}>
+      <div className={styles.filters} data-hide={hideFilters}>
         <SelectDropdown
           Icon={<MapPinIcon />}
           label="Region"
@@ -141,8 +143,15 @@ export default function WalkSearchAndFilter({
             "900+": "900m+",
           }}
         />
-        <hr />
-        <button onClick={() => clearFilters()}>Clear filters</button>
+
+        <button className={styles.filtersClear} onClick={() => clearFilters()}>
+          Clear filters
+        </button>
+      </div>
+      <div className={styles.filtersShowHide}>
+        <button onClick={() => setHideFilters((prev) => !prev)}>
+          {hideFilters ? "show filters" : "hide filters"}
+        </button>
       </div>
     </div>
   );

@@ -166,7 +166,7 @@ export default function WalkGrid({
         </div>
       )}
 
-      <div className={styles.gridGrid}>
+      <div className={styles.gridGrid} data-view={viewMode}>
         {sortedWalks.map((walk, index) => {
           return (
             <WalkCard key={index} walk={walk} showDistance={showDistances} />

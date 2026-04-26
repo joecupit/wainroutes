@@ -6,7 +6,7 @@ import Script from "next/script";
 import Link from "next/link";
 import { createPageMetadata } from "@/utils/metadata";
 
-import SiteSearchBar from "@/components/SiteSearchBar/SiteSearchBar";
+import HomeSearchBar from "@/components/HomeSearchBar/HomeSearchBar";
 import WalkCard from "@/components/WalkCard/WalkCard";
 import WalkCardStyles from "@/components/WalkCard/WalkCard.module.css";
 import LakeMap from "@/components/Map/Map";
@@ -58,15 +58,10 @@ export default function Home() {
         <section className={styles.heroSection}>
           <div className={styles.hero}>
             <h1 className={`${fontStyles.title} ${styles.title}`}>
-              A Walker&apos;s Guide to the Wainwrights
+              Climb your next Wainwright
             </h1>
-            <SiteSearchBar className={styles.heroSearch} />
-            <Link
-              href="/walks"
-              className={`${buttonStyles.button} ${buttonStyles.underlined}`}
-            >
-              See all walks
-            </Link>
+
+            <HomeSearchBar />
           </div>
           <div className={styles.heroImageOverlay} />
           <div className={styles.heroImage}>
