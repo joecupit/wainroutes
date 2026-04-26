@@ -6,11 +6,11 @@ import { createPageMetadata } from "@/utils/metadata";
 
 import BackToTopButton from "@/components/BackToTopButton/BackToTopButton";
 import WalksClient from "./components/WalksClient";
+import { locations } from "./components/WalkFilterValues";
+import LazyImage from "@/components/LazyImage/LazyImage";
 
 import walksJson from "@/data/walks.json";
 import wainsJson from "@/data/hills.json";
-import { locations } from "./components/WalkFilterValues";
-import LazyImage from "@/components/LazyImage/LazyImage";
 
 type MetadataProps = {
   searchParams: Promise<{
@@ -113,7 +113,7 @@ export default async function WalksPage({ searchParams }: MetadataProps) {
 
       <section>
         <div className="flex-column">
-          <WalksClient allWalks={simplifiedWalks} wainNames={wainNames} />
+          <WalksClient allWalks={simplifiedWalks} />
         </div>
       </section>
     </main>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import Fuse from "fuse.js";
 
@@ -8,8 +8,6 @@ import type { SimpleWalk } from "../page";
 import styles from "../Walks.module.css";
 
 import WalkGrid from "./WalkGrid";
-import WalksSearchBar from "./WalkSearchBar";
-import WalkFilters from "./WalkFilters";
 import { distanceValues, elevationValues, locations } from "./WalkFilterValues";
 import haversineDistance from "@/utils/haversineDistance";
 
@@ -18,16 +16,19 @@ import WalkSearchAndFilter from "./WalkSearchAndFilter";
 
 type WalksClientProps = {
   allWalks: SimpleWalk[];
-  wainNames: { [slug: string]: string };
 };
 
-export default function WalksClient({ allWalks, wainNames }: WalksClientProps) {
+export default function WalksClient({ allWalks }: WalksClientProps) {
   const searchParams = useSearchParams();
 
-  const [showFilters, setShowFilters] = useState(false);
-  const resetFilters = useCallback(() => {
-    window.history.replaceState({}, "", `/walks`);
-  }, []);
+  const clearFilters = () => {
+    const params = new URLSearchParams();
+    if (searchParams.get("sort") !== null) {
+      params.set("sort", searchParams.get("sort") ?? "recommended");
+    }
+
+    window.history.replaceState({}, "", `/walks?${params.toString()}`);
+  };
 
   const townParam = useMemo(() => {
     return searchParams.get("town");
@@ -124,21 +125,12 @@ export default function WalksClient({ allWalks, wainNames }: WalksClientProps) {
 
   return (
     <div className={styles.main}>
-      {/* <div style={{ zIndex: "9999" }}>
-        <WalksSearchBar
-          showFilters={showFilters}
-          setShowFilters={setShowFilters}
-        />
-        {showFilters && (
-          <WalkFilters className={styles.filters} wainNames={wainNames} />
-        )}
-      </div> */}
-      <WalkSearchAndFilter />
+      <WalkSearchAndFilter clearFilters={clearFilters} />
       <WalkGrid
         walks={filteredWalks}
-        wainNames={wainNames}
-        resetFilters={resetFilters}
+        clearFilters={clearFilters}
         showDistances={Boolean(townParam && locations[townParam])}
+        isFiltered={filteredWalks.length < allWalks.length}
       />
     </div>
   );
