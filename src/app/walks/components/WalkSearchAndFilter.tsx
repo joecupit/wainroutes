@@ -4,7 +4,13 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 import { BookTitles } from "@/types/Hill";
-import { ElevationIcon, HikingIcon, MapPinIcon } from "@/icons/PhosphorIcons";
+import {
+  CaretDownIcon,
+  CaretUpIcon,
+  ElevationIcon,
+  HikingIcon,
+  MapPinIcon,
+} from "@/icons/PhosphorIcons";
 
 import WalksSearchBar from "./WalkSearchBar";
 import SelectDropdown from "./SelectDropdown";
@@ -106,7 +112,25 @@ export default function WalkSearchAndFilter({
 
   return (
     <div className={styles.searchAndFilter}>
-      <WalksSearchBar />
+      <div className={styles.search}>
+        <WalksSearchBar />
+
+        <button
+          className={styles.filtersShowHide}
+          onClick={() => setHideFilters((prev) => !prev)}
+        >
+          {hideFilters ? (
+            <>
+              <CaretDownIcon />
+            </>
+          ) : (
+            <>
+              <CaretUpIcon />
+            </>
+          )}
+        </button>
+      </div>
+      <hr />
       <div className={styles.filters} data-hide={hideFilters}>
         <SelectDropdown
           Icon={<MapPinIcon />}
@@ -146,11 +170,6 @@ export default function WalkSearchAndFilter({
 
         <button className={styles.filtersClear} onClick={() => clearFilters()}>
           Clear filters
-        </button>
-      </div>
-      <div className={styles.filtersShowHide}>
-        <button onClick={() => setHideFilters((prev) => !prev)}>
-          {hideFilters ? "show filters" : "hide filters"}
         </button>
       </div>
     </div>

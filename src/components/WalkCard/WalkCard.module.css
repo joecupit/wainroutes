@@ -4,8 +4,8 @@
 }
 
 .walkCard {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
+  display: flex;
+  flex-direction: column;
 
   height: 100%;
 
@@ -22,7 +22,8 @@
 .image {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 16 / 11;
+  aspect-ratio: initial;
+  height: 12rem;
 }
 .image img {
   transform-origin: bottom center;
@@ -51,6 +52,7 @@
 
 .text {
   display: flex;
+  flex: 1;
   gap: 0.75rem;
   flex-direction: column;
   justify-content: space-between;
@@ -91,7 +93,7 @@
 }
 
 .intro {
-  --_max-lines: 2;
+  --_max-lines: 3;
 
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -167,20 +169,16 @@ section > div:has(.group) {
 
 /*  */
 
-@container (max-width: 34rem) {
+@container (min-width: 34rem) {
   .walkCard {
-    display: flex;
-    flex-direction: column;
+    flex-direction: row;
   }
 
   .image {
-    aspect-ratio: initial;
-    height: 12rem;
-  }
-  .text {
-    flex: 1;
+    max-width: 40%;
+    aspect-ratio: 16 / 11;
   }
   .intro {
-    --_max-lines: 3;
+    --_max-lines: 2;
   }
 }
