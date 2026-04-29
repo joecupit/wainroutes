@@ -34,6 +34,7 @@
 .walkCard:hover .image img {
   scale: 1.025;
 }
+.newTag,
 .dist {
   position: absolute;
   top: 0.75rem;
@@ -48,6 +49,10 @@
   font-weight: var(--fw-medium);
 
   cursor: default;
+}
+.newTag {
+  left: 0.75rem;
+  right: unset;
 }
 
 .text {

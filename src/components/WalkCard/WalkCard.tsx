@@ -7,6 +7,7 @@ import Walk from "@/types/Walk";
 import type { SimpleWalk } from "@/app/walks/page";
 
 import LazyImage from "@/components/LazyImage/LazyImage";
+import NewTag from "./components/NewTag";
 import {
   displayDistance,
   displayElevation,
@@ -43,6 +44,7 @@ export default function WalkCard({
             sizes="(min-width: 22rem) 22rem, 100vw"
             maxWidth={512}
           />
+          <NewTag date={walk.date} />
           {showDistance && walk.distance && (
             <div className={styles.dist}>
               {(getDistanceValue(walk.distance) ?? 1) < 1

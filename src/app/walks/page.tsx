@@ -30,7 +30,7 @@ export async function generateMetadata({ searchParams }: MetadataProps) {
     });
   } else {
     return createPageMetadata({
-      title: "Walks in the Lake District",
+      title: "Lake District Walks",
       description:
         "Find your next Wainwright bagging walk in the Lake District, filtered by distance, elevation, and public transport access.",
       path: "/walks",
@@ -94,17 +94,13 @@ export default async function WalksPage({ searchParams }: MetadataProps) {
           <h1 id="walks-title" className={fontStyles.title}>
             {town && locations[town]
               ? `Walks near ${locations[town].name}`
-              : "Walks in the Lake District"}
+              : "Lake District Walks"}
           </h1>
-          <p>
-            Browse every walk on Wainroutes. Use the filters to find the perfect
-            route for your day in the Lake District.
-          </p>
         </div>
         <div>
           <LazyImage
             className={styles.heroImage}
-            name={"walks/the-kentmere-horseshoe/13.webp"}
+            name={"walks/the-fells-south-of-buttermere/03.webp"}
             sizes="100vw"
             alt={""}
           />

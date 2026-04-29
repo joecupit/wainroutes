@@ -12,14 +12,23 @@
   display: grid;
   gap: 1rem;
   align-content: center;
+  justify-content: center;
   height: clamp(16rem, 40vw, 22rem);
-  max-width: calc(12 * var(--fs-800));
   z-index: 2;
-
-  color: var(--clr-text-white);
 
   & p {
     max-width: 40ch;
+  }
+  & h1 {
+    padding-block: 0.05lh;
+    padding-inline: 0.375ch;
+    margin-block-end: 0.625lh;
+    border-radius: var(--gap-300);
+
+    text-align: center;
+    text-wrap: balance;
+    color: var(--clr-text-white);
+    backdrop-filter: blur(0.25rem);
   }
 }
 .heroImage {

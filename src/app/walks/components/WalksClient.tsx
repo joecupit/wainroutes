@@ -41,7 +41,7 @@ export default function WalksClient({ allWalks }: WalksClientProps) {
       if (titleElement) titleElement.innerText = `Walks near ${location.name}`;
       document.title = `Lake District Walks near ${location.name} | Wainroutes`;
     } else {
-      if (titleElement) titleElement.innerText = "Walks in the Lake District";
+      if (titleElement) titleElement.innerText = "Lake District Walks";
       document.title = "Lake District Walks | Wainroutes";
     }
   }, [townParam]);
