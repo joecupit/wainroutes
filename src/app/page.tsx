@@ -58,7 +58,7 @@ export default function Home() {
         <section className={styles.heroSection}>
           <div className={styles.hero}>
             <h1 className={`${fontStyles.title} ${styles.title}`}>
-              Climb your next Wainwright
+              Wainwright Walks in the Lake District
             </h1>
 
             <HomeSearchBar />
@@ -78,7 +78,7 @@ export default function Home() {
             <div className={styles.featuredTitle}>
               <div>
                 <h2 className={fontStyles.subheading}>Featured Routes</h2>
-                <p>New and popular walks from Wainroutes.</p>
+                <p>New and popular walks on Wainroutes.</p>
               </div>
               <div>
                 <Link

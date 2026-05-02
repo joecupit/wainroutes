@@ -144,13 +144,7 @@ export default function WalkSearchAndFilter({
           label="Distance"
           value={filters["distance"]}
           onChange={(n) => updateParam("distance", n !== "any" ? n : undefined)}
-          options={{
-            "any": "Any distance",
-            "0-6": "Under 6km",
-            "6-12": "6km - 12km",
-            "12-18": "12km - 18km",
-            "18+": "18km+",
-          }}
+          options={distanceOptions}
         />
         <SelectDropdown
           Icon={<ElevationIcon />}
@@ -159,13 +153,7 @@ export default function WalkSearchAndFilter({
           onChange={(n) =>
             updateParam("elevation", n !== "any" ? n : undefined)
           }
-          options={{
-            "any": "Any ascent",
-            "0-300": "Under 300m",
-            "300-600": "300m - 600m",
-            "600-900": "600m - 900m",
-            "900+": "900m+",
-          }}
+          options={elevationOptions}
         />
 
         <button className={styles.filtersClear} onClick={() => clearFilters()}>

@@ -59,7 +59,7 @@
   display: flex;
   gap: 1rem;
 
-  padding: calc(2.5 * var(--gap-300));
+  padding: calc(2 * var(--gap-300));
 
   background: var(--clr-bg-light);
   border-radius: 0.5rem;
@@ -84,7 +84,7 @@
 
   background: var(--clr-bg-light);
 
-  border: 1px solid var(--clr-border-muted);
+  /* border: 1px solid var(--clr-border-muted); */
   border-radius: 0.25rem;
 
   position: relative;

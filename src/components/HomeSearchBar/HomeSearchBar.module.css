@@ -2,7 +2,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: min(40rem, 90%);
+  align-items: center;
+  width: min(calc(15 * var(--fs-800)), 90%);
   gap: var(--gap-300);
   row-gap: var(--gap-400);
 
@@ -19,6 +20,11 @@
 
   & button {
     white-space: pre;
+    padding-inline: clamp(2ch, 4vw, 3.5ch);
+
+    & svg {
+      display: none;
+    }
   }
 }
 
@@ -31,6 +37,10 @@
   border-radius: 0.25rem;
 
   flex: 1;
+  min-width: 5rem;
+  overflow: hidden;
+
+  background: var(--clr-bg-light);
 
   & input {
     background: none;
@@ -48,12 +58,31 @@
     margin-inline: -0.5ch;
   }
   & svg {
-    width: 2ch;
-    height: 2ch;
+    min-width: 2ch;
+    min-height: 2ch;
+    max-width: 2ch;
+    max-height: 2ch;
     margin-inline-start: 0.5ch;
   }
 }
 
 .searchBar:has(input:focus-visible) {
   outline: 2px solid currentColor;
+}
+
+@media (max-width: 30.5rem) {
+  .searchButtonText,
+  .searchBar svg {
+    display: none;
+  }
+  .search button {
+    padding-inline: 1ch;
+  }
+  .search button svg {
+    display: block;
+  }
+  .searchBar {
+    padding-inline: 1ch;
+    height: 100%;
+  }
 }

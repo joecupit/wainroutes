@@ -6,7 +6,11 @@ import buttonStyles from "@/styles/buttons.module.css";
 import React, { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
-import { CloseIconSmall, SearchIcon } from "@/icons/PhosphorIcons";
+import {
+  ArrowRightIcon,
+  CloseIconSmall,
+  SearchIcon,
+} from "@/icons/PhosphorIcons";
 
 export default function HomeSearchBar({
   placeholder,
@@ -59,7 +63,8 @@ export default function HomeSearchBar({
         className={`${buttonStyles.button} ${buttonStyles.primary}`}
         onClick={handleSearch}
       >
-        Find walks
+        <span className={styles.searchButtonText}>Find walks</span>
+        <ArrowRightIcon />
       </button>
     </div>
   );

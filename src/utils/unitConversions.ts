@@ -1,3 +1,5 @@
+import roundToNearestInt from "./roundToNearest";
+
 const useMiles = false;
 const useFeet = false;
 const useFarenheit = false;
@@ -24,7 +26,7 @@ export function displayDistance(kilometers: number | undefined, roundTo = 2) {
 }
 export function displaySpeed(
   kilometers_per_hour: number | undefined,
-  roundTo = 0
+  roundTo = 0,
 ) {
   return (
     (getDistanceValue(kilometers_per_hour)?.toFixed(roundTo) ?? "N/A") +
@@ -42,13 +44,23 @@ export function getElevationUnit() {
   if (useFeet) return "ft";
   else return "m";
 }
-export function displayElevation(meters: number | undefined) {
-  return (getElevationValue(meters)?.toFixed(0) ?? "N/A") + getElevationUnit();
+export function displayElevation(
+  meters: number | undefined,
+  nearestHundred: boolean = false,
+) {
+  let elevationValue = getElevationValue(meters);
+  if (elevationValue === null) return "N/A";
+
+  if (nearestHundred) {
+    elevationValue = roundToNearestInt(elevationValue, 100);
+  }
+
+  return `${elevationValue.toFixed(0)}${getElevationUnit()}`;
 }
 
 export function displayTemperature(
   celcius: number | undefined,
-  includeUnit = true
+  includeUnit = true,
 ) {
   if (celcius == undefined) return "N/A";
 
