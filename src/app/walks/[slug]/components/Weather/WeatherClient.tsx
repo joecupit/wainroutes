@@ -11,7 +11,7 @@ import {
   getDistanceUnit,
   getDistanceValue,
 } from "@/utils/unitConversions";
-import WeatherIcons from "@/icons/WeatherIcons";
+import { RenderWeatherIcon } from "@/utils/RenderWeatherIcon";
 
 export default function WeatherClient({
   weatherData,
@@ -31,7 +31,7 @@ export default function WeatherClient({
 
   const selectedDayWeather = useMemo(
     () => weatherData.days[selectedDayIndex],
-    [selectedDayIndex, weatherData]
+    [selectedDayIndex, weatherData],
   );
 
   const formatDate = useCallback((dateString: string | undefined) => {
@@ -117,13 +117,13 @@ export default function WeatherClient({
           <div className={styles.overviewMain}>
             <div className={styles.overviewTemp}>
               {displayTemperature(
-                selectedDayWeather.temp.screen[displayNightData]
+                selectedDayWeather.temp.screen[displayNightData],
               )}
             </div>
             <div>
               {selectedDayWeather.weather_type[displayNightData].replace(
                 /\(.+\)/g,
-                ""
+                "",
               )}
             </div>
           </div>
@@ -134,7 +134,7 @@ export default function WeatherClient({
             <p>
               {displayTemperature(
                 selectedDayWeather.temp.feels[displayNightData],
-                false
+                false,
               )}
               {/* <span>{`(H: ${displayTemperature(
                 selectedDayWeather.temp.min[displayNightData],
@@ -176,7 +176,7 @@ export default function WeatherClient({
             <h4>Visibility</h4>
             <p>
               {DisplayVisibilityDistance(
-                selectedDayWeather.visibility.m[displayNightData]
+                selectedDayWeather.visibility.m[displayNightData],
               )}
               {/* <span>{`(${selectedDayWeather.visibility.text[displayNightData]})`}</span> */}
             </p>
@@ -185,20 +185,6 @@ export default function WeatherClient({
       </div>
     </div>
   );
-}
-
-function RenderWeatherIcon(uncleanString: string) {
-  const slug = uncleanString
-    .toLowerCase()
-    .replaceAll(" ", "-")
-    .replaceAll(/[()]/g, "");
-  const Icon = WeatherIcons[slug];
-
-  if (Icon) return <Icon />;
-  else {
-    const NoIcon = WeatherIcons["na"];
-    return <NoIcon />;
-  }
 }
 
 function DisplayVisibilityDistance(meters: number) {

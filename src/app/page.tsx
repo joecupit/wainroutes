@@ -17,6 +17,10 @@ import { getHillMarkers } from "@/utils/getMapMarkers";
 import tempwalks from "@/data/walks.json";
 import LazyPicture from "@/components/LazyImage/LazyPicture";
 import { ArrowRightIcon } from "@/icons/PhosphorIcons";
+import { DistrictWeather } from "@/types/Weather";
+import formatDateString from "@/utils/formatDateString";
+import { displayTemperature } from "@/utils/unitConversions";
+import { RenderWeatherIcon } from "@/utils/RenderWeatherIcon";
 
 export function generateMetadata() {
   return createPageMetadata({
@@ -144,6 +148,8 @@ export default function Home() {
           </div>
         </section>
 
+        <HomeWeather />
+
         <section>
           <div className={styles.about}>
             <div className={styles.aboutImage}>
@@ -181,5 +187,175 @@ export default function Home() {
         </section>
       </main>
     </>
+  );
+}
+
+async function getWeather() {
+  const res = await fetch("https://data.wainroutes.co.uk/weather.json", {
+    next: { revalidate: 1800 },
+  });
+
+  if (!res.ok) {
+    console.error("Failed to fetch weather data:", res);
+    return {};
+  }
+
+  return res.json();
+}
+
+const getWeatherTitle = (dateString: string) => {
+  const isSameDay = (a: Date, b: Date) =>
+    a.getFullYear() === b.getFullYear() &&
+    a.getMonth() === b.getMonth() &&
+    a.getDate() === b.getDate();
+
+  const todaysDate = new Date();
+  const tomorrowsDate = new Date(todaysDate);
+  tomorrowsDate.setDate(todaysDate.getDate() + 1);
+
+  const inputDate = new Date(dateString);
+
+  if (isSameDay(inputDate, todaysDate)) {
+    return "Today's Mountain Conditions";
+  }
+  if (isSameDay(inputDate, tomorrowsDate)) {
+    return "Tomorrow's Mountain Conditions";
+  }
+
+  return `Mountain Conditions for ${formatDateString(dateString)}`;
+};
+
+const getMostCommonFromArray = (array: string[]) => {
+  return Object.entries(
+    array.reduce((a, v) => {
+      a[v] = (a[v] ?? 0) + 1;
+      return a;
+    }, {}),
+  ).reduce((a, v) => (v[1] >= a[1] ? v : a), [null, 0])[0];
+};
+
+async function HomeWeather() {
+  const weatherData: DistrictWeather = await getWeather();
+
+  let currentWeather = weatherData.days.find(
+    (day) => day.type == "current-day",
+  );
+  if (currentWeather === undefined || currentWeather.date === undefined) {
+    return "No weather";
+  }
+
+  // console.log(currentWeather);
+
+  return (
+    <section>
+      <div className={styles.weather}>
+        <div className={styles.weatherOverview}>
+          <div className={styles.weatherOverviewOverlay}></div>
+          <div>
+            <h2 className={fontStyles.heading}>
+              {getWeatherTitle(currentWeather.date)}
+            </h2>
+            <p className={styles.weatherDate}>
+              {formatDateString(currentWeather.date)}
+            </p>
+          </div>
+          <div className={styles.weatherOverviewOverview}>
+            <div>
+              {currentWeather.forecast?.type &&
+                RenderWeatherIcon(
+                  getMostCommonFromArray(currentWeather.forecast?.type),
+                )}
+              <div>
+                <p className={styles.weatherTemp}>
+                  {displayTemperature(
+                    Math.max(
+                      ...currentWeather.forecast?.temp?.map((t) => Number(t)),
+                    ),
+                  )}
+                </p>
+                <p>
+                  Feels like{" "}
+                  {displayTemperature(
+                    Math.max(
+                      ...currentWeather.forecast?.feel_temp?.map((t) =>
+                        Number(t),
+                      ),
+                    ),
+                  )}
+                </p>
+              </div>
+            </div>
+            <hr />
+            <p className={styles.weatherWeather}>{currentWeather.weather}</p>
+          </div>
+        </div>
+
+        <div className={styles.weatherGrid}>
+          <div>
+            <h3>Sunrise / Sunset</h3>
+            <p>
+              {currentWeather.sunrise} / {currentWeather.sunset}
+            </p>
+          </div>
+          {currentWeather.cloud_free_top && (
+            <div>
+              <h3>Chance of Cloud-Free Hill Top</h3>
+              <p data-small={currentWeather.cloud_free_top?.length > 7}>
+                {currentWeather.cloud_free_top}
+              </p>
+            </div>
+          )}
+          {currentWeather.forecast?.wind_speed &&
+            currentWeather.forecast?.wind_dir && (
+              <div>
+                <h3>Wind speeds</h3>
+                <p>
+                  {Math.max(
+                    ...currentWeather.forecast?.wind_speed?.map((t) =>
+                      Number(t),
+                    ),
+                  )}
+                  mph{" "}
+                  {getMostCommonFromArray(currentWeather.forecast?.wind_dir)}
+                </p>
+              </div>
+            )}
+          {currentWeather.forecast?.wind_dir &&
+            currentWeather.forecast?.wind_gust && (
+              <div>
+                <h3>Wind gusts</h3>
+                <p>
+                  {Math.max(
+                    ...currentWeather.forecast?.wind_gust?.map((t) =>
+                      Number(t),
+                    ),
+                  )}
+                  mph{" "}
+                  {getMostCommonFromArray(currentWeather.forecast?.wind_dir)}
+                </p>
+              </div>
+            )}
+          {currentWeather.forecast?.precip && (
+            <div>
+              <h3>Precipitation</h3>
+              <p>
+                {Math.max(
+                  ...currentWeather.forecast?.precip?.map((t) =>
+                    Number(t.match(/\d+/g)),
+                  ),
+                )}
+                %
+              </p>
+            </div>
+          )}
+        </div>
+        <Link
+          href="/weather"
+          className={`${buttonStyles.button} ${buttonStyles.animate} ${styles.weatherButton}`}
+        >
+          View full 5-day mountain forecast <ArrowRightIcon />
+        </Link>
+      </div>
+    </section>
   );
 }
