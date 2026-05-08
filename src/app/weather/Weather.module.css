@@ -222,7 +222,8 @@
 
 /*  */
 
-.metoffice {
+.metoffice,
+.noweather {
   font-size: var(--fs-300);
   color: var(--clr-text-muted);
 
@@ -236,5 +237,15 @@
   }
   & a:hover {
     color: var(--clr-text);
+  }
+}
+.noweather {
+  font-size: var(--fs-400);
+  /* font-weight: var(--fw-medium); */
+  color: var(--clr-text);
+  margin-block-start: 1rem;
+
+  & a:hover {
+    color: var(--clr-text-muted);
   }
 }

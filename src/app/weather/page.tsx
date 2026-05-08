@@ -37,10 +37,25 @@ export default async function WeatherPage() {
         <div className={styles.main}>
           <div>
             <h1 className={fontStyles.title}>Lake District Weather Forecast</h1>
-            <UpdateDate date={weatherData.update_time} />
+            {weatherData.days.length > 0 && (
+              <UpdateDate date={weatherData.update_time} />
+            )}
           </div>
 
-          <Forecast weatherData={weatherData} />
+          {weatherData.days.length > 0 ? (
+            <Forecast weatherData={weatherData} />
+          ) : (
+            <div className={styles.noweather}>
+              Forecast currently unavailable. For mountain conditions check the{" "}
+              <a
+                href="https://weather.metoffice.gov.uk/specialist-forecasts/mountain/lake-district"
+                target="_blank"
+              >
+                Met Office forecast
+              </a>
+              .
+            </div>
+          )}
 
           <div style={{ height: "3rem" }}></div>
         </div>
