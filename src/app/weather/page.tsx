@@ -46,7 +46,8 @@ export default async function WeatherPage() {
             <Forecast weatherData={weatherData} />
           ) : (
             <div className={styles.noweather}>
-              Forecast currently unavailable. For mountain conditions check the{" "}
+              Forecast temporarily unavailable. For mountain conditions check
+              the{" "}
               <a
                 href="https://weather.metoffice.gov.uk/specialist-forecasts/mountain/lake-district"
                 target="_blank"
@@ -89,7 +90,7 @@ function UpdateDate({ date }: { date: string }) {
     "December",
   ];
 
-  const updateDate = new Date(date + " UTC");
+  const updateDate = new Date(date);
 
   return (
     <p className={styles.suntime}>
