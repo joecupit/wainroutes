@@ -250,13 +250,10 @@ function MountainHazardList({
 }) {
   if (!hazards) return "None reported.";
 
-  const renderHazards = (
-    level: string,
-    hazardObj?: { [name: string]: string }
-  ) => {
-    if (!hazardObj) return <></>;
+  const renderHazards = (level: string, hazards?: string[]) => {
+    if (!hazards) return <></>;
 
-    return Object.keys(hazardObj).map((hazard, index) => {
+    return hazards.map((hazard, index) => {
       return (
         <li key={index} className={`${styles.mountainHazard} ${level}`}>
           {hazard}
@@ -311,37 +308,37 @@ function WeatherTable({ forecast }: { forecast?: DistrictWeatherDayForecast }) {
               data={forecast.precip}
             />
           )}
-          {forecast.temp && (
+          {forecast.temp_c && (
             <WeatherTableRow
               icon={<TemperatureIcon />}
               title="Temperature (°C)"
-              data={forecast.temp}
+              data={forecast.temp_c["900m"]}
               postText={"°"}
               className={styles.primaryRow}
             />
           )}
-          {forecast.feel_temp && (
+          {forecast.feel_temp_c && (
             <WeatherTableRow
               icon="(°C)"
               title="Feels-like"
-              data={forecast.feel_temp}
+              data={forecast.feel_temp_c["900m"]}
               postText={"°"}
               className={styles.secondaryRow}
             />
           )}
-          {forecast.wind_speed && (
+          {forecast.wind_speed_kph && (
             <WeatherTableRow
               icon={<WindIcon />}
-              title="Wind speed (mph)"
-              data={forecast.wind_speed}
+              title="Wind speed (kph)"
+              data={forecast.wind_speed_kph["900m"]}
               className={styles.primaryRow}
             />
           )}
-          {forecast.wind_gust && (
+          {forecast.wind_gust_kph && (
             <WeatherTableRow
-              icon="(mph)"
+              icon="(kph)"
               title="Wind gusts"
-              data={forecast.wind_gust}
+              data={forecast.wind_gust_kph["900m"]}
               className={styles.secondaryRow}
             />
           )}
