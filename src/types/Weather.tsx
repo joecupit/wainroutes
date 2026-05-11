@@ -2,11 +2,11 @@ export type DistrictWeatherDayForecast = {
   time: string[];
   type?: string[];
   precip?: string[];
-  wind_speed?: string[];
-  wind_gust?: string[];
-  wind_dir?: string[];
-  temp?: string[];
-  feel_temp?: string[];
+  wind_speed_kph?: {[height: string]: string[]};
+  wind_gust_kph?: {[height: string]: string[]};
+  wind_dir?: {[height: string]: string[]};
+  temp_c?: {[height: string]: string[]};
+  feel_temp_c?: {[height: string]: string[]};
 };
 
 export type DistrictWeatherDay = {
@@ -15,14 +15,14 @@ export type DistrictWeatherDay = {
   sunrise?: string;
   sunset?: string;
   hazards?: {
-    [level: string]: { [name: string]: string };
+    [level: string]: string[];
   };
   meteorologist_view?: string;
   summary?: string;
   cloud_free_top?: string;
   visibility?: string;
   ground_conditions?: string;
-  weather?: string;
+  tagline?: string;
   forecast?: DistrictWeatherDayForecast;
   max_wind?: string;
   temperature?: {
