@@ -246,3 +246,26 @@ export function DropdownIcon() {
     </PhosphorIcon>
   );
 }
+
+export function CaretUpIcon() {
+  return (
+    <PhosphorIcon style={{ scale: 0.5 }}>
+      <path d="M216.49,168.49a12,12,0,0,1-17,0L128,97,56.49,168.49a12,12,0,0,1-17-17l80-80a12,12,0,0,1,17,0l80,80A12,12,0,0,1,216.49,168.49Z" />
+    </PhosphorIcon>
+  );
+}
+export function CaretDownIcon() {
+  return (
+    <PhosphorIcon style={{ scale: 0.5 }}>
+      <path d="M216.49,104.49l-80,80a12,12,0,0,1-17,0l-80-80a12,12,0,0,1,17-17L128,159l71.51-71.52a12,12,0,0,1,17,17Z" />
+    </PhosphorIcon>
+  );
+}
+
+export function TickIcon() {
+  return (
+    <PhosphorIcon style={{ scale: 0.5 }}>
+      <path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z" />
+    </PhosphorIcon>
+  );
+}

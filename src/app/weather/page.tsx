@@ -5,6 +5,8 @@ import { createPageMetadata } from "@/utils/metadata";
 
 import { DistrictWeather } from "@/types/Weather";
 import { Forecast } from "./components/Forecast";
+import LazyImage from "@/components/LazyImage/LazyImage";
+import UpdateDate from "./components/UpdateDate";
 
 export function generateMetadata() {
   return createPageMetadata({
@@ -33,21 +35,37 @@ export default async function WeatherPage() {
 
   return (
     <main className={styles.weather}>
+      <section className={styles.heroSection}>
+        <div className={styles.hero}>
+          <h1 id="walks-title" className={fontStyles.title}>
+            Lake District Weather Forecast
+          </h1>
+        </div>
+        <div>
+          <LazyImage
+            className={styles.heroImage}
+            name={"walks/bessyboot-rosthwaite-fell/01.webp"}
+            sizes="100vw"
+            alt={""}
+          />
+        </div>
+      </section>
+
+      <section className={styles.updateTime}>
+        {weatherData.days.length > 0 && (
+          <p>
+            Last updated: <UpdateDate date={weatherData.update_time} />
+          </p>
+        )}
+      </section>
+
       <section>
         <div className={styles.main}>
-          <div>
-            <h1 className={fontStyles.title}>Lake District Weather Forecast</h1>
-            {weatherData.days.length > 0 && (
-              <UpdateDate date={weatherData.update_time} />
-            )}
-          </div>
-
           {weatherData.days.length > 0 ? (
             <Forecast weatherData={weatherData} />
           ) : (
             <div className={styles.noweather}>
-              Forecast temporarily unavailable. For mountain conditions check
-              the{" "}
+              Forecast temporarily unavailable. For mountain conditions use the{" "}
               <a
                 href="https://weather.metoffice.gov.uk/specialist-forecasts/mountain/lake-district"
                 target="_blank"
@@ -62,45 +80,5 @@ export default async function WeatherPage() {
         </div>
       </section>
     </main>
-  );
-}
-
-function UpdateDate({ date }: { date: string }) {
-  const weekdays = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  const updateDate = new Date(date);
-
-  return (
-    <p className={styles.suntime}>
-      {`Updated at:
-        ${updateDate.toTimeString().slice(0, 5)}
-        on
-        ${weekdays[updateDate.getDay()].slice(0, 3)}
-        ${updateDate.getDate()}
-        ${months[updateDate.getMonth()].slice(0, 3)}
-        ${updateDate.getFullYear()}`}
-    </p>
   );
 }
