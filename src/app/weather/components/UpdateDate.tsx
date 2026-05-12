@@ -47,7 +47,7 @@ export default function UpdateDate({ date }: { date: string }) {
 
   const updateDate = new Date(date);
 
-  var howLongAgo = "";
+  let howLongAgo = "";
 
   const delta_min = (+new Date() - +updateDate) / 1000 / 60;
 
@@ -66,7 +66,7 @@ export default function UpdateDate({ date }: { date: string }) {
   return (
     <span
       title={`${updateDate.toDateString()}, ${updateDate.toLocaleTimeString()}`}
-      aria-date={date}
+      data-date={date}
     >
       {`${getDayName(updateDate)}
         at

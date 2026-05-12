@@ -56,7 +56,6 @@ const SelectItem = forwardRef(
     {
       value,
       children,
-      className,
       ...props
     }: { value: string; className?: string; children?: React.ReactNode },
     forwardedRef: React.Ref<HTMLDivElement | null>,
@@ -76,3 +75,4 @@ const SelectItem = forwardRef(
     );
   },
 );
+SelectItem.displayName = "SelectItem";

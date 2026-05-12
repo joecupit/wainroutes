@@ -12,12 +12,11 @@ export default function WeatherTable({
 }: {
   forecast?: DistrictWeatherDayForecast;
 }) {
-  if (forecast === undefined) return <p>Unavailable.</p>;
-
-  const sliceIndex = forecast.time.indexOf("06:00");
-
   const heightOptions = ["900m", "600m", "300m", "Valley"];
   const [height, setHeight] = useState("900m");
+
+  if (forecast === undefined) return <p>Unavailable.</p>;
+  const sliceIndex = forecast.time.indexOf("06:00");
 
   return (
     <>
