@@ -3,22 +3,15 @@ import fontStyles from "@/styles/fonts.module.css";
 
 import { Fragment } from "react";
 
-import {
-  DistrictWeather,
-  DistrictWeatherDay,
-  DistrictWeatherDayForecast,
-} from "@/types/Weather";
-import WeatherIcons from "@/icons/WeatherIcons";
-import formatDateString from "@/utils/formatDateString";
-import {
-  PrecipitationIcon,
-  TemperatureIcon,
-  WindIcon,
-} from "@/icons/PhosphorIcons";
+import { DistrictWeather, DistrictWeatherDay } from "@/types/Weather";
+import WeatherTable from "./WeatherTable";
+import ForecastDate from "./ForecastDate";
 
 export function Forecast({ weatherData }: { weatherData: DistrictWeather }) {
   return (
     <div className={styles.forecast}>
+      {/* <h2>5-day mountain forecast</h2> */}
+
       {weatherData?.days?.map((day, index) => {
         switch (day.type) {
           case "current-day":
@@ -71,12 +64,9 @@ function TodayForecast({ weather }: { weather: DistrictWeatherDay }) {
       sticky={
         <>
           <div>
-            <h2 className={fontStyles.subheading}>
-              {formatDateString(weather.date)}
+            <h2 className={styles.forecastDate}>
+              <ForecastDate dateString={weather.date} />
             </h2>
-            <p className={styles.suntime}>
-              Sunrise: {weather.sunrise}, Sunset: {weather.sunset}
-            </p>
           </div>
           <div className={styles.additionalInfo}>
             <div>
@@ -96,8 +86,7 @@ function TodayForecast({ weather }: { weather: DistrictWeatherDay }) {
             <h3 className="visually-hidden">Summary</h3>
             <p>{weather.summary}</p>
           </div>
-          <div>
-            <h3 className={styles.boldheading}>Mountain Forecast (900m)</h3>
+          <div className={styles.forecastTable}>
             <WeatherTable forecast={weather.forecast} />
           </div>
           <div>
@@ -120,6 +109,9 @@ function TodayForecast({ weather }: { weather: DistrictWeatherDay }) {
               <MeteorologistView view={weather.meteorologist_view} />
             </div>
           </div>
+          <p className={styles.suntime}>
+            Sunrise: {weather.sunrise}, Sunset: {weather.sunset}
+          </p>
         </>
       }
     />
@@ -132,12 +124,9 @@ function TomorrowForecast({ weather }: { weather: DistrictWeatherDay }) {
       sticky={
         <>
           <div>
-            <h2 className={fontStyles.subheading}>
-              {formatDateString(weather.date)}
+            <h2 className={styles.forecastDate}>
+              <ForecastDate dateString={weather.date} />
             </h2>
-            <p className={styles.suntime}>
-              Sunrise: {weather.sunrise}, Sunset: {weather.sunset}
-            </p>
           </div>
         </>
       }
@@ -175,6 +164,9 @@ function TomorrowForecast({ weather }: { weather: DistrictWeatherDay }) {
               </ul>
             )}
           </div>
+          <p className={styles.suntime}>
+            Sunrise: {weather.sunrise}, Sunset: {weather.sunset}
+          </p>
         </>
       }
     />
@@ -221,18 +213,20 @@ function FutureForecast({ weather }: { weather: DistrictWeatherDay }) {
           <ForecastDay
             key={index}
             sticky={
-              <div>
-                <h3 className={fontStyles.subheading}>{dateList.join(" ")}</h3>
+              <>
+                <h3 className={styles.forecastDate}>
+                  {dateList[0]} <span>{dateList.slice(1).join(" ")}</span>
+                </h3>
+              </>
+            }
+            main={
+              <>
+                <h3 className="visually-hidden">Summary</h3>
+                <p>{day.summary}</p>
                 <p className={styles.suntime}>
                   Sunrise: {day.sunrise}, Sunset: {day.sunset}
                 </p>
-              </div>
-            }
-            main={
-              <div>
-                <h3 className="visually-hidden">Summary</h3>
-                <p>{day.summary}</p>
-              </div>
+              </>
             }
           />
         );
@@ -243,7 +237,7 @@ function FutureForecast({ weather }: { weather: DistrictWeatherDay }) {
 
 //
 
-function MountainHazardList({
+export function MountainHazardList({
   hazards,
 }: {
   hazards?: DistrictWeatherDay["hazards"];
@@ -281,130 +275,4 @@ function MeteorologistView({
   }
 
   return <p>{view ?? "Nothing to add."}</p>;
-}
-
-function WeatherTable({ forecast }: { forecast?: DistrictWeatherDayForecast }) {
-  if (forecast === undefined) return <p>Unavailable.</p>;
-
-  return (
-    <div className={styles.weatherTableContainer}>
-      <table className={styles.weatherTable}>
-        <thead>
-          <tr>
-            <th></th>
-            {forecast.time.map((time, index) => (
-              <th key={index}>{time}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {forecast.type && (
-            <WeatherTypeRow title="Weather type" data={forecast.type} />
-          )}
-          {forecast.precip && (
-            <WeatherTableRow
-              icon={<PrecipitationIcon />}
-              title="Precipitation %"
-              data={forecast.precip}
-            />
-          )}
-          {forecast.temp_c && (
-            <WeatherTableRow
-              icon={<TemperatureIcon />}
-              title="Temperature (°C)"
-              data={forecast.temp_c["900m"]}
-              postText={"°"}
-              className={styles.primaryRow}
-            />
-          )}
-          {forecast.feel_temp_c && (
-            <WeatherTableRow
-              icon="(°C)"
-              title="Feels-like"
-              data={forecast.feel_temp_c["900m"]}
-              postText={"°"}
-              className={styles.secondaryRow}
-            />
-          )}
-          {forecast.wind_speed_kph && (
-            <WeatherTableRow
-              icon={<WindIcon />}
-              title="Wind speed (kph)"
-              data={forecast.wind_speed_kph["900m"]}
-              className={styles.primaryRow}
-            />
-          )}
-          {forecast.wind_gust_kph && (
-            <WeatherTableRow
-              icon="(kph)"
-              title="Wind gusts"
-              data={forecast.wind_gust_kph["900m"]}
-              className={styles.secondaryRow}
-            />
-          )}
-        </tbody>
-      </table>
-    </div>
-  );
-}
-
-function WeatherTableRow({
-  icon,
-  title,
-  data,
-  postText,
-  className,
-}: {
-  icon?: React.ReactNode;
-  title: string;
-  data: string[];
-  postText?: string;
-  className?: string;
-}) {
-  return (
-    <tr className={className}>
-      <th>
-        {icon && <span className={styles.rowIcon}>{icon}</span>}
-        <span className={styles.rowTitle}>{title}</span>
-      </th>
-      {data.map((entry, index) => (
-        <td key={index}>
-          {entry}
-          {postText}
-        </td>
-      ))}
-    </tr>
-  );
-}
-function WeatherTypeRow({
-  icon,
-  title,
-  data,
-  className,
-}: {
-  icon?: React.ReactNode;
-  title: string;
-  data: string[];
-  className?: string;
-}) {
-  return (
-    <tr className={className}>
-      <th>
-        {icon && <span className={styles.rowIcon}>{icon}</span>}
-        <span className={styles.rowTitle}>{title}</span>
-      </th>
-      {data.map((entry, index) => {
-        const slug = entry
-          .toLowerCase()
-          .replaceAll(" ", "-")
-          .replaceAll(/[()]/g, "");
-        const Icon = WeatherIcons[slug] || WeatherIcons["cloudy"];
-        return (
-          <td key={index} className={styles.imageCell} title={entry}>
-            <Icon />
-          </td>
-        );
-      })}
-    </tr>
-  );
 }
