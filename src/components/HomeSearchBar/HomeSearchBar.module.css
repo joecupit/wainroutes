@@ -1,0 +1,89 @@
+.search {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: min(calc(15 * var(--fs-800)), 90%);
+  gap: var(--gap-300);
+  row-gap: var(--gap-400);
+
+  color: var(--clr-text-black);
+  background: var(--clr-bg-light);
+  border-radius: 0.25rem;
+
+  overflow: hidden;
+
+  & hr {
+    border: none;
+    border-right: 2px solid var(--clr-bg-dark);
+  }
+
+  & button {
+    white-space: pre;
+    padding-inline: clamp(2ch, 4vw, 3.5ch);
+    border-radius: 0;
+    height: 100%;
+
+    outline-offset: -3px !important;
+
+    & svg {
+      display: none;
+    }
+  }
+}
+
+.searchBar {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+
+  padding-block: calc(1.75 * var(--gap-300));
+  padding-inline: var(--gap-200);
+  border-radius: 0.25rem;
+
+  flex: 1;
+  min-width: 5rem;
+  overflow: hidden;
+
+  background: var(--clr-bg-light);
+
+  & input {
+    background: none;
+    border: none;
+    outline: none;
+
+    flex: 1;
+  }
+  & button {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding-inline: 0.5ch;
+    margin-inline: -0.5ch;
+  }
+  & svg {
+    min-width: 2ch;
+    min-height: 2ch;
+    max-width: 2ch;
+    max-height: 2ch;
+    margin-inline-start: 0.5ch;
+  }
+}
+
+@media (max-width: 30.5rem) {
+  .searchButtonText,
+  .searchBar svg {
+    display: none;
+  }
+  .search button {
+    padding-inline: 1ch;
+  }
+  .search button svg {
+    display: block;
+  }
+  .searchBar {
+    padding-inline: 1ch;
+    height: 100%;
+  }
+}

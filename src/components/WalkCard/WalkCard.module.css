@@ -4,14 +4,13 @@
 }
 
 .walkCard {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
+  display: flex;
+  flex-direction: column;
 
-  /* width: 100%;
-  height: 100%; */
+  height: 100%;
 
   background: var(--clr-bg);
-  /* border-radius: 0.5rem; */
+  border-radius: 0.25rem;
   overflow: hidden;
   text-align: left;
 }
@@ -23,7 +22,8 @@
 .image {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 16 / 11;
+  aspect-ratio: initial;
+  height: 12rem;
 }
 .image img {
   transform-origin: bottom center;
@@ -32,8 +32,9 @@
 .walkCard:focus .image img,
 .walkCard:focus-visible .image img,
 .walkCard:hover .image img {
-  scale: 1.05;
+  scale: 1.025;
 }
+.newTag,
 .dist {
   position: absolute;
   top: 0.75rem;
@@ -49,30 +50,51 @@
 
   cursor: default;
 }
+.newTag {
+  left: 0.75rem;
+  right: unset;
+}
 
 .text {
   display: flex;
-  gap: 1rem;
+  flex: 1;
+  gap: 0.75rem;
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
 
   background: var(--clr-bg-light);
 
-  padding-block: 0.75rem 1rem;
+  padding-block: 1rem 1rem;
   padding-inline: 1rem;
 }
+.titles {
+  flex: 1;
+  display: grid;
+  align-content: start;
+  gap: 0.25rem;
+
+  & p {
+    color: var(--clr-text-black-muted);
+  }
+}
 .text .subheading {
-  overflow: hidden;
+  /* overflow: hidden;
   text-overflow: ellipsis;
-  text-wrap: nowrap;
+  text-wrap: nowrap; */
   transition: color 100ms;
 
-  font-family: var(--ff-body);
+  font-family: var(--ff-heading);
   font-size: var(--fs-500);
   font-weight: var(--fw-bold);
 
-  margin-block-end: 0.125lh;
+  /* margin-block: 0.125lh; */
+  line-height: 1.2;
+}
+
+.text hr {
+  border: none;
+  border-block-start: 2px solid hsla(from var(--clr-text-muted) h s l / 0.25);
 }
 
 .intro {
@@ -83,34 +105,38 @@
   -webkit-line-clamp: var(--_max-lines);
   line-clamp: var(--_max-lines);
   overflow: hidden;
+  padding-inline-end: 1ch;
 }
 
 .icons {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  /* display: grid;
+  grid-template-columns: repeat(3, 1fr); */
+  display: flex;
+  gap: 1ch;
   font-weight: var(--fw-medium);
+  font-size: calc((var(--fs-300) + var(--fs-400)) / 2);
 
-  width: 100%;
+  /* width: 100%; */
 }
 .iconsIcon {
   display: flex;
   gap: 0.5ch;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   padding-inline: 0.25rem;
 
   min-width: 1px;
-  flex: 1;
+  /* flex: 1; */
 
-  border-inline-end: 2px solid hsla(from var(--clr-text-muted) h s l / 0.25);
+  /* border-inline-end: 2px solid hsla(from var(--clr-text-muted) h s l / 0.25); */
 
   & svg {
-    width: 1.75ch;
-    height: 1.75ch;
+    width: 1.5ch;
+    height: 1.5ch;
   }
 }
 .iconsIcon.wide {
-  flex: 1.5;
+  /* flex: 1.25; */
 }
 .iconsIcon:first-child {
   padding-inline-start: 0;
@@ -125,7 +151,7 @@
 }
 
 section > div:has(.group) {
-  grid-column: full-width;
+  /* grid-column: full-width; */
 }
 .group {
   display: grid;
@@ -148,17 +174,16 @@ section > div:has(.group) {
 
 /*  */
 
-@container (max-width: 34rem) {
+@container (min-width: 34rem) {
   .walkCard {
-    display: flex;
-    flex-direction: column;
+    flex-direction: row;
   }
 
   .image {
-    aspect-ratio: initial;
-    height: 13rem;
+    max-width: 40%;
+    aspect-ratio: 16 / 11;
   }
-  .text {
-    padding-block-start: 0.625rem;
+  .intro {
+    --_max-lines: 2;
   }
 }

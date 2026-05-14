@@ -1,5 +1,40 @@
+.walks {
+  padding-block-start: 0;
+}
 .walks section {
-  --content-max-width: 1300px;
+  --content-max-width: 1350px;
+}
+
+.heroSection {
+  position: relative;
+}
+.hero {
+  display: grid;
+  gap: 1rem;
+  align-content: center;
+  justify-content: center;
+  height: clamp(16rem, 40vw, 22rem);
+  z-index: 2;
+
+  & p {
+    max-width: 40ch;
+  }
+  & h1 {
+    padding-block: 0.05lh;
+    padding-inline: 0.375ch;
+    margin-block-end: 0.625lh;
+    border-radius: var(--gap-300);
+
+    text-align: center;
+    text-wrap: balance;
+    color: var(--clr-text-white);
+    backdrop-filter: blur(0.25rem);
+  }
+}
+.heroImage {
+  position: absolute;
+  inset: 0;
+  grid-column: full-width;
 }
 
 .main {
@@ -8,154 +43,50 @@
   gap: var(--gap-400);
 
   width: 100%;
-  margin-block-start: var(--gap-400);
 
   @media (max-width: 55.5rem) {
     flex-direction: column;
   }
 }
 
-.main select {
-  padding-inline: var(--gap-200);
-  margin-inline-start: auto;
+.bold {
+  font-weight: var(--fw-medium);
 }
 
-/*  */
+/* WalkSearchAndFilter */
 
-.grid {
-  container-type: inline-size;
-
+.searchAndFilter {
   display: flex;
-  flex-direction: column;
   gap: 1rem;
 
-  flex: 1;
-}
-.gridTop {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--gap-400);
-}
-.gridFiltersList {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--gap-300);
-  min-height: 2.125rem;
-  /* min-width: 18rem; */
-}
-.gridFiltersList li {
-  display: flex;
-  align-items: center;
-  gap: 1px;
+  padding: calc(2 * var(--gap-300));
 
-  border-radius: 0.25rem;
-  overflow: hidden;
-  cursor: default;
-}
-.gridFiltersList li button,
-.gridFiltersList li div {
   background: var(--clr-bg-light);
-}
-.gridFiltersList li button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border-radius: 0.5rem;
+  margin-block-start: -2rem;
+  z-index: 99999;
 
-  height: 100%;
-  width: 2rem;
-
-  transition: background-color 100ms;
-
-  & svg {
-    width: 1.5ch;
-    height: 1.5ch;
+  & hr {
+    border: none;
+    border-inline-end: 1px solid var(--clr-border-muted);
   }
 }
-.gridFiltersList li button:hover {
-  background: var(--clr-bg);
-}
-.gridFiltersList li div {
+
+.search {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
-
-  font-size: var(--fs-300);
-  font-weight: var(--fw-medium);
-  padding-inline: 0.625rem;
-  padding-block: 0.375rem;
-
-  min-width: fit-content;
-
-  transition: background-color 50ms;
+  gap: 0.75rem;
+  flex: 1;
 }
-.gridFiltersList li svg {
-  max-height: 1.825ch;
-  max-width: 1.825ch;
-  margin-inline: -0.125rem;
-}
-
-.gridFilters {
-  text-align: center;
-
-  border-radius: 0.25rem;
-  background: var(--clr-bg);
-  padding-block: 0.75rem;
-  padding-inline: 1rem;
-  margin-block-end: 0.5rem;
-}
-.gridFilters button {
-  display: inline-block;
-}
-.gridGrid {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(21rem, 1fr));
-  justify-items: center;
-}
-.gridEndText {
-  align-self: center;
-  text-align: center;
-  padding-block-start: 1rem;
-}
-.gridEndText button {
-  text-decoration: underline;
-  font-weight: var(--fw-medium);
-}
-
-/*  */
-
-.filters {
-  margin-block-start: var(--gap-400);
-}
-
-.filterSearch {
-  display: flex;
-  gap: var(--gap-400);
-
-  width: 100%;
-}
-
-.searchBar,
-.filterButton {
+.searchBar {
   display: flex;
   align-items: center;
   gap: 0.75ch;
 
   background: var(--clr-bg-light);
 
-  border: 1px solid var(--clr-border-muted);
+  /* border: 1px solid var(--clr-border-muted); */
   border-radius: 0.25rem;
 
-  & svg {
-    width: 2ch;
-    height: 2ch;
-  }
-}
-
-.searchBar {
   position: relative;
   flex: 1;
   height: fit-content;
@@ -165,19 +96,25 @@
 
   padding-block: 0.5rem;
   padding-inline: 0.5rem;
-}
-.searchBar:has(input:focus),
-.filterButton:hover {
-  border-color: currentColor;
-}
 
-.searchBar input {
-  flex: 1;
-  outline: none;
-  border: none;
-  background: none;
-  padding: 0;
-  margin: 0;
+  & svg {
+    width: 2ch;
+    height: 2ch;
+  }
+
+  &:hover,
+  &:has(input:focus) {
+    border-color: currentColor;
+  }
+
+  & input {
+    flex: 1;
+    outline: none;
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+  }
 }
 .searchBarButton {
   display: flex;
@@ -185,21 +122,225 @@
   padding-inline: 0.25rem;
   margin-inline: -0.25rem;
 }
+.filtersShowHide {
+  display: none;
+  align-items: center;
 
-.filterButton {
-  padding-block: var(--gap-200);
-  padding-inline: var(--gap-400);
+  color: var(--clr-text-black-muted);
+  border: 1px solid var(--clr-border-muted);
   border-radius: 0.25rem;
+  padding-inline: 0.5rem;
 
-  font-weight: var(--fw-medium);
+  &:hover {
+    border-color: currentColor;
+  }
+  & svg {
+    width: 2.5ch;
+    height: 2.5ch;
+  }
 }
-@media (max-width: 35rem) {
-  .filterButton span {
+
+.filters {
+  display: flex;
+  gap: inherit;
+  flex-wrap: wrap;
+
+  white-space: pre;
+
+  & > button {
+    flex: 1;
+    flex-basis: fit-content;
+  }
+}
+.filtersClear {
+  color: var(--clr-text-black-muted);
+
+  &:hover {
+    color: var(--clr-text-black);
+  }
+}
+
+@media (max-width: 74rem) {
+  .searchAndFilter {
+    display: grid;
+  }
+  .searchAndFilter hr {
+    display: none;
+  }
+
+  .filters {
+    width: 100%;
+  }
+  .filters button {
+    flex: initial;
+  }
+
+  .filtersClear {
+    margin-inline-start: auto;
+    padding-inline: 2ch;
+  }
+}
+@media (max-width: 52.75rem) {
+  .filters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(22ch, 1fr));
+  }
+
+  .filtersClear {
+    margin-inline-start: initial;
+    padding-inline: 0;
+  }
+}
+@media (max-width: 36rem) {
+  .search {
+    gap: 0.5rem;
+  }
+  .searchBar {
+    gap: 0.5ch;
+
+    & svg {
+      width: 1.75ch;
+      height: 1.75ch;
+    }
+  }
+
+  .filtersShowHide {
+    display: flex;
+  }
+  .filtersClear {
+    padding-inline: 0.625rem;
+    padding-block: 0.375rem;
+
+    font-size: var(--fs-300);
+    font-weight: var(--fw-medium);
+    line-height: 0.9;
+
+    background: hsl(from var(--clr-border-muted) h s l / 0.3);
+    border: 1px solid var(--clr-border-muted);
+    border-radius: 0.25rem;
+
+    &:hover {
+      border-color: currentColor;
+    }
+  }
+
+  .filters {
+    grid-template-columns: 1fr;
+    border-block-start: 1px solid var(--clr-border-muted);
+    padding-block-start: 1rem;
+  }
+  .filters[data-hide="true"] {
     display: none;
   }
 }
 
-.filterButton:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 2px;
+/* WalkGrid */
+
+.grid {
+  container-type: inline-size;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-block-start: 1rem;
+
+  flex: 1;
+}
+
+.gridTop {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: var(--gap-600);
+  row-gap: var(--gap-400);
+}
+.gridTopLeft,
+.gridTopRight {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+  font-size: var(--fs-300);
+}
+.gridTopLeft {
+  flex: 3;
+  min-width: fit-content;
+}
+.gridTopRight {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex: 1;
+  min-width: fit-content;
+
+  & > div {
+    display: flex;
+    align-items: center;
+    gap: 1ch;
+    white-space: pre;
+    text-wrap: nowrap;
+  }
+}
+
+div.gridRadios {
+  display: none;
+}
+.gridRadioGroup {
+  display: flex;
+  height: 2.25rem;
+
+  border: 1px solid var(--clr-border-muted);
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+.gridRadio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  height: 100%;
+
+  background: var(--clr-bg);
+
+  & svg {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+  & input {
+    display: none;
+  }
+  &:first-child {
+    border-right: 1px solid var(--clr-border-muted);
+  }
+  &:has(input:checked) {
+    color: var(--clr-text-white);
+    background: var(--clr-text-black);
+  }
+}
+
+.gridGrid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(16.5rem, 1fr));
+  justify-items: center;
+}
+@media (min-width: 39rem) {
+  div.gridRadios {
+    display: flex;
+  }
+  .gridGrid[data-view="list"] {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gridEndText {
+  align-self: center;
+  text-align: center;
+  padding-block: var(--gap-400);
+
+  & button {
+    font-weight: var(--fw-medium);
+    text-decoration: underline;
+    user-select: initial;
+  }
 }

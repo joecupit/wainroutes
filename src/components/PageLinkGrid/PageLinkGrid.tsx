@@ -16,11 +16,16 @@ type Page = {
 type OtherPagesProps = {
   title?: string;
   pages: Page[];
+  className?: string;
 };
 
-export default function PageLinkGrid({ title, pages }: OtherPagesProps) {
+export default function PageLinkGrid({
+  title,
+  pages,
+  className,
+}: OtherPagesProps) {
   return (
-    <section className={styles.pagesSection}>
+    <section className={`${styles.pagesSection} ${className ?? ""}`}>
       <div className={styles.pages}>
         <h2 className={`${fontStyles.heading} visually-hidden`}>
           {title || "Other Resources"}

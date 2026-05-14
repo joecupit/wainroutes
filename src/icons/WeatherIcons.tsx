@@ -603,6 +603,7 @@ const WeatherIcons: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
   "sleet-showers-day": SleetShowerDay,
   "sleet-showers-night": SleetShowerNight,
   "sunny-day": SunnyDay,
+  "sunny": SunnyDay,
   "thunder": Thunder,
   "thunder-shower-day": ThunderShowerDay,
   "thunder-shower-night": ThunderShowerNight,

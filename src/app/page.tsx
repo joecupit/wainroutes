@@ -6,17 +6,15 @@ import Script from "next/script";
 import Link from "next/link";
 import { createPageMetadata } from "@/utils/metadata";
 
-import SiteSearchBar from "@/components/SiteSearchBar/SiteSearchBar";
+import HomeSearchBar from "@/components/HomeSearchBar/HomeSearchBar";
 import WalkCard from "@/components/WalkCard/WalkCard";
-import WalkCardStyles from "@/components/WalkCard/WalkCard.module.css";
-import LakeMap from "@/components/Map/Map";
 
 import Walk from "@/types/Walk";
-import { getHillMarkers } from "@/utils/getMapMarkers";
 
 import tempwalks from "@/data/walks.json";
 import LazyPicture from "@/components/LazyImage/LazyPicture";
 import { ArrowRightIcon } from "@/icons/PhosphorIcons";
+import LazyImage from "@/components/LazyImage/LazyImage";
 
 export function generateMetadata() {
   return createPageMetadata({
@@ -29,14 +27,13 @@ export default function Home() {
   const featuredWalkSlugs = [
     "buttermere-to-keswick",
     "dodd-and-dodd-wood",
+    "helvellyn-via-striding-edge",
     "uldale-fells-circular",
   ];
   const walks = tempwalks as unknown as Walk[];
   const featuredWalks = featuredWalkSlugs.map((slug) =>
     walks.find((w) => w.slug === slug),
   );
-
-  const hillMarkers = getHillMarkers();
 
   return (
     <>
@@ -56,16 +53,13 @@ export default function Home() {
       <main className={styles.home}>
         <section className={styles.heroSection}>
           <div className={styles.hero}>
-            <h1 className={`${fontStyles.title} ${styles.title}`}>
-              A Walker&apos;s Guide to the Wainwrights
-            </h1>
-            <SiteSearchBar className={styles.heroSearch} />
-            <Link
-              href="/walks"
-              className={`${buttonStyles.button} ${buttonStyles.underlined}`}
-            >
-              See all walks
-            </Link>
+            <div className={styles.heroText}>
+              <h1 className={`${fontStyles.title} ${styles.title}`}>
+                Wainwright Walks in the Lake District
+              </h1>
+            </div>
+
+            <HomeSearchBar />
           </div>
           <div className={styles.heroImageOverlay} />
           <div className={styles.heroImage}>
@@ -77,62 +71,78 @@ export default function Home() {
             />
           </div>
         </section>
+
         <section>
           <div className={styles.featured}>
             <div className={styles.featuredTitle}>
-              <h2 className={fontStyles.heading}>Featured Routes</h2>
+              <div>
+                <h2 className={fontStyles.subheading}>Featured Routes</h2>
+                <p>New and popular walks on Wainroutes.</p>
+              </div>
+              <div>
+                <Link
+                  href="/walks"
+                  className={`${buttonStyles.button} ${buttonStyles.text} ${buttonStyles.animate}  ${styles.featuredWalkButton}`}
+                  draggable="false"
+                >
+                  View all walks <ArrowRightIcon />
+                </Link>
+              </div>
             </div>
-            <div className={WalkCardStyles.group}>
+            <div className={styles.featuredGroup}>
               {featuredWalks.map((walk, index) => {
                 return walk && <WalkCard key={index} walk={walk} />;
               })}
             </div>
             <Link
               href="/walks"
-              className={`${buttonStyles.button} ${buttonStyles.primary}`}
+              className={`${buttonStyles.button} ${buttonStyles.animate} ${styles.featuredWalkButtonMobile}`}
               draggable="false"
             >
-              See all walks
+              View all walks <ArrowRightIcon />
             </Link>
           </div>
         </section>
+
         <section className={styles.wainwrightsSection}>
           <div className={styles.wainwrights}>
-            <div>
+            <div className={styles.wainwrightsMain}>
               <h2 className={fontStyles.heading}>The 214 Wainwrights</h2>
               <div className={styles.wainwrightsText}>
                 <p>
-                  The Wainwrights are 214 fells in the Lake District collected
-                  by A. Wainwright in his seven-volume{" "}
-                  <i>Pictorial Guide to the Lakeland Fells</i>. Each book covers
-                  a different region, with hand-drawn maps, route details, and
-                  notes on the landscape.
+                  In his <i>Pictorial Guide to the Lakeland Fells</i>, Alfred
+                  Wainwright illustrated and described 214 fells across the Lake
+                  District. Together they&apos;re known as the Wainwrights, and
+                  summiting them all has become a popular goal among walkers.
                 </p>
                 <p>
-                  Since the first volume was published in 1955,
-                  Wainwright&apos;s writing has inspired many to get out and
-                  explore the Lakes, with plenty of walkers aiming to summit the
-                  full set.
-                </p>
-                <p>
-                  Here you&apos;ll find a collection of routes I&apos;ve used so
-                  far on my own journey to complete the Wainwrights. Whether
-                  you&apos;re aiming for all 214 or just looking for your next
-                  day out in the fells, I hope these walks help you enjoy the
-                  Lakes.
+                  Check out the list of fells or learn more about the man
+                  himself.
                 </p>
               </div>
-              <Link
-                href="/wainwrights"
-                className={`${buttonStyles.button} ${buttonStyles.animate}`}
-                draggable="false"
-              >
-                Go to list of Wainwrights <ArrowRightIcon />
-              </Link>
+              <div className={styles.wainwrightsButtons}>
+                <Link
+                  href="/wainwrights"
+                  className={`${buttonStyles.button} ${buttonStyles.animate}`}
+                  draggable="false"
+                >
+                  Explore all Wainwrights <ArrowRightIcon />
+                </Link>
+                <Link
+                  href="/about/alfred-wainwright"
+                  className={`${buttonStyles.button} ${buttonStyles.underlined}`}
+                  draggable="false"
+                >
+                  Learn more about A. Wainwright
+                </Link>
+              </div>
             </div>
-            <div className={styles.wainwrightsMap}>
-              <LakeMap primaryMarkers={hillMarkers} />
-            </div>
+            <LazyImage
+              name="home/wainwright_map.webp"
+              alt="Map of the Wainwrights"
+              maxWidth={1024}
+              className={styles.wainwrightsMap}
+            />
           </div>
         </section>
 
@@ -157,14 +167,9 @@ export default function Home() {
                 share the routes I&apos;ve followed, photos I&apos;ve taken, and
                 resources I rely on when planning walks.
               </p>
-              <p>
-                Whether you&apos;re bagging Wainwrights or just looking for a
-                day out in the fells, I hope Wainroutes makes it easier to enjoy
-                the Lakes as much as I do.
-              </p>
               <Link
                 href="/about"
-                className={`${buttonStyles.button} ${buttonStyles.secondary} ${buttonStyles.animate}`}
+                className={`${buttonStyles.button} ${buttonStyles.animate}`}
               >
                 Read more about Wainroutes <ArrowRightIcon />
               </Link>

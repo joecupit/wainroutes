@@ -44,6 +44,21 @@ export function SearchIcon() {
     </PhosphorIcon>
   );
 }
+export function SearchIconBold() {
+  return (
+    <PhosphorIcon>
+      <path d="M232.49,215.51,185,168a92.12,92.12,0,1,0-17,17l47.53,47.54a12,12,0,0,0,17-17ZM44,112a68,68,0,1,1,68,68A68.07,68.07,0,0,1,44,112Z" />
+    </PhosphorIcon>
+  );
+}
+
+export function BookmarkIcon() {
+  return (
+    <PhosphorIcon>
+      <path d="M184,28H72A20,20,0,0,0,52,48V224a12,12,0,0,0,18.36,10.18l57.63-36,57.65,36A12,12,0,0,0,204,224V48A20,20,0,0,0,184,28Zm-4,174.35-45.65-28.53a12,12,0,0,0-12.72,0L76,202.35V52H180Z" />
+    </PhosphorIcon>
+  );
+}
 
 export function CloseIconSmall() {
   return (
@@ -266,6 +281,22 @@ export function TickIcon() {
   return (
     <PhosphorIcon style={{ scale: 0.5 }}>
       <path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z" />
+    </PhosphorIcon>
+  );
+}
+
+export function GridIcon() {
+  return (
+    <PhosphorIcon style={{ scale: 0.5 }}>
+      <path d="M104,40H56A16,16,0,0,0,40,56v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,104,40Zm0,64H56V56h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40Zm0,64H152V56h48v48Zm-96,32H56a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,104,136Zm0,64H56V152h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,200,136Zm0,64H152V152h48v48Z" />
+    </PhosphorIcon>
+  );
+}
+
+export function ListIcon() {
+  return (
+    <PhosphorIcon style={{ scale: 0.5 }}>
+      <path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z" />
     </PhosphorIcon>
   );
 }

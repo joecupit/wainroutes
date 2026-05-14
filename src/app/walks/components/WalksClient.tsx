@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import Fuse from "fuse.js";
 
@@ -8,23 +8,27 @@ import type { SimpleWalk } from "../page";
 import styles from "../Walks.module.css";
 
 import WalkGrid from "./WalkGrid";
-import WalksSearchBar from "./WalkSearchBar";
-import WalkFilters from "./WalkFilters";
 import { distanceValues, elevationValues, locations } from "./WalkFilterValues";
 import haversineDistance from "@/utils/haversineDistance";
 
+import { BookTitles } from "@/types/Hill";
+import WalkSearchAndFilter from "./WalkSearchAndFilter";
+
 type WalksClientProps = {
   allWalks: SimpleWalk[];
-  wainNames: { [slug: string]: string };
 };
 
-export default function WalksClient({ allWalks, wainNames }: WalksClientProps) {
+export default function WalksClient({ allWalks }: WalksClientProps) {
   const searchParams = useSearchParams();
 
-  const [showFilters, setShowFilters] = useState(false);
-  const resetFilters = useCallback(() => {
-    window.history.replaceState({}, "", `/walks`);
-  }, []);
+  const clearFilters = () => {
+    const params = new URLSearchParams();
+    if (searchParams.get("sort") !== null) {
+      params.set("sort", searchParams.get("sort") ?? "recommended");
+    }
+
+    window.history.replaceState({}, "", `/walks?${params.toString()}`);
+  };
 
   const townParam = useMemo(() => {
     return searchParams.get("town");
@@ -37,7 +41,7 @@ export default function WalksClient({ allWalks, wainNames }: WalksClientProps) {
       if (titleElement) titleElement.innerText = `Walks near ${location.name}`;
       document.title = `Lake District Walks near ${location.name} | Wainroutes`;
     } else {
-      if (titleElement) titleElement.innerText = "Walks in the Lake District";
+      if (titleElement) titleElement.innerText = "Lake District Walks";
       document.title = "Lake District Walks | Wainroutes";
     }
   }, [townParam]);
@@ -72,8 +76,13 @@ export default function WalksClient({ allWalks, wainNames }: WalksClientProps) {
           ]) / 1000;
       }
       newWalks = newWalks.filter(
-        (walk) => walk.distance! < (locations[town]?.distScale ?? 1) * 10
+        (walk) => walk.distance! < (locations[town]?.distScale ?? 1) * 10,
       );
+    }
+
+    const region = searchParams.get("region");
+    if (region && region in BookTitles) {
+      newWalks = newWalks.filter((w) => String(w.region) === region);
     }
 
     const distance = searchParams.get("distance");
@@ -100,14 +109,14 @@ export default function WalksClient({ allWalks, wainNames }: WalksClientProps) {
       console.log(wainwrights, validSlugs);
       if (validSlugs.length > 0)
         newWalks = newWalks.filter((w) =>
-          w.wainwrights.some((s) => validSlugs.includes(s))
+          w.wainwrights.some((s) => validSlugs.includes(s)),
         );
     }
 
     const byBus = searchParams.get("byBus");
     if (byBus === "yes") {
       newWalks = newWalks.filter(
-        (w) => Object.keys(w.busConnections ?? {}).length > 0
+        (w) => Object.keys(w.busConnections ?? {}).length > 0,
       );
     }
 
@@ -116,20 +125,12 @@ export default function WalksClient({ allWalks, wainNames }: WalksClientProps) {
 
   return (
     <div className={styles.main}>
-      <div style={{ zIndex: "9999" }}>
-        <WalksSearchBar
-          showFilters={showFilters}
-          setShowFilters={setShowFilters}
-        />
-        {showFilters && (
-          <WalkFilters className={styles.filters} wainNames={wainNames} />
-        )}
-      </div>
+      <WalkSearchAndFilter clearFilters={clearFilters} />
       <WalkGrid
         walks={filteredWalks}
-        wainNames={wainNames}
-        resetFilters={resetFilters}
+        clearFilters={clearFilters}
         showDistances={Boolean(townParam && locations[townParam])}
+        isFiltered={filteredWalks.length < allWalks.length}
       />
     </div>
   );

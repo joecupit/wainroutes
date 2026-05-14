@@ -23,7 +23,7 @@ export const month = [
 ];
 
 export default function formatDateString(dateString: string | undefined) {
-  if (dateString === undefined) return "";
+  if (dateString === undefined) return ["", ""];
 
   const date = new Date(dateString);
 

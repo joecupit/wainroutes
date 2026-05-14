@@ -1,4 +1,5 @@
 import styles from "./WalkCard.module.css";
+import fontStyles from "@/styles/fonts.module.css";
 
 import Link from "next/link";
 
@@ -6,6 +7,7 @@ import Walk from "@/types/Walk";
 import type { SimpleWalk } from "@/app/walks/page";
 
 import LazyImage from "@/components/LazyImage/LazyImage";
+import NewTag from "./components/NewTag";
 import {
   displayDistance,
   displayElevation,
@@ -13,6 +15,7 @@ import {
   getDistanceValue,
 } from "@/utils/unitConversions";
 import { HikingIcon, ElevationIcon, MountainIcon } from "@/icons/PhosphorIcons";
+import { BookTitles } from "@/types/Hill";
 
 type WalkCardProps = {
   walk: Walk | SimpleWalk;
@@ -41,6 +44,7 @@ export default function WalkCard({
             sizes="(min-width: 22rem) 22rem, 100vw"
             maxWidth={512}
           />
+          <NewTag date={walk.date} />
           {showDistance && walk.distance && (
             <div className={styles.dist}>
               {(getDistanceValue(walk.distance) ?? 1) < 1
@@ -50,9 +54,11 @@ export default function WalkCard({
           )}
         </div>
         <div className={styles.text}>
-          <div>
-            <h3 className={`${styles.subheading}`}>{walk.title}</h3>
+          <div className={styles.titles}>
+            <h3 className={styles.subheading}>{walk.title}</h3>
+            <p className={fontStyles.subtext}>{BookTitles[walk.region]}</p>
           </div>
+          <hr />
           <div className={styles.icons}>
             <div className={`${styles.iconsIcon} ${styles.wide}`}>
               <HikingIcon />

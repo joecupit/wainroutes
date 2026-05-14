@@ -1,41 +1,61 @@
 "use client";
 
 import styles from "../Walks.module.css";
-import buttonStyles from "@/styles/buttons.module.css";
 
 import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 import type { SimpleWalk } from "../page";
 import WalkCard from "@/components/WalkCard/WalkCard";
-import {
-  BusIcon,
-  CloseIconSmall,
-  ElevationIcon,
-  HikingIcon,
-  MapPinIcon,
-  MountainIcon,
-} from "@/icons/PhosphorIcons";
-import { useSearchParams } from "next/navigation";
-import {
-  distanceOptions,
-  elevationOptions,
-  locations,
-} from "./WalkFilterValues";
+import { GridIcon, ListIcon } from "@/icons/PhosphorIcons";
+import SelectDropdown from "@/components/SelectDropdown/SelectDropdown";
 
 type WalkGridProps = {
   walks: SimpleWalk[];
-  wainNames: { [slug: string]: string };
-  resetFilters: CallableFunction;
+  clearFilters: CallableFunction;
   showDistances: boolean;
+  isFiltered: boolean;
 };
 
 export default function WalkGrid({
   walks,
-  wainNames,
-  resetFilters,
+  clearFilters,
   showDistances,
+  isFiltered,
 }: WalkGridProps) {
-  const [sortValue, setSortValue] = useState("recommended");
+  const updateParam = (key: string, value?: string) => {
+    const params = new URLSearchParams(searchParams);
+    if (value && value.length > 0) params.set(key, value);
+    else params.delete(key);
+
+    window.history.replaceState({}, "", `/walks?${params.toString()}`);
+  };
+
+  const searchParams = useSearchParams();
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+
+  const sortOptions = {
+    "recommended": "Recommended",
+    "recent": "Recently Added",
+    "hills-dsc": "Most Wainwrights",
+    "hills-asc": "Least Wainwrights",
+    "dist-dsc": "Longest",
+    "dist-asc": "Shortest",
+    "ele-dsc": "Most Elevation",
+    "ele-asc": "Least Elevation",
+  };
+
+  const [sortValue, setSortValue] = useState(
+    searchParams.get("sort") ?? "recommended",
+  );
+
+  useEffect(() => {
+    if (sortValue !== "recommended") {
+      updateParam("sort", sortValue);
+    } else {
+      updateParam("sort");
+    }
+  }, [sortValue]);
 
   useEffect(() => {
     if (showDistances && sortValue === "recommended") {
@@ -57,12 +77,12 @@ export default function WalkGrid({
       case "recent":
         newWalkData.sort(
           (a, b) =>
-            new Date(b.date ?? "").getTime() - new Date(a.date ?? "").getTime()
+            new Date(b.date ?? "").getTime() - new Date(a.date ?? "").getTime(),
         );
         break;
       case "hills":
         newWalkData.sort(
-          (a, b) => (a.wainwrights?.length ?? 0) - (b.wainwrights?.length ?? 0)
+          (a, b) => (a.wainwrights?.length ?? 0) - (b.wainwrights?.length ?? 0),
         );
         break;
       case "ele":
@@ -75,7 +95,7 @@ export default function WalkGrid({
         newWalkData
           .sort((a, b) => a.title.localeCompare(b.title))
           .sort(
-            (a, b) => (b.recommendedScore ?? 0) - (a.recommendedScore ?? 0)
+            (a, b) => (b.recommendedScore ?? 0) - (a.recommendedScore ?? 0),
           );
         break;
     }
@@ -85,119 +105,67 @@ export default function WalkGrid({
     return newWalkData;
   }, [walks, sortValue]);
 
-  const updateParam = (key: string, value?: string) => {
-    const params = new URLSearchParams(searchParams);
-    if (value && value.length > 0) params.set(key, value);
-    else params.delete(key);
-
-    window.history.replaceState({}, "", `/walks?${params.toString()}`);
-  };
-
-  const searchParams = useSearchParams();
-  const filterValues = useMemo(() => {
-    const town = searchParams.get("town");
-    const distance = searchParams.get("distance");
-    const elevation = searchParams.get("elevation");
-    const wainwrights = searchParams.get("wainwrights");
-    const byBus = searchParams.get("byBus");
-
-    return {
-      town: town ? locations[town]?.name : undefined,
-      distance: distance ? distanceOptions[distance] : undefined,
-      elevation: elevation ? elevationOptions[elevation] : undefined,
-      wainwrights: wainwrights?.split(" ") ?? [],
-      byBus: byBus === "yes",
-    };
-  }, [searchParams]);
-
   return (
     <div className={styles.grid}>
       <div className={styles.gridTop}>
-        {/* <h2 className="heading">All walks</h2> */}
-        <div>
-          <ul className={styles.gridFiltersList}>
-            {filterValues.town && (
-              <FilterTag
-                Icon={<MapPinIcon />}
-                text={filterValues.town}
-                reset={() => updateParam("town")}
-              />
-            )}
-            {filterValues.distance && (
-              <FilterTag
-                Icon={<HikingIcon />}
-                text={filterValues.distance}
-                reset={() => updateParam("distance")}
-              />
-            )}
-            {filterValues.elevation && (
-              <FilterTag
-                Icon={<ElevationIcon />}
-                text={filterValues.elevation}
-                reset={() => updateParam("elevation")}
-              />
-            )}
-            {filterValues.wainwrights.map((wain, index) => {
-              return (
-                <FilterTag
-                  key={index}
-                  Icon={<MountainIcon />}
-                  text={wainNames[wain]}
-                  reset={() =>
-                    updateParam(
-                      "wainwrights",
-                      filterValues.wainwrights
-                        .filter((w) => w != wain)
-                        .join(" ")
-                    )
-                  }
-                />
-              );
-            })}
-            {filterValues.byBus && (
-              <FilterTag
-                Icon={<BusIcon />}
-                text={"By bus"}
-                reset={() => updateParam("byBus")}
-              />
-            )}
-          </ul>
+        <div className={styles.gridTopLeft}>
+          <p className={styles.bold}>
+            {`Showing${isFiltered ? "" : " all"} ${walks.length} walk${walks.length !== 1 ? "s" : ""}`}
+          </p>
         </div>
-        <select
-          value={sortValue}
-          onChange={(e) => setSortValue(e.target.value)}
-        >
-          <option value="recommended">Recommended</option>
-          {showDistances && <option value="closest">Closest</option>}
-          <option value="hills-dsc">Most Wainwrights</option>
-          <option value="hills-asc">Least Wainwrights</option>
-          <option value="dist-dsc">Longest</option>
-          <option value="dist-asc">Shortest</option>
-          <option value="ele-dsc">Most Elevation</option>
-          <option value="ele-asc">Least Elevation</option>
-          <option value="recent">Recently Added</option>
-        </select>
+
+        <div className={styles.gridTopRight}>
+          <div>
+            <p>Sort by:</p>
+            <SelectDropdown
+              value={sortValue}
+              onChange={setSortValue}
+              label="Sort"
+              options={
+                showDistances
+                  ? { closest: "Closest", ...sortOptions }
+                  : sortOptions
+              }
+            />
+          </div>
+          <div className={styles.gridRadios}>
+            <p>View:</p>
+            <div className={styles.gridRadioGroup}>
+              <label className={styles.gridRadio}>
+                <input
+                  type="radio"
+                  name="view"
+                  value="grid"
+                  checked={viewMode == "grid"}
+                  onChange={() => setViewMode("grid")}
+                />
+                <GridIcon />
+              </label>
+              <label className={styles.gridRadio}>
+                <input
+                  type="radio"
+                  name="view"
+                  value="list"
+                  checked={viewMode == "list"}
+                  onChange={() => setViewMode("list")}
+                />
+                <ListIcon />
+              </label>
+            </div>
+          </div>
+        </div>
       </div>
 
       {walks.length === 0 && (
-        <div className={styles.gridFilters}>
+        <div className={styles.gridEndText}>
           <>
             No walks match the current filters.&nbsp;
-            <button
-              className={`${buttonStyles.button} ${buttonStyles.underlined}`}
-              onClick={() => resetFilters()}
-            >
-              Reset filters
-            </button>
+            <button onClick={() => clearFilters()}>Clear filters</button>
           </>
-          {/* {walks.length > 0
-            ? <>Showing <b>{walks.length + " walk" + (walks.length === 1 ? "" : "s")}</b> matching filters. <button className="button underlined" onClick={() => resetFilters()}>Reset filters</button></>
-            : <>No walks match the current filters. <button className="button underlined" onClick={() => resetFilters()}>Reset filters</button></>
-          } */}
         </div>
       )}
 
-      <div className={styles.gridGrid}>
+      <div className={styles.gridGrid} data-view={viewMode}>
         {sortedWalks.map((walk, index) => {
           return (
             <WalkCard key={index} walk={walk} showDistance={showDistances} />
@@ -207,8 +175,7 @@ export default function WalkGrid({
 
       {walks.length > 0 && (
         <p className={styles.gridEndText}>
-          Showing {walks.length + " walk" + (walks.length !== 1 ? "s" : "")} in
-          the Lake District.&nbsp;
+          End of walks list.&nbsp;
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             title="Scroll to top"
@@ -220,33 +187,4 @@ export default function WalkGrid({
       )}
     </div>
   );
-}
-
-function FilterTag({
-  Icon,
-  text,
-  reset,
-}: {
-  Icon: React.ReactNode;
-  text?: string;
-  reset?: CallableFunction;
-}) {
-  if (text === undefined) return <></>;
-  else
-    return (
-      <li>
-        <div>
-          {Icon}
-          {text}
-        </div>
-        <button
-          onClick={() => {
-            if (reset) reset();
-          }}
-          title="Remove filter"
-        >
-          <CloseIconSmall />
-        </button>
-      </li>
-    );
 }

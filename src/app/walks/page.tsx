@@ -6,10 +6,10 @@ import { createPageMetadata } from "@/utils/metadata";
 
 import BackToTopButton from "@/components/BackToTopButton/BackToTopButton";
 import WalksClient from "./components/WalksClient";
+import { locations } from "./components/WalkFilterValues";
+import LazyImage from "@/components/LazyImage/LazyImage";
 
 import walksJson from "@/data/walks.json";
-import wainsJson from "@/data/hills.json";
-import { locations } from "./components/WalkFilterValues";
 
 type MetadataProps = {
   searchParams: Promise<{
@@ -29,7 +29,7 @@ export async function generateMetadata({ searchParams }: MetadataProps) {
     });
   } else {
     return createPageMetadata({
-      title: "Walks in the Lake District",
+      title: "Lake District Walks",
       description:
         "Find your next Wainwright bagging walk in the Lake District, filtered by distance, elevation, and public transport access.",
       path: "/walks",
@@ -45,6 +45,7 @@ export type SimpleWalk = {
   length: number;
   elevation: number;
   date?: string;
+  region: Walk["region"];
   startLocation?: {
     latitude?: number;
     longitude?: number;
@@ -68,6 +69,7 @@ export default async function WalksPage({ searchParams }: MetadataProps) {
         length: walk.length,
         elevation: walk.elevation,
         date: walk.date,
+        region: walk.region,
         startLocation: {
           latitude: walk.startLocation?.latitude,
           longitude: walk.startLocation?.longitude,
@@ -75,25 +77,34 @@ export default async function WalksPage({ searchParams }: MetadataProps) {
         intro: walk.intro,
         busConnections: walk.busConnections,
         coverImage: walk.coverImage,
-      } as SimpleWalk)
-  );
-
-  const wainNames = Object.fromEntries(
-    wainsJson.map((hill) => [hill.slug, hill.name])
+      }) as SimpleWalk,
   );
 
   return (
     <main className={styles.walks}>
       <BackToTopButton minHeight={600} />
 
-      <section>
-        <div className="flex-column">
+      <section className={styles.heroSection}>
+        <div className={styles.hero}>
           <h1 id="walks-title" className={fontStyles.title}>
             {town && locations[town]
               ? `Walks near ${locations[town].name}`
-              : "Walks in the Lake District"}
+              : "Lake District Walks"}
           </h1>
-          <WalksClient allWalks={simplifiedWalks} wainNames={wainNames} />
+        </div>
+        <div>
+          <LazyImage
+            className={styles.heroImage}
+            name={"walks/the-fells-south-of-buttermere/03.webp"}
+            sizes="100vw"
+            alt={""}
+          />
+        </div>
+      </section>
+
+      <section>
+        <div className="flex-column">
+          <WalksClient allWalks={simplifiedWalks} />
         </div>
       </section>
     </main>

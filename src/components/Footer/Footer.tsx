@@ -2,9 +2,9 @@ import styles from "./Footer.module.css";
 import fonts from "@/styles/fonts.module.css";
 
 import WainroutesLogo from "@/components/Logo/Logo";
-import SiteSearchBar from "@/components/SiteSearchBar/SiteSearchBar";
 import LinkList from "./components/LinkList";
 import Mountains from "./components/Mountains";
+import FooterSearch from "./components/FooterSearch";
 
 export default function Footer() {
   return (
@@ -21,13 +21,10 @@ export default function Footer() {
 
         <div className={`${styles.row} ${styles.wrappable}`}>
           <div className={styles.search}>
-            <h2 className={fonts.smallheading}>Search for a walk</h2>
-            <SiteSearchBar
-              reversed={true}
-              small={true}
-              className={styles.searchBar}
-              placeholder="Search for a route, fell, or town"
-            />
+            <h2 className={fonts.smallheading}>
+              Search for a walk, town, or Wainwright:
+            </h2>
+            <FooterSearch />
           </div>
 
           <div className={styles.group}>

@@ -37,10 +37,14 @@ export default function LazyImageClient({
   return (
     <div
       className={`${styles.blurLoad} ${className ? className : ""}`}
-      style={{
-        backgroundImage: blurURL,
-        filter: loaded ? "none" : "blur(1em)",
-      }}
+      style={
+        loaded
+          ? {}
+          : {
+              backgroundImage: blurURL,
+              filter: "blur(1em)",
+            }
+      }
       onClick={onClick}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
