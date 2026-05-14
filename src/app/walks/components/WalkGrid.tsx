@@ -7,9 +7,8 @@ import { useSearchParams } from "next/navigation";
 
 import type { SimpleWalk } from "../page";
 import WalkCard from "@/components/WalkCard/WalkCard";
-import { CloseIconSmall, GridIcon, ListIcon } from "@/icons/PhosphorIcons";
-
-import SortDropdown from "./SelectDropdown";
+import { GridIcon, ListIcon } from "@/icons/PhosphorIcons";
+import SelectDropdown from "@/components/SelectDropdown/SelectDropdown";
 
 type WalkGridProps = {
   walks: SimpleWalk[];
@@ -118,7 +117,7 @@ export default function WalkGrid({
         <div className={styles.gridTopRight}>
           <div>
             <p>Sort by:</p>
-            <SortDropdown
+            <SelectDropdown
               value={sortValue}
               onChange={setSortValue}
               label="Sort"
@@ -188,33 +187,4 @@ export default function WalkGrid({
       )}
     </div>
   );
-}
-
-function FilterTag({
-  Icon,
-  text,
-  reset,
-}: {
-  Icon: React.ReactNode;
-  text?: string;
-  reset?: CallableFunction;
-}) {
-  if (text === undefined) return <></>;
-  else
-    return (
-      <li>
-        <div>
-          {Icon}
-          {text}
-        </div>
-        <button
-          onClick={() => {
-            if (reset) reset();
-          }}
-          title="Remove filter"
-        >
-          <CloseIconSmall />
-        </button>
-      </li>
-    );
 }

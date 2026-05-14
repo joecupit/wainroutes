@@ -84,7 +84,7 @@
   display: flex;
   align-items: center;
   gap: 0.625ch;
-  /* transition: opacity 150ms ease; */
+  transition: opacity 150ms ease;
 
   & svg {
     width: 1.75ch;

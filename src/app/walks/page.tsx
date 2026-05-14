@@ -10,7 +10,6 @@ import { locations } from "./components/WalkFilterValues";
 import LazyImage from "@/components/LazyImage/LazyImage";
 
 import walksJson from "@/data/walks.json";
-import wainsJson from "@/data/hills.json";
 
 type MetadataProps = {
   searchParams: Promise<{
@@ -79,10 +78,6 @@ export default async function WalksPage({ searchParams }: MetadataProps) {
         busConnections: walk.busConnections,
         coverImage: walk.coverImage,
       }) as SimpleWalk,
-  );
-
-  const wainNames = Object.fromEntries(
-    wainsJson.map((hill) => [hill.slug, hill.name]),
   );
 
   return (

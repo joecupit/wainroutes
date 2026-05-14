@@ -10,12 +10,10 @@
   height: fit-content;
 
   padding-block: 0.625rem;
-  padding-inline: 1.5ch;
+  padding-inline: 3.5ch;
 
   border-radius: 0.25rem;
-
-  color: var(--clr-text-white);
-  background: oklch(from var(--clr-text-black) 0.05 c h);
+  border: 3px solid var(--clr-text-black);
 
   font-family: var(--ff-body);
   font-size: var(--fs-400);
@@ -24,7 +22,7 @@
   touch-action: manipulation;
   user-select: none;
 
-  transition-property: background-color;
+  transition-property: background-color, color;
   transition-duration: var(--_transition-duration);
 
   & svg {
@@ -37,6 +35,7 @@
     outline-offset: 3px;
   }
   &:hover {
+    color: var(--clr-text-white);
     background: var(--clr-text-black);
   }
 }
@@ -46,6 +45,7 @@
 .button.primary {
   color: var(--clr-text-white);
   background: var(--clr-primary-400);
+  border: none;
 
   &:hover {
     background: var(--clr-primary-300);

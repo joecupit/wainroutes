@@ -1,13 +1,10 @@
 import styles from "./Navbar.module.css";
-import fonts from "@/styles/fonts.module.css";
 
 import Link from "next/link";
 
 import MobileNavbarButton from "./components/MobileNavbarButton";
 import NavbarClient from "./NavbarClient";
 import WainroutesLogo from "@/components/Logo/Logo";
-
-import { BookmarkIcon } from "@/icons/PhosphorIcons";
 import NavSearch from "./components/NavSearch";
 
 const navbarId = "navbar";
@@ -39,9 +36,9 @@ export default async function Navbar() {
               About
             </Link>
             <NavSearch />
-            <Link title="Saved routes" className={styles.navItem} href="/walks">
+            {/* <Link title="Saved routes" className={styles.navItem} href="/walks">
               <BookmarkIcon />
-            </Link>
+            </Link> */}
           </nav>
 
           <MobileNavbarButton />

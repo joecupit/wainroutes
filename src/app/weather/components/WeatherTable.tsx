@@ -5,7 +5,7 @@ import styles from "../Weather.module.css";
 import { DistrictWeatherDayForecast } from "@/types/Weather";
 import { RenderWeatherIcon } from "@/utils/RenderWeatherIcon";
 import { useState } from "react";
-import SelectDropdown from "./SelectDropdown";
+import SelectDropdown from "@/components/SelectDropdown/SelectDropdown";
 
 export default function WeatherTable({
   forecast,
@@ -27,6 +27,8 @@ export default function WeatherTable({
           value={height}
           onChange={(val) => setHeight(val)}
           options={Object.fromEntries(heightOptions.map((opt) => [opt, opt]))}
+          triggerClassName={styles.dropdownTrigger}
+          contentClassName={styles.dropdownContent}
         />
       </h3>
       <div className={styles.weatherTableContainer}>

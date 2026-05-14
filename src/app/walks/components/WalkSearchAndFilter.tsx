@@ -13,13 +13,13 @@ import {
 } from "@/icons/PhosphorIcons";
 
 import WalksSearchBar from "./WalkSearchBar";
-import SelectDropdown from "./SelectDropdown";
 
 import {
   distanceOptions,
   elevationOptions,
   locations,
 } from "./WalkFilterValues";
+import SelectDropdown from "@/components/SelectDropdown/SelectDropdown";
 
 type FilterState = {
   town: string;

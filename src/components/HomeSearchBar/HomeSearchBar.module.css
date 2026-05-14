@@ -11,7 +11,7 @@
   background: var(--clr-bg-light);
   border-radius: 0.25rem;
 
-  padding: var(--gap-300);
+  overflow: hidden;
 
   & hr {
     border: none;
@@ -21,6 +21,10 @@
   & button {
     white-space: pre;
     padding-inline: clamp(2ch, 4vw, 3.5ch);
+    border-radius: 0;
+    height: 100%;
+
+    outline-offset: -3px !important;
 
     & svg {
       display: none;
@@ -30,10 +34,11 @@
 
 .searchBar {
   display: flex;
-  gap: 1ch;
+  gap: 0.5rem;
   align-items: center;
 
-  padding-block: var(--gap-300);
+  padding-block: calc(1.75 * var(--gap-300));
+  padding-inline: var(--gap-200);
   border-radius: 0.25rem;
 
   flex: 1;
@@ -64,10 +69,6 @@
     max-height: 2ch;
     margin-inline-start: 0.5ch;
   }
-}
-
-.searchBar:has(input:focus-visible) {
-  outline: 2px solid currentColor;
 }
 
 @media (max-width: 30.5rem) {

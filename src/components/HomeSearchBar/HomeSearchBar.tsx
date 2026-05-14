@@ -6,11 +6,7 @@ import buttonStyles from "@/styles/buttons.module.css";
 import React, { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
-import {
-  ArrowRightIcon,
-  CloseIconSmall,
-  SearchIcon,
-} from "@/icons/PhosphorIcons";
+import { CloseIconSmall, SearchIcon } from "@/icons/PhosphorIcons";
 
 export default function HomeSearchBar({
   placeholder,
@@ -24,9 +20,8 @@ export default function HomeSearchBar({
 
   const router = useRouter();
   const handleSearch = () => {
-    if (searchTerm.trim().length == 0) router.push("/walks");
-
-    router.push(`/walks?query=${encodeURIComponent(searchTerm)}`);
+    if (searchTerm.trim().length === 0) router.push("/walks");
+    else router.push(`/walks?query=${encodeURIComponent(searchTerm)}`);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -64,7 +59,7 @@ export default function HomeSearchBar({
         onClick={handleSearch}
       >
         <span className={styles.searchButtonText}>Find walks</span>
-        <ArrowRightIcon />
+        <SearchIcon />
       </button>
     </div>
   );

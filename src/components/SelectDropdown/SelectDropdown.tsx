@@ -1,4 +1,4 @@
-import styles from "../Weather.module.css";
+import styles from "./SelectDropdown.module.css";
 
 import { Select } from "radix-ui";
 import { forwardRef } from "react";
@@ -10,16 +10,23 @@ export default function SelectDropdown({
   value,
   onChange,
   options,
+  triggerClassName,
+  contentClassName,
 }: {
   Icon?: React.ReactElement;
   label: string;
   value: string;
   onChange: (values: string) => void;
   options: { [value: string]: string };
+  triggerClassName?: string;
+  contentClassName?: string;
 }) {
   return (
     <Select.Root value={value} onValueChange={onChange}>
-      <Select.Trigger className={styles.dropdownTrigger} aria-label={label}>
+      <Select.Trigger
+        className={`${styles.dropdownTrigger} ${triggerClassName ? triggerClassName : ""}`}
+        aria-label={label}
+      >
         <div>
           {Icon}
           <Select.Value placeholder={label} />
@@ -29,7 +36,10 @@ export default function SelectDropdown({
         </Select.Icon>
       </Select.Trigger>
       <Select.Portal>
-        <Select.Content className={styles.dropdownContent} position="popper">
+        <Select.Content
+          className={`${styles.dropdownContent} ${contentClassName ? contentClassName : ""}`}
+          position="popper"
+        >
           <Select.ScrollUpButton>
             <CaretUpIcon />
           </Select.ScrollUpButton>

@@ -7,7 +7,7 @@
 
 .heading {
   font-family: var(--ff-heading);
-  font-size: var(--fs-800);
+  font-size: var(--fs-700);
   font-weight: var(--fw-black);
   line-height: 1.2;
 }

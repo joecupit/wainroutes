@@ -5,12 +5,7 @@ import styles from "../Walks.module.css";
 import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
-import {
-  CloseIcon,
-  CloseIconSmall,
-  FilterIcon,
-  SearchIcon,
-} from "@/icons/PhosphorIcons";
+import { CloseIconSmall, SearchIcon } from "@/icons/PhosphorIcons";
 
 export default function WalksSearchBar() {
   const searchParams = useSearchParams();
@@ -52,7 +47,7 @@ export default function WalksSearchBar() {
     >
       <SearchIcon />
       <input
-        type="search"
+        type="text"
         ref={searchRef}
         placeholder="Search walks or Wainwrights..."
         value={inputValue}
