@@ -40,6 +40,13 @@ export default function WalksSearchBar() {
     setInputValue(query);
   }, [searchParams]);
 
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      searchRef.current?.blur();
+      searchRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div
       className={styles.searchBar}
@@ -52,6 +59,7 @@ export default function WalksSearchBar() {
         placeholder="Search walks or Wainwrights..."
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
+        onKeyUp={(e) => handleKeyPress(e)}
       />
       {inputValue.length > 0 && (
         <button

@@ -14,6 +14,7 @@ import Walk from "@/types/Walk";
 import tempwalks from "@/data/walks.json";
 import LazyPicture from "@/components/LazyImage/LazyPicture";
 import { ArrowRightIcon } from "@/icons/PhosphorIcons";
+import LazyImage from "@/components/LazyImage/LazyImage";
 
 export function generateMetadata() {
   return createPageMetadata({
@@ -136,7 +137,12 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            <img src="/wainwright_map.png" alt="" />
+            <LazyImage
+              name="home/wainwright_map.webp"
+              alt="Map of the Wainwrights"
+              maxWidth={1024}
+              className={styles.wainwrightsMap}
+            />
           </div>
         </section>
 

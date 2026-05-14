@@ -162,12 +162,7 @@ section.heroSection {
   width: fit-content;
 }
 .wainwrightsMap {
-  height: var(--_map-min-height);
-}
-.wainwrights img {
-  height: 30rem;
-  width: 100%;
-  object-fit: cover;
+  height: 30rem !important;
   user-select: none;
   pointer-events: none;
 }
@@ -179,7 +174,7 @@ section.heroSection {
     grid-template-columns: repeat(1, 1fr);
     gap: var(--gap-800);
   }
-  .wainwrights img {
+  .wainwrightsMap {
     display: none;
   }
 }
