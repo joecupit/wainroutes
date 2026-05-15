@@ -113,11 +113,11 @@ export default function WainwrightList({
       case "mountain":
         if (!sortStates[1])
           return [...filteredHills].sort((a, b) =>
-            a.name.localeCompare(b.name)
+            a.name.localeCompare(b.name),
           );
         else
           return [...filteredHills].sort((b, a) =>
-            a.name.localeCompare(b.name)
+            a.name.localeCompare(b.name),
           );
       case "height":
         if (!sortStates[2])
@@ -128,6 +128,13 @@ export default function WainwrightList({
     }
   }, [filteredHills, sortMode, sortStates]);
 
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      inputRef.current?.blur();
+      inputRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div className={styles.list}>
       <div className={styles.search} onClick={() => inputRef.current?.focus()}>
@@ -136,8 +143,13 @@ export default function WainwrightList({
           type="text"
           ref={inputRef}
           placeholder="search the list of fells"
+          autoCorrect="off"
+          autoComplete="off"
+          autoCapitalize="off"
+          spellCheck="false"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
+          onKeyUp={(e) => handleKeyPress(e)}
         />
 
         {inputValue.length > 0 && (
@@ -226,7 +238,7 @@ export default function WainwrightList({
                           "",
                           hill.book === book
                             ? "/wainwrights"
-                            : `/wainwrights?book=${hill.book}`
+                            : `/wainwrights?book=${hill.book}`,
                         )
                       }
                       className={styles.wainwrightBookTop}

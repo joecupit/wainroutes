@@ -38,14 +38,18 @@ export default function HomeSearchBar({
       >
         <SearchIcon />
         <input
-          ref={inputRef}
           type="text"
+          ref={inputRef}
           placeholder={
             placeholder ? placeholder : "Search walks or Wainwrights..."
           }
+          autoCorrect="off"
+          autoComplete="off"
+          autoCapitalize="off"
+          spellCheck="false"
           value={searchTerm}
-          onKeyUp={(e) => handleKeyPress(e)}
           onChange={(e) => setSearchTerm(e.target.value)}
+          onKeyUp={(e) => handleKeyPress(e)}
         />
         {searchTerm.length > 0 && (
           <button onClick={() => setSearchTerm("")} title="Clear text">

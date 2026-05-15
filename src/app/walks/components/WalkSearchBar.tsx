@@ -20,7 +20,7 @@ export default function WalksSearchBar() {
       return;
     }
     const handler = setTimeout(() => {
-      setSearchTerm(inputValue.trim());
+      setSearchTerm(inputValue);
     }, 300);
     return () => clearTimeout(handler);
   }, [inputValue]);
@@ -57,6 +57,10 @@ export default function WalksSearchBar() {
         type="text"
         ref={searchRef}
         placeholder="Search walks or Wainwrights..."
+        autoCorrect="off"
+        autoComplete="off"
+        autoCapitalize="off"
+        spellCheck="false"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         onKeyUp={(e) => handleKeyPress(e)}

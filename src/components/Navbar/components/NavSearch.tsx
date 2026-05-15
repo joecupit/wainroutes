@@ -54,11 +54,15 @@ export default function NavSearch() {
         onClick={() => inputRef.current?.focus()}
       >
         <input
+          type="text"
+          ref={inputRef}
+          placeholder="Search..."
+          autoCorrect="off"
+          autoComplete="off"
+          autoCapitalize="off"
+          spellCheck="false"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          ref={inputRef}
-          type="text"
-          placeholder="Search..."
           onKeyUp={(e) => handleKeyPress(e)}
         />
         <button onClick={() => setOpenSearch((prev) => !prev)}>

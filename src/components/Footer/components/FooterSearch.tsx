@@ -36,11 +36,15 @@ export default function FooterSearch() {
         onClick={() => inputRef.current?.focus()}
       >
         <input
+          type="text"
+          ref={inputRef}
+          placeholder="Search..."
+          autoCorrect="off"
+          autoComplete="off"
+          autoCapitalize="off"
+          spellCheck="false"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          ref={inputRef}
-          type="text"
-          placeholder="Find a walk..."
           onKeyUp={(e) => handleKeyPress(e)}
         />
         {searchTerm.length > 0 && (
