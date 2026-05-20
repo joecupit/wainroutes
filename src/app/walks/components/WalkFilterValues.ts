@@ -1,3 +1,4 @@
+import { BookTitles } from "@/types/Hill";
 import { displayDistance, displayElevation } from "@/utils/unitConversions";
 
 type Location = {
@@ -5,7 +6,7 @@ type Location = {
   coords: [number, number];
   distScale?: number;
 } | null;
-type Locations = {
+export type Locations = {
   [name: string]: Location;
 };
 
@@ -95,6 +96,16 @@ export const elevationOptions: { [key: string]: string } = {
         : displayElevation(v[0], true) +
           (v.length > 1 ? " - " + displayElevation(v[1], true) : "")) +
         (v.length == 1 ? "+" : ""),
+    ]),
+  ),
+};
+
+export const regionOptions = {
+  "0": "All regions",
+  ...Object.fromEntries(
+    Object.entries(BookTitles).map(([key, title]) => [
+      String(key),
+      title.replace(/^The\s+/i, ""),
     ]),
   ),
 };

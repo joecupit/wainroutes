@@ -1,137 +1,20 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
-import { useSearchParams } from "next/navigation";
-import Fuse from "fuse.js";
-
-import type { SimpleWalk } from "../page";
 import styles from "../Walks.module.css";
 
-import WalkGrid from "./WalkGrid";
-import { distanceValues, elevationValues, locations } from "./WalkFilterValues";
-import haversineDistance from "@/utils/haversineDistance";
+import type { SimpleWalk } from "../page";
+import { WalkFiltersProvider } from "../contexts/WalkFilterContext";
 
-import { BookTitles } from "@/types/Hill";
 import WalkSearchAndFilter from "./WalkSearchAndFilter";
+import WalkGrid from "./WalkGrid";
 
-type WalksClientProps = {
-  allWalks: SimpleWalk[];
-};
-
-export default function WalksClient({ allWalks }: WalksClientProps) {
-  const searchParams = useSearchParams();
-
-  const clearFilters = () => {
-    const params = new URLSearchParams();
-    if (searchParams.get("sort") !== null) {
-      params.set("sort", searchParams.get("sort") ?? "recommended");
-    }
-
-    window.history.replaceState({}, "", `/walks?${params.toString()}`);
-  };
-
-  const townParam = useMemo(() => {
-    return searchParams.get("town");
-  }, [searchParams]);
-  useEffect(() => {
-    const titleElement = document.getElementById("walks-title");
-
-    if (townParam && locations[townParam]) {
-      const location = locations[townParam];
-      if (titleElement) titleElement.innerText = `Walks near ${location.name}`;
-      document.title = `Lake District Walks near ${location.name} | Wainroutes`;
-    } else {
-      if (titleElement) titleElement.innerText = "Lake District Walks";
-      document.title = "Lake District Walks | Wainroutes";
-    }
-  }, [townParam]);
-
-  const searchableWalks = useMemo(() => {
-    return new Fuse(allWalks, {
-      keys: ["title", "wainwrights", "startLocation.location", "tags"],
-      threshold: 0.25,
-      includeScore: true,
-    });
-  }, [allWalks]);
-
-  const filteredWalks = useMemo(() => {
-    let newWalks = [...allWalks];
-
-    const query = searchParams.get("query") ?? "";
-    if (query.length > 0) {
-      newWalks = searchableWalks
-        .search(query)
-        .sort((a, b) => (a.score ?? 0) - (b.score ?? 0))
-        .map((res) => res.item);
-    }
-
-    const town = searchParams.get("town");
-    if (town && locations[town]) {
-      const townCoords = locations[town].coords;
-      for (const walk of newWalks) {
-        walk.distance =
-          haversineDistance(townCoords, [
-            walk.startLocation?.longitude ?? 0,
-            walk.startLocation?.latitude ?? 0,
-          ]) / 1000;
-      }
-      newWalks = newWalks.filter(
-        (walk) => walk.distance! < (locations[town]?.distScale ?? 1) * 10,
-      );
-    }
-
-    const region = searchParams.get("region");
-    if (region && region in BookTitles) {
-      newWalks = newWalks.filter((w) => String(w.region) === region);
-    }
-
-    const distance = searchParams.get("distance");
-    if (distance) {
-      const distBoundaries = distanceValues[distance];
-      if (distBoundaries?.[0])
-        newWalks = newWalks.filter((w) => w.length >= distBoundaries[0]);
-      if (distBoundaries?.[1])
-        newWalks = newWalks.filter((w) => w.length <= distBoundaries[1]);
-    }
-
-    const elevation = searchParams.get("elevation");
-    if (elevation) {
-      const eleBoundaries = elevationValues[elevation];
-      if (eleBoundaries?.[0])
-        newWalks = newWalks.filter((w) => w.elevation >= eleBoundaries[0]);
-      if (eleBoundaries?.[1])
-        newWalks = newWalks.filter((w) => w.elevation <= eleBoundaries[1]);
-    }
-
-    const wainwrights = searchParams.get("wainwrights");
-    if (wainwrights) {
-      const validSlugs = wainwrights.split(" ");
-      console.log(wainwrights, validSlugs);
-      if (validSlugs.length > 0)
-        newWalks = newWalks.filter((w) =>
-          w.wainwrights.some((s) => validSlugs.includes(s)),
-        );
-    }
-
-    const byBus = searchParams.get("byBus");
-    if (byBus === "yes") {
-      newWalks = newWalks.filter(
-        (w) => Object.keys(w.busConnections ?? {}).length > 0,
-      );
-    }
-
-    return newWalks;
-  }, [allWalks, searchableWalks, searchParams]);
-
+export default function WalksClient({ allWalks }: { allWalks: SimpleWalk[] }) {
   return (
     <div className={styles.main}>
-      <WalkSearchAndFilter clearFilters={clearFilters} />
-      <WalkGrid
-        walks={filteredWalks}
-        clearFilters={clearFilters}
-        showDistances={Boolean(townParam && locations[townParam])}
-        isFiltered={filteredWalks.length < allWalks.length}
-      />
+      <WalkFiltersProvider allWalks={allWalks}>
+        <WalkSearchAndFilter />
+        <WalkGrid />
+      </WalkFiltersProvider>
     </div>
   );
 }

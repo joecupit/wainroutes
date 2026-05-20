@@ -96,6 +96,15 @@ export default function Overlay({
     };
   }, [sections]);
 
+  useEffect(() => {
+    document.documentElement.style.scrollPadding =
+      "calc(2.1 * var(--scroll-offset))";
+
+    return () => {
+      document.documentElement.style.scrollPadding = "";
+    };
+  }, []);
+
   return (
     <div
       id="walk-overlay"
@@ -146,7 +155,7 @@ export default function Overlay({
                   </button>
                 ) : (
                   <Fragment key={index}></Fragment>
-                )
+                ),
               )}
           </div>
         </div>

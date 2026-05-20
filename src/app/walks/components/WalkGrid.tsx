@@ -2,108 +2,26 @@
 
 import styles from "../Walks.module.css";
 
-import { useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useState } from "react";
 
-import type { SimpleWalk } from "../page";
 import WalkCard from "@/components/WalkCard/WalkCard";
-import { GridIcon, ListIcon } from "@/icons/PhosphorIcons";
 import SelectDropdown from "@/components/SelectDropdown/SelectDropdown";
 
-type WalkGridProps = {
-  walks: SimpleWalk[];
-  clearFilters: CallableFunction;
-  showDistances: boolean;
-  isFiltered: boolean;
-};
+import { useWalkFilters } from "../contexts/WalkFilterContext";
+import { GridIcon, ListIcon } from "@/icons/PhosphorIcons";
 
-export default function WalkGrid({
-  walks,
-  clearFilters,
-  showDistances,
-  isFiltered,
-}: WalkGridProps) {
-  const updateParam = (key: string, value?: string) => {
-    const params = new URLSearchParams(searchParams);
-    if (value && value.length > 0) params.set(key, value);
-    else params.delete(key);
+export default function WalkGrid() {
+  const {
+    walks,
+    filterOptions,
+    isFiltered,
+    clearFilters,
+    showDistances,
+    sortValue,
+    setSortValue,
+  } = useWalkFilters();
 
-    window.history.replaceState({}, "", `/walks?${params.toString()}`);
-  };
-
-  const searchParams = useSearchParams();
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-
-  const sortOptions = {
-    "recommended": "Recommended",
-    "recent": "Recently Added",
-    "hills-dsc": "Most Wainwrights",
-    "hills-asc": "Least Wainwrights",
-    "dist-dsc": "Longest",
-    "dist-asc": "Shortest",
-    "ele-dsc": "Most Elevation",
-    "ele-asc": "Least Elevation",
-  };
-
-  const [sortValue, setSortValue] = useState(
-    searchParams.get("sort") ?? "recommended",
-  );
-
-  useEffect(() => {
-    if (sortValue !== "recommended") {
-      updateParam("sort", sortValue);
-    } else {
-      updateParam("sort");
-    }
-  }, [sortValue]);
-
-  useEffect(() => {
-    if (showDistances && sortValue === "recommended") {
-      setSortValue("closest");
-    } else if (!showDistances && sortValue === "closest") {
-      setSortValue("recommended");
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showDistances]);
-
-  const sortedWalks = useMemo(() => {
-    const newWalkData = [...walks];
-
-    const [type, dir] = sortValue.split("-");
-    switch (type) {
-      case "closest":
-        newWalkData.sort((a, b) => (a.distance ?? 9999) - (b.distance ?? 9999));
-        break;
-      case "recent":
-        newWalkData.sort(
-          (a, b) =>
-            new Date(b.date ?? "").getTime() - new Date(a.date ?? "").getTime(),
-        );
-        break;
-      case "hills":
-        newWalkData.sort(
-          (a, b) => (a.wainwrights?.length ?? 0) - (b.wainwrights?.length ?? 0),
-        );
-        break;
-      case "ele":
-        newWalkData.sort((a, b) => (a.elevation ?? 0) - (b.elevation ?? 0));
-        break;
-      case "dist":
-        newWalkData.sort((a, b) => (a.length ?? 0) - (b.length ?? 0));
-        break;
-      default:
-        newWalkData
-          .sort((a, b) => a.title.localeCompare(b.title))
-          .sort(
-            (a, b) => (b.recommendedScore ?? 0) - (a.recommendedScore ?? 0),
-          );
-        break;
-    }
-
-    if (dir === "dsc") newWalkData.reverse();
-
-    return newWalkData;
-  }, [walks, sortValue]);
 
   return (
     <div className={styles.grid}>
@@ -123,8 +41,8 @@ export default function WalkGrid({
               label="Sort"
               options={
                 showDistances
-                  ? { closest: "Closest", ...sortOptions }
-                  : sortOptions
+                  ? { closest: "Closest", ...filterOptions.sort }
+                  : filterOptions.sort
               }
             />
           </div>
@@ -166,7 +84,7 @@ export default function WalkGrid({
       )}
 
       <div className={styles.gridGrid} data-view={viewMode}>
-        {sortedWalks.map((walk, index) => {
+        {walks.map((walk, index) => {
           return (
             <WalkCard key={index} walk={walk} showDistance={showDistances} />
           );

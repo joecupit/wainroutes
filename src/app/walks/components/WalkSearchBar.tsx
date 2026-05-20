@@ -2,55 +2,45 @@
 
 import styles from "../Walks.module.css";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
+import { useWalkFilters } from "../contexts/WalkFilterContext";
 import { CloseIconSmall, SearchIcon } from "@/icons/PhosphorIcons";
 
 export default function WalksSearchBar() {
   const searchParams = useSearchParams();
-  const searchRef = useRef<HTMLInputElement>(null);
 
+  const { searchRef, updateFilter } = useWalkFilters();
   const [inputValue, setInputValue] = useState(searchParams.get("query") ?? "");
-  const [searchTerm, setSearchTerm] = useState(searchParams.get("query") ?? "");
 
   useEffect(() => {
     if (inputValue === "") {
-      setSearchTerm("");
+      updateFilter("query", "");
       return;
     }
     const handler = setTimeout(() => {
-      setSearchTerm(inputValue);
+      updateFilter("query", inputValue);
     }, 300);
     return () => clearTimeout(handler);
   }, [inputValue]);
 
   useEffect(() => {
-    const params = new URLSearchParams(searchParams);
-    if (searchTerm) params.set("query", searchTerm);
-    else params.delete("query");
-
-    window.history.replaceState({}, "", `/walks?${params.toString()}`);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchTerm]);
-
-  useEffect(() => {
     const query = searchParams.get("query") ?? "";
-    setSearchTerm(query);
     setInputValue(query);
   }, [searchParams]);
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      searchRef.current?.blur();
-      searchRef.current?.scrollIntoView({ behavior: "smooth" });
+      searchRef?.current?.blur();
+      searchRef?.current?.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
     <div
       className={styles.searchBar}
-      onClick={() => searchRef.current?.focus()}
+      onClick={() => searchRef?.current?.focus()}
     >
       <SearchIcon />
       <input
