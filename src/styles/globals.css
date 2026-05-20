@@ -133,6 +133,11 @@
   --gap-900: clamp(4rem, 4vw, 6rem);
 
   --navbar-height: 4.5rem;
+  --scroll-offset: var(--navbar-height);
+
+  @media (max-width: 57rem) {
+    --scroll-offset: 1.5rem;
+  }
 
   /*  colours  */
   color-scheme: light;
@@ -195,7 +200,7 @@
 
 html {
   background-color: var(--clr-bg-black);
-  scroll-padding: 9.5rem;
+  scroll-padding: calc(var(--scroll-offset) * 1.5);
 }
 
 body {
