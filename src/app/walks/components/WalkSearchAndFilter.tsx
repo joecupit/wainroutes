@@ -1,98 +1,93 @@
 import styles from "../Walks.module.css";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import SelectDropdown from "@/components/SelectDropdown/SelectDropdown";
 
-import {
-  CaretDownIcon,
-  CaretUpIcon,
-  ElevationIcon,
-  FilterIcon,
-  HikingIcon,
-  MapPinIcon,
-} from "@/icons/PhosphorIcons";
+import { CaretDownIcon, CaretUpIcon, FilterIcon } from "@/icons/PhosphorIcons";
 
 import { useWalkFilters } from "../contexts/WalkFilterContext";
 import WalksSearchBar from "./WalkSearchBar";
-import { locations } from "./WalkFilterValues";
 
 export default function WalkSearchAndFilter() {
   const [hideFilters, setHideFilters] = useState(true);
-  const { filters, updateFilter, clearFilters, filterOptions, searchTerm } =
+  const { filters, updateFilter, clearFilters, filterOptions } =
     useWalkFilters();
+
+  const filterCount = useMemo(() => {
+    let count = -2;
+
+    for (let filt of Object.keys(filters)) {
+      if (filters[filt] !== "any") count += 1;
+    }
+
+    return count;
+  }, [filters]);
 
   return (
     <>
       <div className={styles.searchAndFilter}>
-        <div className={styles.search}>
+        <div className={styles.searchFilterMain}>
           <WalksSearchBar />
+
+          <hr />
           <button
-            className={styles.filtersShowHide}
+            className={styles.filtersTab}
             onClick={() => setHideFilters((prev) => !prev)}
           >
-            {hideFilters ? (
-              <>
-                <FilterIcon />
-              </>
-            ) : (
-              <>
-                <CaretUpIcon />
-              </>
-            )}
+            <div>
+              <FilterIcon /> Filters
+            </div>
+            <div className={styles.filtersCount} data-active={filterCount > 0}>
+              {filterCount > 0 ? filterCount + " active" : "None selected"}{" "}
+              {hideFilters ? <CaretDownIcon /> : <CaretUpIcon />}
+            </div>
           </button>
         </div>
-        <hr />
-        <div className={styles.filters} data-hide={hideFilters}>
-          <SelectDropdown
-            Icon={<MapPinIcon />}
-            label="Region"
-            value={filters["region"]}
-            onChange={(n) => updateFilter("region", n !== "0" ? n : undefined)}
-            options={filterOptions.regions}
-          />
-          <SelectDropdown
-            Icon={<HikingIcon />}
-            label="Distance"
-            value={filters["distance"]}
-            onChange={(n) =>
-              updateFilter("distance", n !== "any" ? n : undefined)
-            }
-            options={filterOptions.distances}
-          />
-          <SelectDropdown
-            Icon={<ElevationIcon />}
-            label="Elevation"
-            value={filters["elevation"]}
-            onChange={(n) =>
-              updateFilter("elevation", n !== "any" ? n : undefined)
-            }
-            options={filterOptions.elevations}
-          />
+        <div className={styles.filtersMain} data-hide={hideFilters}>
+          <div className={styles.filterFilters}>
+            <SelectDropdown
+              data-thing={"test"}
+              Icon={<div className={styles.filtersLabel}>Near to town</div>}
+              label="Town"
+              value={filters["town"]}
+              onChange={(n) =>
+                updateFilter("town", n !== "any" ? n : undefined)
+              }
+              options={filterOptions.towns}
+              triggerClassName={styles.filtersDropdown}
+              contentClassName={styles.filtersDropdownContent}
+            />
+            <SelectDropdown
+              Icon={<div className={styles.filtersLabel}>Distance</div>}
+              label="Distance"
+              value={filters["distance"]}
+              onChange={(n) =>
+                updateFilter("distance", n !== "any" ? n : undefined)
+              }
+              options={filterOptions.distances}
+              triggerClassName={styles.filtersDropdown}
+              contentClassName={styles.filtersDropdownContent}
+            />
+            <SelectDropdown
+              Icon={<div className={styles.filtersLabel}>Elevation</div>}
+              label="Elevation"
+              value={filters["elevation"]}
+              onChange={(n) =>
+                updateFilter("elevation", n !== "any" ? n : undefined)
+              }
+              options={filterOptions.elevations}
+              triggerClassName={styles.filtersDropdown}
+              contentClassName={styles.filtersDropdownContent}
+            />
+          </div>
           <button
-            className={styles.filtersClear}
+            className={styles.filtersReset}
             onClick={() => clearFilters()}
           >
-            Clear filters
+            Reset filters
           </button>
         </div>
       </div>
-      {searchTerm.toLowerCase().replaceAll(" ", "-") in locations && (
-        <div className={styles.searchLocationButton}>
-          See all&nbsp;
-          <button
-            onClick={() => {
-              window.scrollTo({ top: 0, behavior: "instant" });
-              updateFilter(
-                ["query", "town"],
-                ["", searchTerm.toLowerCase().replaceAll(" ", "-")],
-              );
-            }}
-          >
-            walks near{" "}
-            {locations[searchTerm.toLowerCase().replaceAll(" ", "-")]?.name}
-          </button>
-        </div>
-      )}
     </>
   );
 }

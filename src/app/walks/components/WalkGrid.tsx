@@ -1,12 +1,14 @@
 "use client";
 
 import styles from "../Walks.module.css";
+import buttonStyles from "@/styles/buttons.module.css";
 
 import { useState } from "react";
 
 import WalkCard from "@/components/WalkCard/WalkCard";
 import SelectDropdown from "@/components/SelectDropdown/SelectDropdown";
 
+import { locations } from "./WalkFilterValues";
 import { useWalkFilters } from "../contexts/WalkFilterContext";
 import { GridIcon, ListIcon } from "@/icons/PhosphorIcons";
 
@@ -15,10 +17,13 @@ export default function WalkGrid() {
     walks,
     filterOptions,
     isFiltered,
+    totalWalks,
+    updateFilter,
     clearFilters,
     showDistances,
     sortValue,
     setSortValue,
+    searchTerm,
   } = useWalkFilters();
 
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
@@ -27,14 +32,23 @@ export default function WalkGrid() {
     <div className={styles.grid}>
       <div className={styles.gridTop}>
         <div className={styles.gridTopLeft}>
-          <p className={styles.bold}>
-            {`Showing${isFiltered ? "" : " all"} ${walks.length} walk${walks.length !== 1 ? "s" : ""}`}
+          <p className={styles.gridTopWalkCount}>
+            {isFiltered ? (
+              <>
+                Showing <span>{walks.length}</span> walk
+                {walks.length !== 1 ? "s" : ""} matching your filters
+              </>
+            ) : (
+              <>
+                Showing all <span>{totalWalks}</span> walks
+              </>
+            )}
           </p>
         </div>
 
         <div className={styles.gridTopRight}>
-          <div>
-            <p>Sort by:</p>
+          <div className={styles.gridTopSort}>
+            <p>Sort by</p>
             <SelectDropdown
               value={sortValue}
               onChange={setSortValue}
@@ -47,7 +61,7 @@ export default function WalkGrid() {
             />
           </div>
           <div className={styles.gridRadios}>
-            <p>View:</p>
+            <p className="visually-hidden">View</p>
             <div className={styles.gridRadioGroup}>
               <label className={styles.gridRadio}>
                 <input
@@ -74,12 +88,35 @@ export default function WalkGrid() {
         </div>
       </div>
 
+      {searchTerm.toLowerCase().replaceAll(" ", "-") in locations && (
+        <div className={styles.searchLocationButton}>
+          Search for&nbsp;
+          <button
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: "instant" });
+              updateFilter(
+                ["query", "town"],
+                ["", searchTerm.toLowerCase().replaceAll(" ", "-")],
+              );
+            }}
+            className={`${buttonStyles.button} ${buttonStyles.text}`}
+          >
+            walks near{" "}
+            {locations[searchTerm.toLowerCase().replaceAll(" ", "-")]?.name}
+          </button>
+        </div>
+      )}
+
       {walks.length === 0 && (
-        <div className={styles.gridEndText}>
-          <>
-            No walks match the current filters.&nbsp;
-            <button onClick={() => clearFilters()}>Clear filters</button>
-          </>
+        <div style={{ textAlign: "center" }}>
+          No walks match the current filters.&nbsp;
+          <button
+            style={{ display: "inline" }}
+            className={`${buttonStyles.button} ${buttonStyles.text}`}
+            onClick={() => clearFilters()}
+          >
+            Clear filters
+          </button>
         </div>
       )}
 
@@ -92,16 +129,19 @@ export default function WalkGrid() {
       </div>
 
       {walks.length > 0 && (
-        <p className={styles.gridEndText}>
-          End of walks list.&nbsp;
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            title="Scroll to top"
-          >
-            Back to top
-          </button>
-          .
-        </p>
+        <div className={styles.gridEndText}>
+          <p>
+            End of walks list (
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              title="Scroll to top"
+              className={`${buttonStyles.button} ${buttonStyles.text}`}
+            >
+              back to top
+            </button>
+            )
+          </p>
+        </div>
       )}
     </div>
   );

@@ -47,10 +47,12 @@ type WalksContextValue = {
   clearFilters: () => void;
   searchRef: React.RefObject<HTMLInputElement | null> | null;
   isFiltered: boolean;
+  totalWalks: number;
   showDistances: boolean;
+  locations: Locations;
   filterOptions: {
     sort: { [key: string]: string };
-    locations: Locations;
+    towns: { [key: string]: string };
     regions: { [key: string]: string };
     distances: { [key: string]: string };
     elevations: { [key: string]: string };
@@ -66,10 +68,12 @@ const initialWalksValue: WalksContextValue = {
   clearFilters: () => {},
   searchRef: null,
   isFiltered: false,
+  totalWalks: 0,
   showDistances: false,
+  locations: {},
   filterOptions: {
     sort: {},
-    locations: {},
+    towns: {},
     regions: {},
     distances: {},
     elevations: {},
@@ -139,7 +143,7 @@ export function WalkFiltersProvider({
       if (val && val.length > 0) params.set(key, val);
       else params.delete(key);
 
-      if (["region", "distance", "elevation", "byBus"].includes(key)) {
+      if (["town", "region", "distance", "elevation", "byBus"].includes(key)) {
         searchRef.current?.scrollIntoView({ behavior: "smooth" });
       }
     }
@@ -166,7 +170,15 @@ export function WalkFiltersProvider({
     "coniston",
     "glenridding",
     "windermere",
+    "penrith",
   ]);
+  const townOptions = useMemo(() => {
+    return Object.fromEntries([
+      ["any", "Any town"],
+      ...locationSelectEntries.map((loc) => [loc, locations[loc]?.name ?? loc]),
+    ]);
+  }, [locationSelectEntries]);
+
   const townParam = useMemo(() => {
     return searchParams.get("town");
   }, [searchParams]);
@@ -186,7 +198,7 @@ export function WalkFiltersProvider({
     return Boolean(townParam && locations[townParam]);
   }, [townParam]);
   useEffect(() => {
-    if (showDistances && sortValue === "recommended") {
+    if (showDistances) {
       setSortValue("closest");
     } else if (!showDistances && sortValue === "closest") {
       setSortValue("recommended");
@@ -339,7 +351,7 @@ export function WalkFiltersProvider({
   }, [filteredWalks, sortValue]);
 
   // RETURN VALUES
-  const value = {
+  const value: WalksContextValue = {
     walks: sortedWalks,
     filters: filters,
     sortValue: sortValue,
@@ -348,10 +360,12 @@ export function WalkFiltersProvider({
     clearFilters: clearFilters,
     searchRef: searchRef,
     isFiltered: filteredWalks.length < allWalks.length,
+    totalWalks: allWalks.length,
     showDistances: showDistances,
+    locations: locations,
     filterOptions: {
       sort: sortOptions,
-      locations: locations,
+      towns: townOptions,
       regions: regionOptions,
       distances: distanceOptions,
       elevations: elevationOptions,

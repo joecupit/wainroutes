@@ -56,7 +56,7 @@ export default function WalkCard({
         <div className={styles.text}>
           <div className={styles.titles}>
             <h3 className={styles.subheading}>{walk.title}</h3>
-            <p className={fontStyles.subtext}>{BookTitles[walk.region]}</p>
+            <p className={fontStyles.subtext}>{walk.startLocation?.location}</p>
           </div>
           <hr />
           <div className={styles.icons}>

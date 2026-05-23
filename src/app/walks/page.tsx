@@ -47,6 +47,7 @@ export type SimpleWalk = {
   date?: string;
   region: Walk["region"];
   startLocation?: {
+    location: string;
     latitude?: number;
     longitude?: number;
   };
@@ -71,6 +72,7 @@ export default async function WalksPage({ searchParams }: MetadataProps) {
         date: walk.date,
         region: walk.region,
         startLocation: {
+          location: walk.startLocation?.location,
           latitude: walk.startLocation?.latitude,
           longitude: walk.startLocation?.longitude,
         },

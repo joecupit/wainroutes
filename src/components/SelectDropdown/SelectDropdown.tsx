@@ -26,10 +26,16 @@ export default function SelectDropdown({
       <Select.Trigger
         className={`${styles.dropdownTrigger} ${triggerClassName ? triggerClassName : ""}`}
         aria-label={label}
+        data-selected={value !== "any"}
       >
         <div>
           {Icon}
-          <Select.Value placeholder={label} />
+          <Select.Value placeholder={label} className={styles.dropdownValue}>
+            <span data-screen="small">
+              {value === "any" ? "Any" : options[value]}
+            </span>
+            <span data-screen="normal">{options[value]}</span>
+          </Select.Value>
         </div>
         <Select.Icon>
           <CaretDownIcon />
