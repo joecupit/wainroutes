@@ -115,7 +115,7 @@ export default function WalkGrid() {
             className={`${buttonStyles.button} ${buttonStyles.text}`}
             onClick={() => clearFilters()}
           >
-            Clear filters
+            Reset filters
           </button>
         </div>
       )}

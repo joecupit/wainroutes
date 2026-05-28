@@ -22,6 +22,7 @@ import {
   locations,
   regionOptions,
 } from "../components/WalkFilterValues";
+import { displayDistance } from "@/utils/unitConversions";
 
 type FilterState = {
   town: string;
@@ -184,13 +185,19 @@ export function WalkFiltersProvider({
   }, [searchParams]);
   useEffect(() => {
     const titleElement = document.getElementById("walks-title");
+    const descElement = document.getElementById("walks-desc");
 
     if (townParam && locations[townParam]) {
       const location = locations[townParam];
       if (titleElement) titleElement.innerText = `Walks near ${location.name}`;
+      if (descElement)
+        descElement.innerText = `Browse all walks within ${displayDistance((locations[townParam].distScale ?? 1) * 10, 0)} of ${locations[townParam].name}. Filter routes by town, distance, and elevation to find the perfect route for you.`;
       document.title = `Lake District Walks near ${location.name} | Wainroutes`;
     } else {
       if (titleElement) titleElement.innerText = "Lake District Walks";
+      if (descElement)
+        descElement.innerText =
+          "Browse every walk on the site. Filter routes by town, distance, and elevation to find the perfect route for you.";
       document.title = "Lake District Walks | Wainroutes";
     }
   }, [townParam]);

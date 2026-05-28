@@ -5,9 +5,9 @@ import type Walk from "@/types/Walk";
 import { createPageMetadata } from "@/utils/metadata";
 
 import BackToTopButton from "@/components/BackToTopButton/BackToTopButton";
+import WalksHero from "./components/WalksHero";
 import WalksClient from "./components/WalksClient";
 import { locations } from "./components/WalkFilterValues";
-import LazyImage from "@/components/LazyImage/LazyImage";
 
 import walksJson from "@/data/walks.json";
 
@@ -86,23 +86,7 @@ export default async function WalksPage({ searchParams }: MetadataProps) {
     <main className={styles.walks}>
       <BackToTopButton minHeight={600} />
 
-      <section className={styles.heroSection}>
-        <div className={styles.hero}>
-          <h1 id="walks-title" className={fontStyles.title}>
-            {town && locations[town]
-              ? `Walks near ${locations[town].name}`
-              : "Lake District Walks"}
-          </h1>
-        </div>
-        <div>
-          <LazyImage
-            className={styles.heroImage}
-            name={"walks/the-fells-south-of-buttermere/03.webp"}
-            sizes="100vw"
-            alt={""}
-          />
-        </div>
-      </section>
+      <WalksHero town={town} />
 
       <section>
         <div className="flex-column">
