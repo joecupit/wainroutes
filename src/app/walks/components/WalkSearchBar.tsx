@@ -23,7 +23,7 @@ export default function WalksSearchBar() {
       updateFilter("query", inputValue);
     }, 300);
     return () => clearTimeout(handler);
-  }, [inputValue]);
+  }, [inputValue, updateFilter]);
 
   useEffect(() => {
     const query = searchParams.get("query") ?? "";

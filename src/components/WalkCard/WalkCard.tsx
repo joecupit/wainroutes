@@ -15,7 +15,6 @@ import {
   getDistanceValue,
 } from "@/utils/unitConversions";
 import { HikingIcon, ElevationIcon, MountainIcon } from "@/icons/PhosphorIcons";
-import { BookTitles } from "@/types/Hill";
 
 type WalkCardProps = {
   walk: Walk | SimpleWalk;

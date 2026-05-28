@@ -16,7 +16,7 @@ export default function WalkSearchAndFilter() {
   const filterCount = useMemo(() => {
     let count = -2;
 
-    for (let filt of Object.keys(filters)) {
+    for (const filt of Object.keys(filters) as (keyof typeof filters)[]) {
       if (filters[filt] !== "any") count += 1;
     }
 

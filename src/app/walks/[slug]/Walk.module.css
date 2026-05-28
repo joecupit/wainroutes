@@ -48,7 +48,7 @@
   }
 }
 .topBlock {
-  height: min(2em, 5vw);
+  height: min(1rem, 2vw);
   background: oklch(from var(--clr-text-black) 0.2 0.02 h);
 }
 

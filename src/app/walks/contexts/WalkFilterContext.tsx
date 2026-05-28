@@ -1,5 +1,6 @@
 import {
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -123,56 +124,59 @@ export function WalkFiltersProvider({
     setFilters(newFilters);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
-  const updateFilter = (
-    keys: string | string[],
-    values?: string | string[],
-  ) => {
-    const params = new URLSearchParams(searchParams);
+  const updateFilter = useCallback(
+    (keys: string | string[], values?: string | string[]) => {
+      const params = new URLSearchParams(searchParams);
 
-    if (
-      typeof keys === "string" &&
-      (typeof values === "string" || typeof values === "undefined")
-    ) {
-      keys = [keys];
-      values = values ? [values] : undefined;
-    }
-
-    for (let i = 0; i < keys.length; i++) {
-      const key = keys[i];
-      const val = values ? values[i] : undefined;
-
-      if (val && val.length > 0) params.set(key, val);
-      else params.delete(key);
-
-      if (["town", "region", "distance", "elevation", "byBus"].includes(key)) {
-        searchRef.current?.scrollIntoView({ behavior: "smooth" });
+      if (
+        typeof keys === "string" &&
+        (typeof values === "string" || typeof values === "undefined")
+      ) {
+        keys = [keys];
+        values = values ? [values] : undefined;
       }
-    }
 
-    params.sort();
-    window.history.replaceState({}, "", `/walks?${params.toString()}`);
-  };
-  const clearFilters = () => {
+      for (let i = 0; i < keys.length; i++) {
+        const key = keys[i];
+        const val = values ? values[i] : undefined;
+
+        if (val && val.length > 0) params.set(key, val);
+        else params.delete(key);
+
+        if (
+          ["town", "region", "distance", "elevation", "byBus"].includes(key)
+        ) {
+          searchRef.current?.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+
+      params.sort();
+      window.history.replaceState({}, "", `/walks?${params.toString()}`);
+    },
+    [searchParams],
+  );
+  const clearFilters = useCallback(() => {
     const params = new URLSearchParams();
     if (searchParams.get("sort") !== null) {
       params.set("sort", searchParams.get("sort") ?? "recommended");
     }
 
     window.history.replaceState({}, "", `/walks?${params.toString()}`);
-  };
+  }, [searchParams]);
 
   // LOCATION FILTERING
-  const [locationSelectEntries, setLocationSelectEntries] = useState<string[]>([
-    "keswick",
-    "ambleside",
-    "grasmere",
-    "buttermere",
-    "borrowdale",
-    "coniston",
-    "glenridding",
-    "windermere",
-    "penrith",
-  ]);
+  const [locationSelectEntries, setLocationSelectEntries] = useState<string[]>(
+    [
+      "ambleside",
+      "borrowdale",
+      "buttermere",
+      "coniston",
+      "glenridding",
+      "keswick",
+      "penrith",
+      "windermere",
+    ].sort(),
+  );
   const townOptions = useMemo(() => {
     return Object.fromEntries([
       ["any", "Any town"],
@@ -233,7 +237,7 @@ export function WalkFiltersProvider({
     } else {
       updateFilter("sort");
     }
-  }, [sortValue]);
+  }, [sortValue, updateFilter]);
 
   // SEARCHING
   const searchRef = useRef<HTMLInputElement>(null);

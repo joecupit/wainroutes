@@ -15,6 +15,7 @@ import { GridIcon, ListIcon } from "@/icons/PhosphorIcons";
 export default function WalkGrid() {
   const {
     walks,
+    filters,
     filterOptions,
     isFiltered,
     totalWalks,
@@ -36,7 +37,10 @@ export default function WalkGrid() {
             {isFiltered ? (
               <>
                 Showing <span>{walks.length}</span> walk
-                {walks.length !== 1 ? "s" : ""} matching your filters
+                {walks.length !== 1 ? "s" : ""}{" "}
+                {filters.town && locations[filters.town]
+                  ? `near ${locations[filters.town]?.name}`
+                  : "matching your filters"}
               </>
             ) : (
               <>
