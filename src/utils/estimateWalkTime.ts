@@ -3,24 +3,24 @@ import { TerrainLevel } from "@/types/Walk";
 export default function estimateWalkTime(
   walkLength: number,
   walkElevation: number,
-  walkGradient: TerrainLevel
+  walkGradient: TerrainLevel,
 ) {
   const horizontalSpeedKph = {
-    1: 2.5,
-    2: 3.5,
-    3: 4.5,
-    4: 5.75,
+    1: 2.25,
+    2: 3,
+    3: 4,
+    4: 5,
   };
   const minsPer300m = {
-    1: 38,
-    2: 34,
-    3: 30,
-    4: 27,
+    1: 39,
+    2: 37,
+    3: 34,
+    4: 30,
   };
   const steepnessFix = {
     1: -5,
     2: 0,
-    3: 10,
+    3: 5,
     4: 15,
   };
 
