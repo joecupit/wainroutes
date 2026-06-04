@@ -128,12 +128,7 @@ export default function WalkGrid() {
       <div className={styles.gridGrid} data-view={viewMode} data-flash={flash}>
         {walks.map((walk, index) => {
           return (
-            <WalkCard
-              key={index}
-              walk={walk}
-              showDistance={showDistances}
-              className={styles.gridCard}
-            />
+            <WalkCard key={index} walk={walk} showDistance={showDistances} />
           );
         })}
       </div>
