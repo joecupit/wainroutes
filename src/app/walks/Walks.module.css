@@ -466,6 +466,22 @@ div.gridRadios {
   grid-template-columns: repeat(auto-fill, minmax(16.5rem, 1fr));
   justify-items: center;
 }
+.gridGrid[data-flash="true"] {
+  animation: cardRefresh 400ms ease-out;
+}
+
+@keyframes cardRefresh {
+  from {
+    opacity: 0.5;
+    transform: translateY(1rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (min-width: 39rem) {
   div.gridRadios {
     display: flex;

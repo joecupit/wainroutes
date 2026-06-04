@@ -25,6 +25,7 @@ export default function WalkGrid() {
     sortValue,
     setSortValue,
     searchTerm,
+    flash,
   } = useWalkFilters();
 
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
@@ -124,10 +125,15 @@ export default function WalkGrid() {
         </div>
       )}
 
-      <div className={styles.gridGrid} data-view={viewMode}>
+      <div className={styles.gridGrid} data-view={viewMode} data-flash={flash}>
         {walks.map((walk, index) => {
           return (
-            <WalkCard key={index} walk={walk} showDistance={showDistances} />
+            <WalkCard
+              key={index}
+              walk={walk}
+              showDistance={showDistances}
+              className={styles.gridCard}
+            />
           );
         })}
       </div>

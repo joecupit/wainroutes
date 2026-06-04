@@ -60,6 +60,7 @@ type WalksContextValue = {
     elevations: { [key: string]: string };
   };
   searchTerm: string;
+  flash: boolean;
 };
 const initialWalksValue: WalksContextValue = {
   walks: [],
@@ -81,6 +82,7 @@ const initialWalksValue: WalksContextValue = {
     elevations: {},
   },
   searchTerm: "",
+  flash: false,
 };
 
 const WalkFiltersContext = createContext<WalksContextValue>(initialWalksValue);
@@ -144,6 +146,7 @@ export function WalkFiltersProvider({
         else params.delete(key);
 
         if (
+          window.innerWidth <= 672 &&
           ["town", "region", "distance", "elevation", "byBus"].includes(key)
         ) {
           searchRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -361,6 +364,19 @@ export function WalkFiltersProvider({
     return newWalkData;
   }, [filteredWalks, sortValue]);
 
+  const [flash, setFlash] = useState(false);
+
+  useEffect(() => {
+    console.log("flash");
+    setFlash(true);
+
+    const timeout = setTimeout(() => {
+      setFlash(false);
+    }, 500);
+
+    return () => clearTimeout(timeout);
+  }, [filters]);
+
   // RETURN VALUES
   const value: WalksContextValue = {
     walks: sortedWalks,
@@ -382,6 +398,7 @@ export function WalkFiltersProvider({
       elevations: elevationOptions,
     },
     searchTerm: searchTerm,
+    flash: flash,
   };
 
   return (
