@@ -25,10 +25,10 @@ export function generateMetadata() {
 
 export default function Home() {
   const featuredWalkSlugs = [
+    "the-deepdale-horseshoe",
     "high-rigg-from-thirlmere",
-    "little-and-great-mell-fell",
+    "glenridding-to-threlkeld",
     "the-old-man-of-coniston",
-    "skiddaw-and-little-man",
   ];
   const walks = tempwalks as unknown as Walk[];
   const featuredWalks = featuredWalkSlugs.map((slug) =>
