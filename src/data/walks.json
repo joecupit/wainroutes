@@ -2269,5 +2269,244 @@
     "coverImage": "ridge-route-from-causey-pike-to-scar-crags",
 
     "tags": ["circular"]
+  },
+  {
+    "slug": "the-deepdale-horseshoe",
+    "title": "The Deepdale Horseshoe",
+    "recommendedScore": 91,
+    "type": "Circular",
+    "summary": "",
+    "wainwrights": [
+      "arnison-crag",
+      "birks",
+      "st-sunday-crag",
+      "fairfield",
+      "hart-crag",
+      "hartsop-above-how"
+    ],
+    "length": 18.87,
+    "elevation": 1108,
+    "date": "2026-05-17",
+    "region": 1,
+    "startLocation": {
+      "location": "Patterdale",
+      "latitude": 54.535051,
+      "longitude": -2.935952,
+      "postcode": "CA11 0NN",
+      "gridRef": "NY395159"
+    },
+    "busConnections": {
+      "508": "",
+      "509": ""
+    },
+    "terrain": {
+      "gradient": 3,
+      "path": 2,
+      "exposure": 2,
+      "scrambling": 1,
+      "desc": ""
+    },
+
+    "images": [
+      {
+        "slug": "ullswater-from-arnison-crag",
+        "title": "Ullswater from Arnison Crag",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "hartsop-from-arnison-crag",
+        "title": "Hartsop from Arnison Crag",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "approaching-birks-summit",
+        "title": "Approaching Birks summit",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "birks-to-st-sunday-crag",
+        "title": "Birks to St. Sunday Crag",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "fairfield-ascent-from-cofa-pike",
+        "title": "Fairfield ascent from Cofa Pike",
+        "caption": "",
+        "size": 2
+      },
+      {
+        "slug": "st-sunday-crag-summit-view-of-lake-district",
+        "title": "St. Sunday Crag summit view",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "cofa-pike-and-fairfield-from-st-sunday-crag",
+        "title": "Cofa Pike and Fairfield from St. Sunday Crag",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "the-deepdale-valley",
+        "title": "The Deepdale Valley",
+        "caption": "",
+        "size": 1
+      },
+      {
+        "slug": "helvellyn-and-striding-edge-from-fairfield",
+        "title": "Helvellyn and Striding Edge from Fairfield",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "fairfield-valley-towards-ambleside-and-windermere",
+        "title": "Fairfield Valley towards Ambleside and Windermere",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "hartsop-above-how-summit",
+        "title": "Hartsop Above How summit",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "descending-hartsop-above-how",
+        "title": "Descending Hartsop Above How",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "arnison-crag-from-hartsop-above-how-descent",
+        "title": "Arnison Crag from Hartsop Above How descent",
+        "caption": "",
+        "size": 0
+      }
+    ],
+    "coverImage": "st-sunday-crag-summit-view-of-lake-district",
+
+    "tags": ["circular"]
+  },
+  {
+    "slug": "glenridding-to-threlkeld",
+    "title": "Glenridding to Threlkeld",
+    "recommendedScore": 89,
+    "type": "Point-to-point",
+    "summary": "",
+    "wainwrights": [
+      "white-side",
+      "raise",
+      "stybarrow-dodd",
+      "watsons-dodd",
+      "great-dodd",
+      "clough-head"
+    ],
+    "length": 16.09,
+    "elevation": 1168,
+    "date": "2026-05-18",
+    "region": 1,
+    "startLocation": {
+      "location": "Glenridding",
+      "latitude": 54.544209,
+      "longitude": -2.950108,
+      "postcode": "CA11 0PD",
+      "gridRef": "NY386169"
+    },
+    "busConnections": {},
+    "terrain": {
+      "gradient": 3,
+      "path": 2,
+      "exposure": 1,
+      "scrambling": 1,
+      "desc": ""
+    },
+
+    "images": [
+      {
+        "slug": "approaching-catstycam",
+        "title": "Ulls Water ascent approaching Catstycam",
+        "caption": "",
+        "size": 2
+      },
+      {
+        "slug": "helvellyn-via-whiteside-sign",
+        "title": "Helvellyn via Whiteside fork in the road",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "cloudy-mountaintop-climbing-whiteside",
+        "title": "Approaching Whiteside in the cloud",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "a-cloudy-raise-summit",
+        "title": "A cloudy Raise summit",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "keswick-from-raise",
+        "title": "Keswick from Raise",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "summiting-stybarrow-dodd",
+        "title": "Summiting Stybarrow Dodd",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "the-trio-of-dodds",
+        "title": "The trio of Dodds",
+        "caption": "",
+        "size": 1
+      },
+      {
+        "slug": "clough-head-from-watsons-dodd",
+        "title": "Clough Head from Watsons Dodd",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "looking-down-the-helvellyn-range-from-great-dodd",
+        "title": "Down the Helvellyn range from Great Dodd",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "thirlmere-from-clough-head",
+        "title": "Thirlmere from Clough Head",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "coledale-from-clough-head",
+        "title": "Coledale from Clough Head",
+        "caption": "",
+        "size": 0
+      },
+      {
+        "slug": "blencathra-from-clough-head-descent",
+        "title": "Blencathra from the Clough Head descent",
+        "caption": "",
+        "size": 1
+      },
+      {
+        "slug": "clough-head-descent-to-threlkeld",
+        "title": "Final descent to Threlkeld",
+        "caption": "",
+        "size": 0
+      }
+    ],
+    "coverImage": "the-trio-of-dodds",
+
+    "tags": ["point-to-point"]
   }
 ]

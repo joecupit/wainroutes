@@ -34,6 +34,7 @@ export const locations: Locations = {
   "matterdale": { name: "Matterdale", coords: [-2.912, 54.5951] },
   "troutbeck": { name: "Troutbeck", coords: [-2.9146, 54.4157] },
   "hartsop": { name: "Hartsop", coords: [-2.914, 54.5097] },
+  "patterdale": { name: "Patterdale", coords: [-2.9381, 54.5363] },
 
   "penrith": { name: "Penrith", coords: [-2.7584, 54.6619], distScale: 2 },
   "cockermouth": {
@@ -46,7 +47,7 @@ export const locations: Locations = {
   "oxenholme": {
     name: "Oxenholme",
     coords: [-2.7216, 54.3048],
-    distScale: 2.25,
+    distScale: 2,
   },
   "bassenthwaite": { name: "Bassenthwaite", coords: [-3.1953, 54.6795] },
   "tarn-hows": { name: "Tarn Hows", coords: [-3.0368, 54.3881] },
