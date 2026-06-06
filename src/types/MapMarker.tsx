@@ -5,6 +5,7 @@ type MapMarker = {
     slug: string;
     name: string;
     book?: number;
+    height?: number;
   };
 };
 

@@ -14,11 +14,11 @@ import { Map, Marker, GeoJson, ZoomControl, GeoJsonFeature } from "pigeon-maps";
 import { AnyProps, ClusterFeature, PointFeature } from "supercluster";
 
 import MapMarker from "@/types/MapMarker";
-import { BookTitles } from "@/types/Hill";
 import getMapBounds from "@/utils/getMapBounds";
 
 import { useSupercluster } from "./hooks/useSupercluster";
 import { FitZoomIcon } from "@/icons/PhosphorIcons";
+import { displayElevation } from "@/utils/unitConversions";
 
 // import { maptiler } from 'pigeon-maps/providers';
 // const maptilerProvider = maptiler(import.meta.env.VITE_MAP_API_KEY, "topo-v2");
@@ -28,6 +28,7 @@ type LakeProps = {
   secondaryMarkers?: MapMarker[];
   gpxPoints?: [number, number][];
   activePoint?: string | null;
+  setActivePoint?: React.Dispatch<React.SetStateAction<string | null>>;
   defaultCenter?: [number, number];
   defaultZoom?: number;
   defaultMinZoom?: number;
@@ -49,6 +50,7 @@ export default function LakeMap({
   secondaryMarkers,
   gpxPoints,
   activePoint,
+  setActivePoint,
   defaultCenter,
   defaultZoom,
   defaultMinZoom,
@@ -58,7 +60,7 @@ export default function LakeMap({
   children,
 }: LakeProps) {
   const [center, setCenter] = useState<[number, number]>(
-    defaultCenter || [54.55, -3.09]
+    defaultCenter || [54.55, -3.09],
   );
   const [zoom, setZoom] = useState<number>(defaultZoom || 11);
   const [minZoom, setMinZoom] = useState<number>(defaultMinZoom || 3);
@@ -75,14 +77,14 @@ export default function LakeMap({
 
   const mapMarkers = useMemo(
     () => [...(primaryMarkers ?? []), ...(secondaryMarkers ?? [])],
-    [primaryMarkers, secondaryMarkers]
+    [primaryMarkers, secondaryMarkers],
   );
   const secondarySlugs = useMemo(
     () =>
       secondaryMarkers
         ? secondaryMarkers?.map((marker) => marker.properties.slug)
         : [],
-    [secondaryMarkers]
+    [secondaryMarkers],
   );
 
   const mapBoundPoints = useMemo(() => {
@@ -111,7 +113,7 @@ export default function LakeMap({
       [minLat, maxLat],
       [minLon, maxLon],
       mapBounds.width,
-      mapBounds.height
+      mapBounds.height,
     );
 
     setCenter(newBounds.center);
@@ -134,13 +136,13 @@ export default function LakeMap({
         .getClusters([54, -4, 55, -2], zoom)
         ?.sort(
           (a, b) =>
-            b?.geometry?.coordinates?.[0] - a?.geometry?.coordinates?.[0]
+            b?.geometry?.coordinates?.[0] - a?.geometry?.coordinates?.[0],
         );
     }, [supercluster, zoom]);
 
   const renderMarker = (
     point: PointFeature<AnyProps> | ClusterFeature<AnyProps>,
-    key: number
+    key: number,
   ) => {
     try {
       const clusterItems =
@@ -160,13 +162,16 @@ export default function LakeMap({
           anchor={point.geometry.coordinates as [number, number]}
           onClick={() => {
             setCenter(point.geometry.coordinates as [number, number]);
-            if (clusterItems.length > 1)
+            if (clusterItems.length > 1) {
               setZoom(
                 (supercluster?.getClusterExpansionZoom(Number(point.id)) ??
-                  10) + 1
+                  10) + 1,
               );
-            else {
-              if (zoom < 13) setZoom(13);
+              if (setActivePoint) {
+                setActivePoint(null);
+              }
+            } else if (setActivePoint) {
+              setActivePoint(clusterItems[0].properties.slug);
             }
           }}
         >
@@ -180,7 +185,7 @@ export default function LakeMap({
                 <HillIcon
                   key={index}
                   isSecondaryMarker={secondarySlugs.includes(
-                    item.properties.slug
+                    item.properties.slug,
                   )}
                   book={item.properties.book}
                 />
@@ -188,7 +193,7 @@ export default function LakeMap({
                 <WalkIcon
                   key={index}
                   isSecondaryMarker={secondarySlugs.includes(
-                    item.properties.slug
+                    item.properties.slug,
                   )}
                 />
               );
@@ -205,7 +210,7 @@ export default function LakeMap({
                 {clusterItems[0].properties.name}
                 {clusterItems[0].properties.type == "hill" && (
                   <p className={styles.clusterTooltipTip}>
-                    {BookTitles[clusterItems[0].properties.book]}
+                    {displayElevation(clusterItems[0].properties.height)}
                   </p>
                 )}
               </>
@@ -232,7 +237,7 @@ export default function LakeMap({
       if (!clusterItems) return false;
 
       return clusterItems.some(
-        (marker) => marker.properties.slug === activePoint
+        (marker) => marker.properties.slug === activePoint,
       );
     })[0];
 
@@ -240,7 +245,9 @@ export default function LakeMap({
       activeMarker.geometry.coordinates[0],
       activeMarker.geometry.coordinates[1],
     ]);
-    setZoom(12);
+    if (zoom < 11) {
+      setZoom(11);
+    }
     // setZoom((supercluster.getClusterExpansionZoom(Number(activeMarker.id)) ?? 10)+1);
   }, [activePoint]);
 
@@ -315,7 +322,7 @@ export function GeoRoute({
         coordinates: points,
       },
     }),
-    [points]
+    [points],
   );
 
   const activeData = useMemo(() => {

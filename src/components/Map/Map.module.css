@@ -66,11 +66,15 @@
 .marker:hover,
 .marker:has(.focussedCluster) {
   z-index: 99;
+  filter: none !important;
 }
-.marker:hover .cluster,
-.focussedCluster {
+.marker:hover .cluster:not(.focussedCluster) {
   scale: 1.3;
-  translate: 0 -5px;
+  translate: 0 -6px;
+}
+.focussedCluster {
+  scale: 1.6;
+  translate: 0 -14px;
 }
 .clusterTooltip {
   display: none;
@@ -78,7 +82,7 @@
   position: absolute;
   bottom: 100%;
   left: 50%;
-  translate: -50% calc(-2.5 * var(--gap-200));
+  translate: -50% -0.5em;
 
   font-weight: var(--fw-medium);
 
@@ -86,16 +90,19 @@
   text-align: center;
 
   background: var(--clr-bg-light);
-  padding: var(--gap-300) var(--gap-400);
-  border-radius: var(--gap-300);
+  padding-inline: 1ch;
+  padding-block: 0.25em;
+  border-radius: 0.25rem;
 
-  box-shadow: 3px 3px 5px oklch(from var(--clr-text) l c h / 0.15);
+  /* box-shadow: 3px 3px 5px oklch(from var(--clr-text) l c h / 0.15); */
 }
 .clusterTooltipTip {
   font-weight: var(--fw-regular);
   font-size: var(--fs-300);
+  color: var(--clr-text-muted);
+  /* display: none; */
 }
-.clusterTooltip::after {
+/* .clusterTooltip::after {
   content: "";
   --_width: var(--gap-300);
   width: var(--_width);
@@ -109,12 +116,13 @@
   background: inherit;
 
   box-shadow: inherit;
-}
+} */
 
 /*  */
 
-.marker:hover .clusterTooltip,
-.marker:has(.focussedCluster) .clusterTooltip {
+/* .marker:hover .clusterTooltip,
+.marker:has(.focussedCluster) .clusterTooltip { */
+.marker:hover .clusterTooltip {
   display: block;
 }
 

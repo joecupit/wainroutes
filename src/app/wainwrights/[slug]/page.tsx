@@ -27,7 +27,7 @@ type WainProps = {
 export async function generateMetadata({ params }: WainProps) {
   const { slug } = await params;
   const hillData = (wainsJson as unknown as Hill[]).find(
-    (w) => w.slug === slug
+    (w) => w.slug === slug,
   );
   if (!hillData) return {};
 
@@ -52,17 +52,17 @@ export default async function Wainwright({ params }: WainProps) {
   const { slug } = await params;
 
   const hillData = (wainsJson as unknown as Hill[]).find(
-    (w) => w.slug === slug
+    (w) => w.slug === slug,
   );
   if (!hillData) {
     return notFound();
   }
 
   const hillMarkers = getHillMarkers().filter(
-    (hill) => hill.properties.slug === hillData.slug
+    (hill) => hill.properties.slug === hillData.slug,
   );
   const secondaryMarkers = getHillMarkers().filter(
-    (hill) => hill.properties.slug !== hillData.slug
+    (hill) => hill.properties.slug !== hillData.slug,
   );
 
   const walkData = (walksJson as unknown as Walk[])
@@ -75,11 +75,11 @@ export default async function Wainwright({ params }: WainProps) {
       hill: hill,
       distance: haversineDistance(
         [hillData.longitude, hillData.latitude],
-        [hill.longitude, hill.latitude]
+        [hill.longitude, hill.latitude],
       ),
       direction: directionFromPoint(
         [hillData.longitude, hillData.latitude],
-        [hill.longitude, hill.latitude]
+        [hill.longitude, hill.latitude],
       ),
     }))
     .sort((a, b) => a.distance - b.distance)
@@ -133,7 +133,7 @@ export default async function Wainwright({ params }: WainProps) {
                     Other Classifications
                   </h3>
                   {hillData.classifications.some(
-                    (code) => code in Classifications
+                    (code) => code in Classifications,
                   ) ? (
                     <ul className={styles.classifications}>
                       {Object.keys(Classifications).map((code, index) => {
@@ -165,7 +165,9 @@ export default async function Wainwright({ params }: WainProps) {
           </div>
 
           <div>
-            <h2 className={fontStyles.subheading}>Routes up {hillData.name}</h2>
+            <h2 className={fontStyles.subheading} id="walks">
+              Routes up {hillData.name}
+            </h2>
             {walkData && walkData.length > 0 ? (
               <>
                 <p>

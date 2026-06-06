@@ -14,10 +14,11 @@ export const getHillMarkers = (filters?: string[]) => {
         slug: hill.slug,
         name: hill.name,
         book: hill.book,
+        height: hill.height,
       },
     }))
     .filter(
-      (a) => filters === undefined || filters.includes(a.properties.slug)
+      (a) => filters === undefined || filters.includes(a.properties.slug),
     ) as MapMarker[];
 
   return hillMarkers;

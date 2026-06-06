@@ -1,7 +1,6 @@
 import styles from "./Wainwrights.module.css";
 import fontStyles from "@/styles/fonts.module.css";
 
-import { Suspense } from "react";
 import { createPageMetadata } from "@/utils/metadata";
 
 import Hill from "@/types/Hill";
@@ -9,7 +8,8 @@ import { getHillMarkers } from "@/utils/getMapMarkers";
 
 import wainsJson from "@/data/hills.json";
 import getMapBounds from "@/utils/getMapBounds";
-import WainwrightsClient from "./components/WainwrightsClient";
+import MapSection from "./components/MapSection";
+import ListSection from "./components/ListSection";
 
 export function generateMetadata() {
   return createPageMetadata({
@@ -25,6 +25,7 @@ export type SimplifiedHill = {
   name: Hill["name"];
   secondaryName: Hill["secondaryName"];
   height: Hill["height"];
+  prominence: Hill["prominence"];
   book: Hill["book"];
 };
 
@@ -36,8 +37,9 @@ export default function Wainwrights() {
         name: hill.name,
         secondaryName: hill.secondaryName,
         height: hill.height,
+        prominence: hill.prominence,
         book: hill.book,
-      } as SimplifiedHill)
+      }) as SimplifiedHill,
   );
 
   const hillMarkers = getHillMarkers();
@@ -50,7 +52,7 @@ export default function Wainwrights() {
     [
       Math.min(...hillMarkers.map((p) => p.coordinates[1])),
       Math.max(...hillMarkers.map((p) => p.coordinates[1])),
-    ]
+    ],
   );
 
   return (
@@ -67,15 +69,16 @@ export default function Wainwrights() {
               exploring the Lakes.
             </p>
           </div>
-          <Suspense>
-            <WainwrightsClient
-              simplifiedHillData={simplifiedHillData}
-              hillMarkers={hillMarkers}
-              mapBounds={mapBounds}
-            />
-          </Suspense>
         </div>
       </section>
+
+      <MapSection
+        simplifiedHillData={simplifiedHillData}
+        hillMarkers={hillMarkers}
+        mapBounds={mapBounds}
+      />
+
+      <ListSection simplifiedHills={simplifiedHillData} book={0} />
     </main>
   );
 }

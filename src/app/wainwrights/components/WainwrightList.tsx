@@ -14,13 +14,11 @@ import { SearchIcon, CloseIconSmall, ArrowUpIcon } from "@/icons/PhosphorIcons";
 
 type WainwrightListProps = {
   simplifiedHills: SimplifiedHill[];
-  setHoveredSlug: React.Dispatch<React.SetStateAction<string | null>>;
   book: number;
 };
 
 export default function WainwrightList({
   simplifiedHills,
-  setHoveredSlug,
   book,
 }: WainwrightListProps) {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -250,11 +248,7 @@ export default function WainwrightList({
                   </td>
                   <td>
                     <h2 className={fontStyles.subheading}>
-                      <Link
-                        href={`/wainwrights/${hill.slug}`}
-                        onMouseEnter={() => setHoveredSlug(hill.slug)}
-                        onMouseLeave={() => setHoveredSlug(null)}
-                      >
+                      <Link href={`/wainwrights/${hill.slug}`}>
                         {hill.name}{" "}
                         {hill.secondaryName ? (
                           <span
