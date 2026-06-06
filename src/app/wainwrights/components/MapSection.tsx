@@ -17,6 +17,8 @@ import {
   CloseIconSmall,
 } from "@/icons/PhosphorIcons";
 
+import { Slider, SliderSingleProps } from "antd";
+
 type WainwrightsClientProps = {
   simplifiedHillData: SimplifiedHill[];
   hillMarkers: MapMarker[];
@@ -26,6 +28,10 @@ type WainwrightsClientProps = {
   };
 };
 
+const formatter: NonNullable<SliderSingleProps["tooltip"]>["formatter"] = (
+  value,
+) => `${value}m`;
+
 export default function MapSection({
   simplifiedHillData,
   hillMarkers,
@@ -33,19 +39,72 @@ export default function MapSection({
 }: WainwrightsClientProps) {
   const searchParams = useSearchParams();
 
-  const [book, setBook] = useState(0);
+  const [searchTerm, setSearchTerm] = useState(searchParams.get("query") ?? "");
+  const [searchTermBuffer, setSearchTermBuffer] = useState(searchTerm);
   useEffect(() => {
+    const handler = setTimeout(() => {
+      setSearchTerm(searchTermBuffer);
+    }, 300);
+    return () => clearTimeout(handler);
+  }, [searchTermBuffer]);
+  const [book, setBook] = useState(searchParams.get("book") ?? 0);
+  const [withWalk, setWithWalk] = useState(searchParams.get("walk") === "yes");
+  const [height, setHeight] = useState(
+    searchParams.get("height")?.split(",").map(Number) ?? [290, 978],
+  );
+  const [heightBuffer, setHeightBuffer] = useState(height);
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setHeight(heightBuffer);
+    }, 200);
+    return () => clearTimeout(handler);
+  }, [heightBuffer]);
+
+  useEffect(() => {
+    setActivePoint(null);
+
+    if (searchParams.get("query")) {
+      setSearchTerm(searchParams.get("query") ?? "");
+      setSearchTermBuffer(searchParams.get("query") ?? "");
+    } else {
+      setSearchTerm("");
+      setSearchTermBuffer("");
+    }
     if (searchParams.get("book")) {
       setBook(Number(searchParams.get("book")));
     } else {
       setBook(0);
     }
+    if (searchParams.get("height")) {
+      setHeightBuffer(
+        searchParams.get("height")?.split(",").map(Number) ?? [290, 978],
+      );
+      setHeight(
+        searchParams.get("height")?.split(",").map(Number) ?? [290, 978],
+      );
+    } else {
+      setHeightBuffer([290, 978]);
+      setHeight([290, 978]);
+    }
+
+    setWithWalk(searchParams.get("walk") === "yes");
   }, [searchParams]);
 
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams);
+
+    if (searchTerm.length > 0) {
+      params.set("query", searchTerm);
+    } else {
+      params.delete("query");
+    }
+
+    params.sort();
+    window.history.replaceState({}, "", `/wainwrights?${params.toString()}`);
+  }, [searchTerm]);
   const updateBook = useCallback(
     (bookId: number) => {
       const params = new URLSearchParams(searchParams);
-      console.log(bookId, bookId in BookTitles);
 
       if (bookId in BookTitles) {
         params.set("book", String(bookId));
@@ -58,15 +117,58 @@ export default function MapSection({
     },
     [searchParams],
   );
+  const updateWithWalks = useCallback(
+    (withWalks: boolean) => {
+      const params = new URLSearchParams(searchParams);
 
-  const [filteredHillData, filteredHillMarkers] = useMemo(() => {
+      if (withWalks) {
+        params.set("walk", "yes");
+      } else {
+        params.delete("walk");
+      }
+
+      params.sort();
+      window.history.replaceState({}, "", `/wainwrights?${params.toString()}`);
+    },
+    [searchParams],
+  );
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams);
+
+    if (height[0] !== 290 || height[1] !== 978) {
+      params.set("height", height.join(","));
+    } else {
+      params.delete("height");
+    }
+
+    params.sort();
+    window.history.replaceState({}, "", `/wainwrights?${params.toString()}`);
+  }, [height]);
+
+  const filteredHillMarkers = useMemo(() => {
+    let newHillData = simplifiedHillData;
+
+    console.log(searchTerm);
+    if (searchTerm && searchTerm.length > 0) {
+      newHillData = newHillData.filter((hill) =>
+        hill.name.toLowerCase().includes(searchTerm.toLowerCase()),
+      );
+    }
     if (book && BookTitles[Number(book)]) {
-      return [
-        simplifiedHillData.filter((hill) => hill.book === book),
-        hillMarkers.filter((marker) => marker.properties.book === book),
-      ];
-    } else return [simplifiedHillData, hillMarkers];
-  }, [book, simplifiedHillData, hillMarkers]);
+      newHillData = newHillData.filter((hill) => hill.book === book);
+    }
+    if (withWalk) {
+      newHillData = newHillData.filter((hill) => hill.walks.length > 0);
+    }
+    newHillData = newHillData.filter(
+      (hill) => hill.height >= height[0] && hill.height <= height[1],
+    );
+
+    const validSlugs = newHillData.map((hill) => hill.slug);
+    return hillMarkers.filter((marker) =>
+      validSlugs.includes(marker.properties.slug),
+    );
+  }, [searchTerm, book, withWalk, height, simplifiedHillData, hillMarkers]);
 
   const [activePoint, setActivePoint] = useState<string | null>(null);
 
@@ -86,7 +188,12 @@ export default function MapSection({
       <div className={styles.mapContainer}>
         <div className={styles.mapFilters}>
           <h3>Filter & search</h3>
-          <input type="search" />
+          <input
+            type="search"
+            placeholder="Search by fell name..."
+            value={searchTermBuffer}
+            onChange={(e) => setSearchTermBuffer(e.target.value)}
+          />
           <div>
             <h4>Region</h4>
             <div className={styles.byRegion}>
@@ -114,12 +221,49 @@ export default function MapSection({
 
           <div>
             <h4>Height</h4>
-            <input type="range" />
+            <Slider
+              range
+              tooltip={{ formatter }}
+              min={290}
+              max={978}
+              value={heightBuffer}
+              onChange={(val) => setHeightBuffer(val)}
+              className={styles.heightSlider}
+            />
+            <div className={styles.heightInputs}>
+              <input
+                type="number"
+                value={heightBuffer[0]}
+                onChange={(e) =>
+                  setHeightBuffer((prev) => [Number(e.target.value), prev[1]])
+                }
+              />
+              <input
+                type="number"
+                value={heightBuffer[1]}
+                onChange={(e) =>
+                  setHeightBuffer((prev) => [prev[0], Number(e.target.value)])
+                }
+              />
+            </div>
+            <button
+              onClick={() => {
+                setHeightBuffer([290, 978]);
+                setHeight([290, 978]);
+              }}
+            >
+              reset
+            </button>
           </div>
 
           <div>
             <label>
-              <input type="checkbox" /> Show only with walks
+              <input
+                type="checkbox"
+                checked={withWalk}
+                onChange={(e) => updateWithWalks(e.target.checked)}
+              />{" "}
+              Show only with walks
             </label>
           </div>
 
@@ -139,7 +283,10 @@ export default function MapSection({
               <div>
                 <div className={styles.hillName}>
                   <h4>
-                    {activeHill.name}
+                    <Link href={`/wainwrights/${activeHill.slug}`}>
+                      {activeHill.name}
+                    </Link>
+
                     {/* {activeHill.secondaryName
                       ? ` (${activeHill.secondaryName})`
                       : ""} */}
@@ -166,10 +313,10 @@ export default function MapSection({
                   More details <ArrowRightIcon />
                 </Link> */}
                 <Link
-                  href={`/wainwrights/${activeHill.slug}#walks`}
-                  className={`${buttonStyles.button} ${buttonStyles.small} ${buttonStyles.primary}`}
+                  href={`/wainwrights/${activeHill.slug}`}
+                  className={`${buttonStyles.button} ${buttonStyles.small} ${activeHill.walks.length > 0 ? buttonStyles.primary : buttonStyles.muted}`}
                 >
-                  See walks (1)
+                  See walks ({activeHill.walks.length})
                 </Link>
               </div>
             </div>

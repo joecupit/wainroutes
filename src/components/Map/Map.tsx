@@ -72,7 +72,7 @@ export default function LakeMap({
     zoom: number;
   }) => {
     setCenter(center);
-    setZoom(zoom);
+    setZoom(Math.min(zoom, 14));
   };
 
   const mapMarkers = useMemo(
@@ -117,7 +117,7 @@ export default function LakeMap({
     );
 
     setCenter(newBounds.center);
-    setZoom(newBounds.zoom);
+    setZoom(Math.min(newBounds.zoom, 14));
     setMinZoom(newBounds.zoom * 0.8);
   }, [mapBoundPoints]);
 
@@ -164,8 +164,11 @@ export default function LakeMap({
             setCenter(point.geometry.coordinates as [number, number]);
             if (clusterItems.length > 1) {
               setZoom(
-                (supercluster?.getClusterExpansionZoom(Number(point.id)) ??
-                  10) + 1,
+                Math.max(
+                  (supercluster?.getClusterExpansionZoom(Number(point.id)) ??
+                    10) + 1,
+                  14,
+                ),
               );
               if (setActivePoint) {
                 setActivePoint(null);
@@ -266,7 +269,8 @@ export default function LakeMap({
       <Map
         center={center}
         zoom={zoom}
-        minZoom={minZoom}
+        // minZoom={minZoom}
+        maxZoom={14}
         zoomSnap={false}
         onBoundsChanged={onBoundsChanged}
         attributionPrefix={false}

@@ -53,6 +53,16 @@
   }
 }
 
+.button.muted {
+  color: var(--clr-text);
+  background: var(--clr-bg-dark);
+  border: none;
+
+  &:hover {
+    background: var(--clr-bg-darker);
+  }
+}
+
 .button.secondary {
   color: var(--clr-text-black);
   background: var(--clr-text-white);

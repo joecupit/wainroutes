@@ -7,6 +7,7 @@ import Hill from "@/types/Hill";
 import { getHillMarkers } from "@/utils/getMapMarkers";
 
 import wainsJson from "@/data/hills.json";
+import walksJson from "@/data/walks.json";
 import getMapBounds from "@/utils/getMapBounds";
 import MapSection from "./components/MapSection";
 import ListSection from "./components/ListSection";
@@ -27,6 +28,7 @@ export type SimplifiedHill = {
   height: Hill["height"];
   prominence: Hill["prominence"];
   book: Hill["book"];
+  walks: string[];
 };
 
 export default function Wainwrights() {
@@ -39,6 +41,9 @@ export default function Wainwrights() {
         height: hill.height,
         prominence: hill.prominence,
         book: hill.book,
+        walks: walksJson
+          .filter((walk) => walk.wainwrights?.includes(hill.slug))
+          .map((walk) => walk.slug),
       }) as SimplifiedHill,
   );
 
