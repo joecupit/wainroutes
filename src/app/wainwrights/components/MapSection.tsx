@@ -199,113 +199,131 @@ export default function MapSection({
     }, 500);
   }, []);
 
+  useEffect(() => {
+    const titleElement = document.getElementById("wainwrights-title");
+
+    if (book && BookTitles[Number(book)]) {
+      const bookTitle = BookTitles[Number(book)];
+      if (titleElement)
+        titleElement.innerHTML = `<span>The 214 Wainwrights:</span> ${bookTitle}`;
+      document.title = `${bookTitle} Interactive Wainwright Map | Wainroutes`;
+    } else {
+      if (titleElement) titleElement.innerHTML = "The 214 Wainwrights";
+      document.title = "The 214 Wainwrights Interactive Map | Wainroutes";
+    }
+  }, [book]);
+
   return (
     <section>
       <h2 className="visually-hidden">Wainwrights Map</h2>
       <div className={styles.mapContainer}>
-        <div className={styles.mapFilters}>
-          <h3>Filter & search</h3>
-          <div className={styles.searchFilter}>
-            <SearchIcon />
-            <input
-              type="search"
-              placeholder="Search fells..."
-              value={searchTermBuffer}
-              onChange={(e) => setSearchTermBuffer(e.target.value)}
-            />
-            {searchTermBuffer && (
-              <button title="Clear" onClick={() => setSearchTermBuffer("")}>
-                <CloseIconSmall />
-              </button>
-            )}
+        <div className={styles.mapFiltersContainer}>
+          <div className={styles.mapFiltersHeader}>
+            <h3>Filter & Search</h3>
+            <button onClick={resetFilters}>Clear all</button>
           </div>
-          <div>
-            <h4>Region</h4>
-            <div className={styles.byRegion}>
-              <RadioButton
-                name="book"
-                value={0}
-                active={book === 0}
-                onChange={updateBook}
-              >
-                All Regions<span>214</span>
-              </RadioButton>
-              {[1, 2, 3, 4, 5, 6, 7].map((bookId) => (
+          <div className={styles.mapFilters}>
+            <div className={styles.searchFilter}>
+              <SearchIcon />
+              <input
+                type="search"
+                placeholder="Search fells..."
+                value={searchTermBuffer}
+                onChange={(e) => setSearchTermBuffer(e.target.value)}
+              />
+              {searchTermBuffer && (
+                <button title="Clear" onClick={() => setSearchTermBuffer("")}>
+                  <CloseIconSmall />
+                </button>
+              )}
+            </div>
+            <div>
+              <h4>Select region</h4>
+              <div className={styles.byRegion}>
                 <RadioButton
                   name="book"
-                  value={bookId}
-                  key={bookId}
-                  active={book === bookId}
+                  value={0}
+                  active={book === 0}
                   onChange={updateBook}
-                  bookId={bookId}
                 >
-                  {BookTitles[bookId].slice(4)}
-                  <span>{BookTotals[bookId]}</span>
+                  All Regions<span>214</span>
                 </RadioButton>
-              ))}
+                {[1, 2, 3, 4, 5, 6, 7].map((bookId) => (
+                  <RadioButton
+                    name="book"
+                    value={bookId}
+                    key={bookId}
+                    active={book === bookId}
+                    onChange={updateBook}
+                    bookId={bookId}
+                  >
+                    {BookTitles[bookId].slice(4)}
+                    <span>{BookTotals[bookId]}</span>
+                  </RadioButton>
+                ))}
+              </div>
             </div>
-          </div>
-
-          <div>
-            <div className={styles.heightHeader}>
-              <h4>Height</h4>
-              <button
-                onClick={() => {
-                  setHeightBuffer([290, 978]);
-                  setHeight([290, 978]);
-                }}
-              >
-                reset
-              </button>
-            </div>
-            <Slider
-              range
-              tooltip={{ formatter }}
-              min={290}
-              max={978}
-              value={heightBuffer}
-              onChange={(val) => setHeightBuffer(val)}
-              className={styles.heightSlider}
-            />
-            <div className={styles.heightInputs}>
-              <span>{displayElevation(height[0])}</span>
-              <span>{displayElevation(height[1])}</span>
-              {/* <input
-                type="number"
-                value={heightBuffer[0]}
-                onChange={(e) =>
-                  setHeightBuffer((prev) => [Number(e.target.value), prev[1]])
-                }
+            <div>
+              <div className={styles.heightHeader}>
+                <h4>Height</h4>
+                <button
+                  onClick={() => {
+                    setHeightBuffer([290, 978]);
+                    setHeight([290, 978]);
+                  }}
+                >
+                  reset
+                </button>
+              </div>
+              <Slider
+                range
+                tooltip={{ formatter }}
+                min={290}
+                max={978}
+                value={heightBuffer}
+                onChange={(val) => setHeightBuffer(val)}
+                className={styles.heightSlider}
               />
-              <input
-                type="number"
-                value={heightBuffer[1]}
-                onChange={(e) =>
-                  setHeightBuffer((prev) => [prev[0], Number(e.target.value)])
-                }
-              /> */}
+              <div className={styles.heightInputs}>
+                <span>{displayElevation(height[0])}</span>
+                <span>{displayElevation(height[1])}</span>
+                {/* <input
+                  type="number"
+                  value={heightBuffer[0]}
+                  onChange={(e) =>
+                    setHeightBuffer((prev) => [Number(e.target.value), prev[1]])
+                  }
+                />
+                <input
+                  type="number"
+                  value={heightBuffer[1]}
+                  onChange={(e) =>
+                    setHeightBuffer((prev) => [prev[0], Number(e.target.value)])
+                  }
+                /> */}
+              </div>
             </div>
-          </div>
 
-          <div>
-            <label className={styles.checkbox}>
-              <input
-                type="checkbox"
-                checked={withWalk}
-                onChange={(e) => updateWithWalks(e.target.checked)}
-              />
-              Only fells with walks
-            </label>
-          </div>
+            <div>
+              <label className={styles.checkbox}>
+                <input
+                  type="checkbox"
+                  checked={withWalk}
+                  onChange={(e) => updateWithWalks(e.target.checked)}
+                />
+                Only fells with walks
+              </label>
+            </div>
 
-          <button
-            onClick={resetFilters}
-            className={`${buttonStyles.button} ${buttonStyles.muted} ${styles.resetFilters}`}
-            ref={resetRef}
-          >
-            <ResetIcon />
-            Reset filters
-          </button>
+            <button
+              onClick={resetFilters}
+              className={`${buttonStyles.button} ${buttonStyles.muted} ${styles.resetFilters}`}
+              ref={resetRef}
+            >
+              <ResetIcon />
+              Reset filters
+            </button>
+          </div>
         </div>
         <div className={styles.map} ref={mapRef}>
           <LakeMap
