@@ -7,6 +7,15 @@ export const BookTitles: { [book: number]: string } = {
   6: "The North Western Fells",
   7: "The Western Fells",
 };
+export const BookTotals: { [book: number]: number } = {
+  1: 35,
+  2: 36,
+  3: 27,
+  4: 30,
+  5: 24,
+  6: 29,
+  7: 33,
+};
 
 export const Classifications: { [code: string]: string } = {
   "Ma": "Marilyn",

@@ -7,14 +7,16 @@ import MapMarker from "@/types/MapMarker";
 import LakeMap from "@/components/Map/Map";
 import { SimplifiedHill } from "../page";
 import { useSearchParams } from "next/navigation";
-import { BookTitles } from "@/types/Hill";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { BookTitles, BookTotals } from "@/types/Hill";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { displayElevation } from "@/utils/unitConversions";
 import {
   ArrowRightIcon,
   CloseIcon,
   CloseIconSmall,
+  ResetIcon,
+  SearchIcon,
 } from "@/icons/PhosphorIcons";
 
 import { Slider, SliderSingleProps } from "antd";
@@ -178,8 +180,23 @@ export default function MapSection({
     return simplifiedHillData.find((h) => h.slug === activePoint);
   }, [activePoint]);
 
+  const mapRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!activePoint || !mapRef.current) return;
+
+    if (window.scrollY < mapRef.current.getBoundingClientRect().top) {
+      mapRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [activePoint]);
+
+  const resetRef = useRef<HTMLButtonElement>(null);
   const resetFilters = useCallback(() => {
     window.history.replaceState({}, "", "/wainwrights");
+
+    resetRef.current?.classList.add(styles.animate);
+    setTimeout(() => {
+      resetRef.current?.classList.remove(styles.animate);
+    }, 500);
   }, []);
 
   return (
@@ -188,12 +205,20 @@ export default function MapSection({
       <div className={styles.mapContainer}>
         <div className={styles.mapFilters}>
           <h3>Filter & search</h3>
-          <input
-            type="search"
-            placeholder="Search by fell name..."
-            value={searchTermBuffer}
-            onChange={(e) => setSearchTermBuffer(e.target.value)}
-          />
+          <div className={styles.searchFilter}>
+            <SearchIcon />
+            <input
+              type="search"
+              placeholder="Search fells..."
+              value={searchTermBuffer}
+              onChange={(e) => setSearchTermBuffer(e.target.value)}
+            />
+            {searchTermBuffer && (
+              <button title="Clear" onClick={() => setSearchTermBuffer("")}>
+                <CloseIconSmall />
+              </button>
+            )}
+          </div>
           <div>
             <h4>Region</h4>
             <div className={styles.byRegion}>
@@ -203,7 +228,7 @@ export default function MapSection({
                 active={book === 0}
                 onChange={updateBook}
               >
-                All regions
+                All Regions<span>214</span>
               </RadioButton>
               {[1, 2, 3, 4, 5, 6, 7].map((bookId) => (
                 <RadioButton
@@ -212,15 +237,27 @@ export default function MapSection({
                   key={bookId}
                   active={book === bookId}
                   onChange={updateBook}
+                  bookId={bookId}
                 >
                   {BookTitles[bookId].slice(4)}
+                  <span>{BookTotals[bookId]}</span>
                 </RadioButton>
               ))}
             </div>
           </div>
 
           <div>
-            <h4>Height</h4>
+            <div className={styles.heightHeader}>
+              <h4>Height</h4>
+              <button
+                onClick={() => {
+                  setHeightBuffer([290, 978]);
+                  setHeight([290, 978]);
+                }}
+              >
+                reset
+              </button>
+            </div>
             <Slider
               range
               tooltip={{ formatter }}
@@ -231,7 +268,9 @@ export default function MapSection({
               className={styles.heightSlider}
             />
             <div className={styles.heightInputs}>
-              <input
+              <span>{displayElevation(height[0])}</span>
+              <span>{displayElevation(height[1])}</span>
+              {/* <input
                 type="number"
                 value={heightBuffer[0]}
                 onChange={(e) =>
@@ -244,32 +283,31 @@ export default function MapSection({
                 onChange={(e) =>
                   setHeightBuffer((prev) => [prev[0], Number(e.target.value)])
                 }
-              />
+              /> */}
             </div>
-            <button
-              onClick={() => {
-                setHeightBuffer([290, 978]);
-                setHeight([290, 978]);
-              }}
-            >
-              reset
-            </button>
           </div>
 
           <div>
-            <label>
+            <label className={styles.checkbox}>
               <input
                 type="checkbox"
                 checked={withWalk}
                 onChange={(e) => updateWithWalks(e.target.checked)}
-              />{" "}
-              Show only with walks
+              />
+              Only fells with walks
             </label>
           </div>
 
-          <button onClick={resetFilters}>Reset filters</button>
+          <button
+            onClick={resetFilters}
+            className={`${buttonStyles.button} ${buttonStyles.muted} ${styles.resetFilters}`}
+            ref={resetRef}
+          >
+            <ResetIcon />
+            Reset filters
+          </button>
         </div>
-        <div className={styles.map}>
+        <div className={styles.map} ref={mapRef}>
           <LakeMap
             primaryMarkers={filteredHillMarkers}
             defaultCenter={mapBounds.center}
@@ -299,6 +337,7 @@ export default function MapSection({
                     <CloseIconSmall />
                   </button>
                 </div>
+                {/* <p className={styles.hillBook}>{`Book ${activeHill.book}`}</p> */}
                 <p className={styles.hillBook}>{BookTitles[activeHill.book]}</p>
               </div>
               <div>
@@ -333,15 +372,26 @@ function RadioButton({
   children,
   active,
   onChange,
+  bookId,
 }: {
   name: string;
   value: string | number | undefined;
   children: React.ReactNode;
   active: boolean;
   onChange: CallableFunction;
+  bookId?: number;
 }) {
   return (
-    <label className={styles.filterRadio}>
+    <label
+      className={styles.filterRadio}
+      style={
+        bookId
+          ? ({
+              "--_book-color": `var(--clr-wain-book-${bookId})`,
+            } as React.CSSProperties)
+          : {}
+      }
+    >
       <input
         type="radio"
         name={name}

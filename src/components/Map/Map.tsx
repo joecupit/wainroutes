@@ -248,8 +248,8 @@ export default function LakeMap({
       activeMarker.geometry.coordinates[0],
       activeMarker.geometry.coordinates[1],
     ]);
-    if (zoom < 11) {
-      setZoom(11);
+    if (zoom < 11.5) {
+      setZoom(11.5);
     }
     // setZoom((supercluster.getClusterExpansionZoom(Number(activeMarker.id)) ?? 10)+1);
   }, [activePoint]);
