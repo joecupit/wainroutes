@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 
 import type { Metadata, Viewport } from "next";
-import { Analytics } from "@vercel/analytics/next";
+import Script from "next/script";
 
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
@@ -30,7 +30,11 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
-        <Analytics />
+        <Script
+          src="https://app.rybbit.io/api/script.js"
+          data-site-id="77d610f207f8"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
