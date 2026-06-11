@@ -20,6 +20,7 @@ import {
 } from "@/icons/PhosphorIcons";
 
 import { Slider, SliderSingleProps } from "antd";
+import { useWainwrights } from "../contexts/WainwrightsContext";
 
 type WainwrightsClientProps = {
   simplifiedHillData: SimplifiedHill[];
@@ -39,6 +40,8 @@ export default function MapSection({
   hillMarkers,
   mapBounds,
 }: WainwrightsClientProps) {
+  const { activePoint, setActivePoint, mapRef } = useWainwrights();
+
   const searchParams = useSearchParams();
 
   const [searchTerm, setSearchTerm] = useState(searchParams.get("query") ?? "");
@@ -172,17 +175,14 @@ export default function MapSection({
     );
   }, [searchTerm, book, withWalk, height, simplifiedHillData, hillMarkers]);
 
-  const [activePoint, setActivePoint] = useState<string | null>(null);
-
   const activeHill = useMemo(() => {
     if (!activePoint) return undefined;
 
     return simplifiedHillData.find((h) => h.slug === activePoint);
   }, [activePoint]);
 
-  const mapRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    if (!activePoint || !mapRef.current) return;
+    if (!activePoint || !mapRef?.current) return;
 
     if (window.scrollY < mapRef.current.getBoundingClientRect().top) {
       mapRef.current.scrollIntoView({ behavior: "smooth" });
@@ -201,14 +201,20 @@ export default function MapSection({
 
   useEffect(() => {
     const titleElement = document.getElementById("wainwrights-title");
+    const descElement = document.getElementById("wainwrights-desc");
 
     if (book && BookTitles[Number(book)]) {
       const bookTitle = BookTitles[Number(book)];
       if (titleElement)
         titleElement.innerHTML = `<span>The 214 Wainwrights:</span> ${bookTitle}`;
+      if (descElement)
+        descElement.innerText = `Explore ${bookTitle} on an interactive map of the Lake District and discover walking routes for each Wainwright fell.`;
       document.title = `${bookTitle} Interactive Wainwright Map | Wainroutes`;
     } else {
       if (titleElement) titleElement.innerHTML = "The 214 Wainwrights";
+      if (descElement)
+        descElement.innerText =
+          "Explore all 214 Wainwright fells on an interactive map of the Lake District. Search by name, filter by region and height, and discover walking routes for each fell.";
       document.title = "The 214 Wainwrights Interactive Map | Wainroutes";
     }
   }, [book]);

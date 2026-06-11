@@ -27,10 +27,19 @@ export default function WainwrightsHero({ book }: { book?: string }) {
           </h1>
           <p className={styles.subtitle}>Interactive Map & Complete List</p>
         </div>
-        <p>
-          Explore all 214 Wainwright fells on an interactive map of the Lake
-          District. Search by name, filter by region and height, and discover
-          walking routes for each fell.
+        <p id="wainwrights-desc">
+          {bookTitle ? (
+            <>
+              Explore {bookTitle} on an interactive map of the Lake District and
+              discover walking routes for each Wainwright fell.
+            </>
+          ) : (
+            <>
+              Explore all 214 Wainwright fells on an interactive map of the Lake
+              District. Search by name, filter by region and height, and
+              discover walking routes for each fell.
+            </>
+          )}
         </p>
       </div>
     </section>

@@ -13,6 +13,7 @@ import MapSection from "./components/MapSection";
 import ListSection from "./components/ListSection";
 import { displayElevation } from "@/utils/unitConversions";
 import WainwrightsHero from "./components/WainwrightsHero";
+import { WainwrightsProvider } from "./contexts/WainwrightsContext";
 
 type MetadataProps = {
   searchParams: Promise<{
@@ -84,21 +85,24 @@ export default async function WainwrightsPage({ searchParams }: MetadataProps) {
 
   return (
     <main className={styles.page}>
-      <WainwrightsHero book={book} />
+      <WainwrightsProvider>
+        <div>
+          <WainwrightsHero book={book} />
+          <MapSection
+            simplifiedHillData={simplifiedHillData}
+            hillMarkers={hillMarkers}
+            mapBounds={mapBounds}
+          />
+        </div>
 
-      <MapSection
-        simplifiedHillData={simplifiedHillData}
-        hillMarkers={hillMarkers}
-        mapBounds={mapBounds}
-      />
+        <ListSection simplifiedHills={simplifiedHillData} book={book} />
 
-      <ListSection simplifiedHills={simplifiedHillData} book={0} />
-
-      <section>
-        <h2>Stats and facts</h2>
-        <p>Tallest Wainwright: Scafell Pike - {displayElevation(978)}</p>
-        <p>Shortest Wainwright: Castle Crag - {displayElevation(270)}</p>
-      </section>
+        <section>
+          <h2>Stats and facts</h2>
+          <p>Tallest Wainwright: Scafell Pike - {displayElevation(978)}</p>
+          <p>Shortest Wainwright: Castle Crag - {displayElevation(270)}</p>
+        </section>
+      </WainwrightsProvider>
     </main>
   );
 }

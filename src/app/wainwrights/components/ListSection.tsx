@@ -1,22 +1,19 @@
-"use client";
-
-import { useSearchParams } from "next/navigation";
 import { SimplifiedHill } from "../page";
 import WainwrightList from "./WainwrightList";
 
 type WainwrightListProps = {
   simplifiedHills: SimplifiedHill[];
-  book: number;
+  book?: string;
 };
 
-export default function ListSection({ simplifiedHills }: WainwrightListProps) {
-  const searchParams = useSearchParams();
-  const book = Number(searchParams.get("book"));
-
+export default function ListSection({
+  simplifiedHills,
+  book,
+}: WainwrightListProps) {
   return (
     <section>
       <h2>Complete List of Wainwrights</h2>
-      <WainwrightList simplifiedHills={simplifiedHills} book={book} />
+      <WainwrightList simplifiedHills={simplifiedHills} book={Number(book)} />
     </section>
   );
 }
