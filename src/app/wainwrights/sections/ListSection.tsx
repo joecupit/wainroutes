@@ -4,8 +4,8 @@ import buttonStyles from "@/styles/buttons.module.css";
 import Link from "next/link";
 import type { SimplifiedHill } from "../page";
 import { displayElevation } from "@/utils/unitConversions";
-import MapViewButton from "../components/MapViewButton";
 import { BookTitles } from "@/types/Hill";
+import { RightIcon } from "@/icons/PhosphorIcons";
 
 export default function ListSection({
   simplifiedHills,
@@ -18,65 +18,63 @@ export default function ListSection({
     <section>
       <h2>Complete List of Wainwrights</h2>
       <div className={styles.list}>
-        <div className={styles.tableContainer}>
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                <th className={styles.tableRank}>#</th>
-                <th className={styles.tableName}>Fell</th>
-                <th className={styles.tableHeight}>Height</th>
-                <th className={styles.tableBook}>Region</th>
-                <th className={styles.tableWalks}>Walks</th>
-              </tr>
-            </thead>
-            <tbody>
-              {simplifiedHills.map((hill, index) => {
-                return (
-                  <tr
-                    key={index}
+        <div className={styles.table}>
+          <div className={styles.listHeader}>
+            <div className={styles.listRank}>#</div>
+            <div className={styles.listName}>Fell</div>
+            <div className={styles.listHeight}>Height</div>
+            <div className={styles.listRegion}>Region</div>
+            <div className={styles.listButtons}>Walks</div>
+          </div>
+          <ul className={styles.listBody}>
+            {simplifiedHills.map((hill, index) => {
+              return (
+                <li key={index}>
+                  <Link
+                    href={`/wainwrights/${hill.slug}`}
+                    className={styles.listItem}
                     style={
                       {
                         "--_book-color": `var(--clr-wain-book-${hill.book})`,
                       } as React.CSSProperties
                     }
                   >
-                    <td className={styles.tableRank}>{index + 1}</td>
-                    <td className={styles.tableName}>
-                      <Link href={`/wainwrights/${hill.slug}`}>
-                        {hill.name}
-                      </Link>
-                    </td>
-                    <td className={styles.tableHeight}>
+                    <div className={styles.listRank}>{index + 1}</div>
+                    <div className={styles.listName}>{hill.name}</div>
+                    <div className={styles.listHeight}>
                       {displayElevation(hill.height)}
-                    </td>
-                    <td className={styles.tableBook}>
-                      <div className={styles.bookButton}>
-                        <span>The</span>
+                    </div>
+                    <div className={styles.listRegion}>
+                      <span className={styles.listRegionLong}>
+                        {BookTitles[hill.book]}
+                      </span>
+                      <span className={styles.listRegionMed}>
+                        {BookTitles[hill.book].slice(4)}
+                      </span>
+                      <span className={styles.listRegionShort}>
                         {BookTitles[hill.book].slice(4, -6)}
-                        <span>Fells</span>
-                      </div>
-                    </td>
-                    <td className={styles.tableWalks}>
-                      <div className={styles.tableFlex}>
-                        {/* {hill.walks.length} */}
-                        <Link
-                          href={`/wainwrights/${hill.slug}`}
-                          className={`${buttonStyles.button} ${hill.walks.length > 0 ? buttonStyles.primary : buttonStyles.muted} ${buttonStyles.small}`}
-                        >
-                          {hill.walks.length > 0 ? (
-                            <>View walks ({hill.walks.length})</>
-                          ) : (
-                            <>More info</>
-                          )}
-                        </Link>
-                        <MapViewButton slug={hill.slug} />
-                      </div>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+                      </span>
+                    </div>
+                    <div className={styles.listButtons}>
+                      <Link
+                        href={`/wainwrights/${hill.slug}`}
+                        className={`${buttonStyles.button} ${hill.walks.length > 0 ? buttonStyles.primary : buttonStyles.muted} ${buttonStyles.small}`}
+                      >
+                        {hill.walks.length > 0 ? (
+                          <>View walks ({hill.walks.length})</>
+                        ) : (
+                          <>More info</>
+                        )}
+                      </Link>
+                    </div>
+                    <div className={styles.listArrow}>
+                      <RightIcon />
+                    </div>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </div>
     </section>
