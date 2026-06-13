@@ -1,4 +1,4 @@
-import styles from "../Wainwrights.module.css";
+import styles from "./HeroSection.module.css";
 
 import { useMemo } from "react";
 import { BookTitles } from "@/types/Hill";

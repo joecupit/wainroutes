@@ -1,19 +1,19 @@
 import styles from "./Wainwrights.module.css";
-import fontStyles from "@/styles/fonts.module.css";
-
-import { createPageMetadata } from "@/utils/metadata";
 
 import Hill, { BookTitles } from "@/types/Hill";
-import { getHillMarkers } from "@/utils/getMapMarkers";
 
 import wainsJson from "@/data/hills.json";
 import walksJson from "@/data/walks.json";
+
+import { createPageMetadata } from "@/utils/metadata";
 import getMapBounds from "@/utils/getMapBounds";
-import MapSection from "./components/MapSection";
-import ListSection from "./components/ListSection";
 import { displayElevation } from "@/utils/unitConversions";
-import WainwrightsHero from "./components/WainwrightsHero";
+import { getHillMarkers } from "@/utils/getMapMarkers";
+
 import { WainwrightsProvider } from "./contexts/WainwrightsContext";
+import HeroSection from "./sections/HeroSection";
+import MapSection from "./sections/MapSection";
+import ListSection from "./sections/ListSection";
 
 type MetadataProps = {
   searchParams: Promise<{
@@ -85,9 +85,9 @@ export default async function WainwrightsPage({ searchParams }: MetadataProps) {
 
   return (
     <main className={styles.page}>
-      <WainwrightsProvider>
+      <WainwrightsProvider allHills={simplifiedHillData}>
         <div>
-          <WainwrightsHero book={book} />
+          <HeroSection book={book} />
           <MapSection
             simplifiedHillData={simplifiedHillData}
             hillMarkers={hillMarkers}
@@ -95,7 +95,7 @@ export default async function WainwrightsPage({ searchParams }: MetadataProps) {
           />
         </div>
 
-        <ListSection simplifiedHills={simplifiedHillData} book={book} />
+        <ListSection simplifiedHills={simplifiedHillData} />
 
         <section>
           <h2>Stats and facts</h2>

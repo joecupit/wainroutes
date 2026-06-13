@@ -1,0 +1,140 @@
+.tableContainer {
+  border-radius: 0.5rem;
+  /* overflow: hidden; */
+  border: 1px solid var(--clr-border-muted);
+}
+.table {
+  width: 100%;
+  font-weight: var(--fw-medium);
+
+  border-collapse: collapse;
+
+  background: var(--clr-bg);
+
+  & thead {
+    background: var(--clr-bg-darker);
+    padding: 0.5rem;
+
+    /* position: sticky;
+    top: var(--navbar-height); */
+
+    border-bottom: 1px solid var(--clr-border-muted);
+  }
+  & thead th {
+    text-align: left;
+  }
+
+  & tbody tr {
+    --_book-color: transparent;
+  }
+  & thead th,
+  & tbody td {
+    padding-block: 0.25rem;
+    padding-inline: 0.25rem;
+    border-block-end: 1px solid var(--clr-border-muted);
+
+    &:first-child {
+      padding-inline-start: 1rem;
+    }
+    &:last-child {
+      padding-inline-end: 1rem;
+    }
+  }
+  & thead th {
+    padding-block: 0.75rem;
+  }
+  & tbody td {
+    border-block-end: 1px solid var(--clr-border-muted);
+  }
+
+  & .tableRank {
+    min-width: 1rem;
+    font-weight: var(--fw-regular);
+  }
+  & td.tableName {
+    padding-block: 0;
+  }
+  & .tableName a {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  /* & .tableHeight {
+    text-align: right;
+  } */
+  & .tableBook {
+    /* min-width: 15rem; */
+  }
+  & .tableWalks {
+    /* min-width: 15rem; */
+
+    & a,
+    & button {
+      padding-block: 0.25rem;
+    }
+  }
+
+  & tr {
+    transition: background-color 100ms;
+  }
+  /* & tbody tr:hover {
+    background: var(--clr-bg-light);
+  } */
+
+  & .tableFlex {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    & a:first-child {
+      flex: 1;
+    }
+    & > * {
+      height: 100%;
+    }
+  }
+}
+
+& .bookButton {
+  display: flex;
+  gap: 0.5ch;
+  align-items: center;
+  user-select: unset;
+}
+& .bookButton::before {
+  content: "";
+  display: block;
+  max-width: 1rem;
+  max-height: 1rem;
+  min-width: 1rem;
+  min-height: 1rem;
+  background: var(--_book-color);
+  border-radius: 9999rem;
+}
+
+@media (max-width: 880px) {
+  .table {
+    /* & .tableRank, */
+    & .tableWalks {
+      display: none;
+    }
+
+    & tbody td {
+      padding-block: 0.5rem;
+    }
+  }
+}
+@media (max-width: 600px) {
+  .table {
+    & .tableBook {
+      /* display: none; */
+      & .bookButton span {
+        display: none;
+      }
+    }
+  }
+}
