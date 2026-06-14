@@ -31,6 +31,7 @@ export default async function WainwrightsPage({
         height: hill.height,
         prominence: hill.prominence,
         book: hill.book,
+        rank: hill.rank,
         walks: walksJson
           .filter((walk) => walk.wainwrights?.includes(hill.slug))
           .map((walk) => walk.slug),

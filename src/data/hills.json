@@ -8,7 +8,8 @@
     "latitude": 54.466367,
     "longitude": -3.179175,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 4
+    "book": 4,
+    "rank": 42
   },
   {
     "slug": "angletarn-pikes",
@@ -19,7 +20,8 @@
     "latitude": 54.525312,
     "longitude": -2.907999,
     "classifications": ["5", "Dew", "W", "B", "Sy", "Fel"],
-    "book": 2
+    "book": 2,
+    "rank": 143
   },
   {
     "slug": "ard-crags",
@@ -30,7 +32,8 @@
     "latitude": 54.566938,
     "longitude": -3.228123,
     "classifications": ["Hu", "5", "Dew", "W", "B", "Sy", "Fel"],
-    "book": 6
+    "book": 6,
+    "rank": 136
   },
   {
     "slug": "armboth-fell",
@@ -41,7 +44,8 @@
     "latitude": 54.532026,
     "longitude": -3.089686,
     "classifications": ["W"],
-    "book": 3
+    "book": 3,
+    "rank": 182
   },
   {
     "slug": "arnison-crag",
@@ -52,7 +56,8 @@
     "latitude": 54.526364,
     "longitude": -2.938524,
     "classifications": ["4", "W", "B", "Sy", "Fel"],
-    "book": 1
+    "book": 1,
+    "rank": 194
   },
   {
     "slug": "arthurs-pike",
@@ -63,7 +68,8 @@
     "latitude": 54.578435,
     "longitude": -2.835799,
     "classifications": ["W", "B", "Sy", "Fel"],
-    "book": 2
+    "book": 2,
+    "rank": 157
   },
   {
     "slug": "bakestall",
@@ -74,7 +80,8 @@
     "latitude": 54.667426,
     "longitude": -3.139049,
     "classifications": ["W", "B", "Sy", "Fel"],
-    "book": 5
+    "book": 5,
+    "rank": 100
   },
   {
     "slug": "bannerdale-crags",
@@ -85,7 +92,8 @@
     "latitude": 54.65195,
     "longitude": -3.031747,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 5
+    "book": 5,
+    "rank": 97
   },
   {
     "slug": "barf",
@@ -96,7 +104,8 @@
     "latitude": 54.629665,
     "longitude": -3.218084,
     "classifications": ["4", "W", "B", "Sy", "Fel"],
-    "book": 6
+    "book": 6,
+    "rank": 185
   },
   {
     "slug": "barrow",
@@ -107,7 +116,8 @@
     "latitude": 54.58566,
     "longitude": -3.19752,
     "classifications": ["4", "W", "B", "Sy", "Fel"],
-    "book": 6
+    "book": 6,
+    "rank": 187
   },
   {
     "slug": "base-brown",
@@ -118,18 +128,8 @@
     "latitude": 54.492581,
     "longitude": -3.197777,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 7
-  },
-  {
-    "slug": "wansfell",
-    "name": "Wansfell",
-    "height": 487,
-    "prominence": 148,
-    "gridRef": "NY403051",
-    "latitude": 54.438194,
-    "longitude": -2.921751,
-    "classifications": ["Hu", "4", "sMa", "W", "Fel"],
-    "book": 2
+    "book": 7,
+    "rank": 117
   },
   {
     "slug": "beda-fell",
@@ -140,7 +140,8 @@
     "latitude": 54.54649,
     "longitude": -2.884399,
     "classifications": ["5", "Dew", "W", "B", "Sy", "Fel"],
-    "book": 2
+    "book": 2,
+    "rank": 170
   },
   {
     "slug": "binsey",
@@ -151,7 +152,8 @@
     "latitude": 54.708795,
     "longitude": -3.204188,
     "classifications": ["Ma", "4", "W", "B", "Sy", "Fel"],
-    "book": 5
+    "book": 5,
+    "rank": 192
   },
   {
     "slug": "birkhouse-moor",
@@ -162,7 +164,8 @@
     "latitude": 54.535042,
     "longitude": -2.98532,
     "classifications": ["N", "sSim", "W", "B", "Sy", "Fel"],
-    "book": 1
+    "book": 1,
+    "rank": 78
   },
   {
     "slug": "birks",
@@ -173,7 +176,8 @@
     "latitude": 54.520702,
     "longitude": -2.959051,
     "classifications": ["N", "sSim", "W", "B", "Sy", "Fel"],
-    "book": 1
+    "book": 1,
+    "rank": 124
   },
   {
     "slug": "black-fell",
@@ -184,7 +188,8 @@
     "latitude": 54.405503,
     "longitude": -3.017955,
     "classifications": ["Hu", "3", "W", "B", "Sy", "Fel"],
-    "book": 4
+    "book": 4,
+    "rank": 212
   },
   {
     "slug": "blake-fell",
@@ -195,7 +200,8 @@
     "latitude": 54.564569,
     "longitude": -3.377198,
     "classifications": ["Ma", "5", "Dew", "W", "B", "Sy", "Fel"],
-    "book": 7
+    "book": 7,
+    "rank": 140
   },
   {
     "slug": "blea-rigg",
@@ -206,7 +212,8 @@
     "latitude": 54.461076,
     "longitude": -3.078806,
     "classifications": ["W", "B", "Sy", "Fel"],
-    "book": 3
+    "book": 3,
+    "rank": 152
   },
   {
     "slug": "bleaberry-fell",
@@ -217,7 +224,8 @@
     "latitude": 54.56637,
     "longitude": -3.106162,
     "classifications": ["5", "Dew", "W", "B", "Sy", "Fel"],
-    "book": 3
+    "book": 3,
+    "rank": 132
   },
   {
     "slug": "blencathra",
@@ -228,7 +236,8 @@
     "latitude": 54.63995,
     "longitude": -3.049773,
     "classifications": ["Ma", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 5
+    "book": 5,
+    "rank": 14
   },
   {
     "slug": "bonscale-pike",
@@ -239,7 +248,8 @@
     "latitude": 54.573028,
     "longitude": -2.846919,
     "classifications": ["W", "B", "Sy", "Fel"],
-    "book": 2
+    "book": 2,
+    "rank": 161
   },
   {
     "slug": "bowfell",
@@ -250,7 +260,8 @@
     "latitude": 54.447834,
     "longitude": -3.166212,
     "classifications": ["Hu", "Sim", "Hew", "N", "sMa", "W", "B", "Sy", "Fel"],
-    "book": 4
+    "book": 4,
+    "rank": 6
   },
   {
     "slug": "bowscale-fell",
@@ -261,7 +272,8 @@
     "latitude": 54.665538,
     "longitude": -3.035037,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 5
+    "book": 5,
+    "rank": 87
   },
   {
     "slug": "brae-fell",
@@ -272,7 +284,8 @@
     "latitude": 54.70642,
     "longitude": -3.105361,
     "classifications": ["W", "B", "Sy", "Fel"],
-    "book": 5
+    "book": 5,
+    "rank": 134
   },
   {
     "slug": "brandreth",
@@ -283,7 +296,8 @@
     "latitude": 54.496479,
     "longitude": -3.214274,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 7
+    "book": 7,
+    "rank": 79
   },
   {
     "slug": "branstree",
@@ -294,7 +308,8 @@
     "latitude": 54.482402,
     "longitude": -2.807168,
     "classifications": ["Hu", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 2
+    "book": 2,
+    "rank": 81
   },
   {
     "slug": "brim-fell",
@@ -305,7 +320,8 @@
     "latitude": 54.377283,
     "longitude": -3.124197,
     "classifications": ["N", "sSim", "W", "B", "Sy", "Fel"],
-    "book": 4
+    "book": 4,
+    "rank": 37
   },
   {
     "slug": "brock-crags",
@@ -316,7 +332,8 @@
     "latitude": 54.5149,
     "longitude": -2.902593,
     "classifications": ["s5", "W", "B", "Sy", "Fel"],
-    "book": 2
+    "book": 2,
+    "rank": 144
   },
   {
     "slug": "broom-fell",
@@ -327,7 +344,8 @@
     "latitude": 54.633407,
     "longitude": -3.249491,
     "classifications": ["s5", "W", "B", "Sy", "Fel"],
-    "book": 6
+    "book": 6,
+    "rank": 169
   },
   {
     "slug": "buckbarrow",
@@ -338,7 +356,8 @@
     "latitude": 54.443156,
     "longitude": -3.334275,
     "classifications": ["W", "B", "Sy", "Fel"],
-    "book": 7
+    "book": 7,
+    "rank": 196
   },
   {
     "slug": "burnbank-fell",
@@ -349,7 +368,8 @@
     "latitude": 54.575943,
     "longitude": -3.37834,
     "classifications": ["W", "B", "Sy"],
-    "book": 7
+    "book": 7,
+    "rank": 183
   },
   {
     "slug": "calf-crag",
@@ -360,7 +380,8 @@
     "latitude": 54.484231,
     "longitude": -3.079493,
     "classifications": ["5", "Dew", "W", "B", "Sy", "Fel"],
-    "book": 3
+    "book": 3,
+    "rank": 154
   },
   {
     "slug": "carl-side",
@@ -371,7 +392,8 @@
     "latitude": 54.642389,
     "longitude": -3.155984,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 5
+    "book": 5,
+    "rank": 64
   },
   {
     "slug": "carrock-fell",
@@ -382,7 +404,8 @@
     "latitude": 54.693484,
     "longitude": -3.02287,
     "classifications": ["Sim", "Hew", "N", "sHu", "W", "B", "Sy", "Fel"],
-    "book": 5
+    "book": 5,
+    "rank": 105
   },
   {
     "slug": "castle-crag",
@@ -393,7 +416,8 @@
     "latitude": 54.533181,
     "longitude": -3.161612,
     "classifications": ["2", "W", "Sy", "Fel"],
-    "book": 6
+    "book": 6,
+    "rank": 214
   },
   {
     "slug": "catbells",
@@ -404,7 +428,8 @@
     "latitude": 54.568316,
     "longitude": -3.1707,
     "classifications": ["4", "W", "B", "Sy", "Fel"],
-    "book": 6
+    "book": 6,
+    "rank": 189
   },
   {
     "slug": "catstycam",
@@ -415,7 +440,20 @@
     "latitude": 54.533472,
     "longitude": -3.008928,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 1
+    "book": 1,
+    "rank": 10
+  },
+  {
+    "slug": "caudale-moor",
+    "name": "Caudale Moor",
+    "height": 763,
+    "prominence": 171,
+    "gridRef": "NY417100",
+    "latitude": 54.48206,
+    "longitude": -2.90008,
+    "classifications": ["Ma", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
+    "book": 2,
+    "rank": 55
   },
   {
     "slug": "causey-pike",
@@ -426,7 +464,8 @@
     "latitude": 54.576825,
     "longitude": -3.210149,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 6
+    "book": 6,
+    "rank": 119
   },
   {
     "slug": "caw-fell",
@@ -437,7 +476,8 @@
     "latitude": 54.486868,
     "longitude": -3.341256,
     "classifications": ["N", "sSim", "W", "B", "Sy", "Fel"],
-    "book": 7
+    "book": 7,
+    "rank": 91
   },
   {
     "slug": "clough-head",
@@ -448,7 +488,8 @@
     "latitude": 54.593661,
     "longitude": -3.032362,
     "classifications": ["Hu", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 1
+    "book": 1,
+    "rank": 74
   },
   {
     "slug": "cold-pike",
@@ -459,7 +500,20 @@
     "latitude": 54.4226,
     "longitude": -3.137582,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 4
+    "book": 4,
+    "rank": 88
+  },
+  {
+    "slug": "coniston-old-man",
+    "name": "Old Man of Coniston",
+    "height": 802,
+    "prominence": 415,
+    "gridRef": "SD272978",
+    "latitude": 54.370658,
+    "longitude": -3.121445,
+    "classifications": ["Ma", "Sim", "Hew", "N", "W", "B", "Sy", "Fel", "CoH"],
+    "book": 4,
+    "rank": 34
   },
   {
     "slug": "crag-fell",
@@ -470,18 +524,8 @@
     "latitude": 54.516708,
     "longitude": -3.396072,
     "classifications": ["Hu", "5", "Dew", "W", "B", "Sy", "Fel"],
-    "book": 7
-  },
-  {
-    "slug": "eel-crag",
-    "name": "Eel Crag",
-    "height": 839,
-    "prominence": 117,
-    "gridRef": "NY192203",
-    "latitude": 54.571771,
-    "longitude": -3.250235,
-    "classifications": ["Hu", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 6
+    "book": 7,
+    "rank": 162
   },
   {
     "slug": "crinkle-crags",
@@ -492,7 +536,8 @@
     "latitude": 54.433704,
     "longitude": -3.159813,
     "classifications": ["Hu", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 4
+    "book": 4,
+    "rank": 17
   },
   {
     "slug": "dale-head",
@@ -503,7 +548,8 @@
     "latitude": 54.527238,
     "longitude": -3.202284,
     "classifications": ["Ma", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 6
+    "book": 6,
+    "rank": 63
   },
   {
     "slug": "dodd",
@@ -514,7 +560,8 @@
     "latitude": 54.63561,
     "longitude": -3.172122,
     "classifications": ["Hu", "5", "Dew", "W", "B", "Sy", "Fel"],
-    "book": 5
+    "book": 5,
+    "rank": 175
   },
   {
     "slug": "dollywaggon-pike",
@@ -525,7 +572,8 @@
     "latitude": 54.508693,
     "longitude": -3.011175,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 1
+    "book": 1,
+    "rank": 18
   },
   {
     "slug": "dove-crag",
@@ -536,7 +584,8 @@
     "latitude": 54.4854,
     "longitude": -2.96693,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 1
+    "book": 1,
+    "rank": 38
   },
   {
     "slug": "dow-crag",
@@ -547,7 +596,8 @@
     "latitude": 54.3703,
     "longitude": -3.136659,
     "classifications": ["Hu", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 4
+    "book": 4,
+    "rank": 48
   },
   {
     "slug": "eagle-crag",
@@ -558,7 +608,20 @@
     "latitude": 54.499056,
     "longitude": -3.12048,
     "classifications": ["s5", "W", "B", "Sy", "Fel"],
-    "book": 3
+    "book": 3,
+    "rank": 160
+  },
+  {
+    "slug": "eel-crag",
+    "name": "Eel Crag",
+    "height": 839,
+    "prominence": 117,
+    "gridRef": "NY192203",
+    "latitude": 54.571771,
+    "longitude": -3.250235,
+    "classifications": ["Hu", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
+    "book": 6,
+    "rank": 24
   },
   {
     "slug": "esk-pike",
@@ -569,7 +632,8 @@
     "latitude": 54.457172,
     "longitude": -3.179219,
     "classifications": ["Hu", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 4
+    "book": 4,
+    "rank": 11
   },
   {
     "slug": "fairfield",
@@ -580,7 +644,8 @@
     "latitude": 54.497072,
     "longitude": -2.991633,
     "classifications": ["Ma", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 1
+    "book": 1,
+    "rank": 13
   },
   {
     "slug": "fellbarrow",
@@ -591,7 +656,8 @@
     "latitude": 54.60582,
     "longitude": -3.344699,
     "classifications": ["4", "W", "B", "Sy", "Fel"],
-    "book": 7
+    "book": 7,
+    "rank": 199
   },
   {
     "slug": "fleetwith-pike",
@@ -602,7 +668,8 @@
     "latitude": 54.516562,
     "longitude": -3.22818,
     "classifications": ["Hu", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 7
+    "book": 7,
+    "rank": 116
   },
   {
     "slug": "froswick",
@@ -613,7 +680,8 @@
     "latitude": 54.468949,
     "longitude": -2.872959,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 2
+    "book": 2,
+    "rank": 77
   },
   {
     "slug": "gavel-fell",
@@ -624,7 +692,8 @@
     "latitude": 54.552984,
     "longitude": -3.366804,
     "classifications": ["5", "Dew", "W", "B", "Sy", "Fel"],
-    "book": 7
+    "book": 7,
+    "rank": 158
   },
   {
     "slug": "gibson-knott",
@@ -635,7 +704,8 @@
     "latitude": 54.48107,
     "longitude": -3.055825,
     "classifications": ["W", "B", "Sy", "Fel"],
-    "book": 3
+    "book": 3,
+    "rank": 198
   },
   {
     "slug": "glaramara",
@@ -646,7 +716,8 @@
     "latitude": 54.483839,
     "longitude": -3.165338,
     "classifications": ["Hu", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 4
+    "book": 4,
+    "rank": 45
   },
   {
     "slug": "glenridding-dodd",
@@ -657,7 +728,8 @@
     "latitude": 54.54947,
     "longitude": -2.959246,
     "classifications": ["4", "W", "B", "Sy", "Fel"],
-    "book": 1
+    "book": 1,
+    "rank": 193
   },
   {
     "slug": "gowbarrow-fell",
@@ -668,7 +740,8 @@
     "latitude": 54.58811,
     "longitude": -2.918201,
     "classifications": ["W", "B", "Sy", "Fel"],
-    "book": 1
+    "book": 1,
+    "rank": 181
   },
   {
     "slug": "grange-fell",
@@ -679,7 +752,8 @@
     "latitude": 54.536399,
     "longitude": -3.137963,
     "classifications": ["4", "W", "B", "Sy", "Fel"],
-    "book": 3
+    "book": 3,
+    "rank": 200
   },
   {
     "slug": "grasmoor",
@@ -690,7 +764,8 @@
     "latitude": 54.571635,
     "longitude": -3.277905,
     "classifications": ["Ma", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 6
+    "book": 6,
+    "rank": 20
   },
   {
     "slug": "gray-crag",
@@ -701,7 +776,8 @@
     "latitude": 54.497475,
     "longitude": -2.885379,
     "classifications": ["N", "W", "B", "Sy", "Fel"],
-    "book": 2
+    "book": 2,
+    "rank": 90
   },
   {
     "slug": "graystones",
@@ -712,7 +788,8 @@
     "latitude": 54.627991,
     "longitude": -3.277642,
     "classifications": ["W"],
-    "book": 6
+    "book": 6,
+    "rank": 188
   },
   {
     "slug": "great-borne",
@@ -723,7 +800,8 @@
     "latitude": 54.534903,
     "longitude": -3.355442,
     "classifications": ["Hu", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 7
+    "book": 7,
+    "rank": 126
   },
   {
     "slug": "great-calva",
@@ -734,7 +812,8 @@
     "latitude": 54.670761,
     "longitude": -3.101073,
     "classifications": ["Hu", "Sim", "Hew", "N", "sMa", "W", "B", "Sy", "Fel"],
-    "book": 5
+    "book": 5,
+    "rank": 95
   },
   {
     "slug": "great-carrs",
@@ -745,7 +824,8 @@
     "latitude": 54.398777,
     "longitude": -3.124738,
     "classifications": ["N", "sSim", "W", "B", "Sy", "Fel"],
-    "book": 4
+    "book": 4,
+    "rank": 43
   },
   {
     "slug": "great-cockup",
@@ -756,7 +836,8 @@
     "latitude": 54.689677,
     "longitude": -3.128766,
     "classifications": ["5", "Dew", "sHu", "W", "B", "Sy", "Fel"],
-    "book": 5
+    "book": 5,
+    "rank": 159
   },
   {
     "slug": "great-crag",
@@ -767,7 +848,8 @@
     "latitude": 54.522189,
     "longitude": -3.129333,
     "classifications": ["4", "W", "B", "Sy", "Fel"],
-    "book": 3
+    "book": 3,
+    "rank": 191
   },
   {
     "slug": "great-dodd",
@@ -778,7 +860,8 @@
     "latitude": 54.575689,
     "longitude": -3.019377,
     "classifications": ["Hu", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 1
+    "book": 1,
+    "rank": 19
   },
   {
     "slug": "great-end",
@@ -789,7 +872,8 @@
     "latitude": 54.464949,
     "longitude": -3.194532,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 4
+    "book": 4,
+    "rank": 5
   },
   {
     "slug": "great-gable",
@@ -800,7 +884,8 @@
     "latitude": 54.482084,
     "longitude": -3.219296,
     "classifications": ["Ma", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 7
+    "book": 7,
+    "rank": 7
   },
   {
     "slug": "great-mell-fell",
@@ -811,7 +896,8 @@
     "latitude": 54.619837,
     "longitude": -2.935657,
     "classifications": ["Ma", "5", "Dew", "W", "B", "Sy", "Fel"],
-    "book": 1
+    "book": 1,
+    "rank": 155
   },
   {
     "slug": "great-rigg",
@@ -822,7 +908,8 @@
     "latitude": 54.484906,
     "longitude": -2.995676,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 1
+    "book": 1,
+    "rank": 54
   },
   {
     "slug": "great-sca-fell",
@@ -833,7 +920,8 @@
     "latitude": 54.695145,
     "longitude": -3.100989,
     "classifications": ["W", "B", "Sy", "Fel", "xN"],
-    "book": 5
+    "book": 5,
+    "rank": 114
   },
   {
     "slug": "green-crag",
@@ -844,7 +932,8 @@
     "latitude": 54.373688,
     "longitude": -3.232801,
     "classifications": ["Hu", "4", "sMa", "W", "B", "Sy", "Fel"],
-    "book": 4
+    "book": 4,
+    "rank": 176
   },
   {
     "slug": "green-gable",
@@ -855,7 +944,8 @@
     "latitude": 54.485699,
     "longitude": -3.213769,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 7
+    "book": 7,
+    "rank": 35
   },
   {
     "slug": "grey-crag",
@@ -866,7 +956,8 @@
     "latitude": 54.457874,
     "longitude": -2.777191,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 2
+    "book": 2,
+    "rank": 118
   },
   {
     "slug": "grey-friar",
@@ -877,7 +968,8 @@
     "latitude": 54.39333,
     "longitude": -3.14107,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 4
+    "book": 4,
+    "rank": 50
   },
   {
     "slug": "grey-knotts",
@@ -888,7 +980,8 @@
     "latitude": 54.502362,
     "longitude": -3.210186,
     "classifications": ["N", "W", "B", "Sy", "Fel"],
-    "book": 7
+    "book": 7,
+    "rank": 92
   },
   {
     "slug": "grike",
@@ -899,7 +992,8 @@
     "latitude": 54.513766,
     "longitude": -3.41488,
     "classifications": ["4", "W", "B", "Sy", "Fel"],
-    "book": 7
+    "book": 7,
+    "rank": 177
   },
   {
     "slug": "grisedale-pike",
@@ -910,7 +1004,8 @@
     "latitude": 54.591745,
     "longitude": -3.242071,
     "classifications": ["Ma", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 6
+    "book": 6,
+    "rank": 40
   },
   {
     "slug": "hallin-fell",
@@ -921,7 +1016,8 @@
     "latitude": 54.570412,
     "longitude": -2.878498,
     "classifications": ["Ma", "3", "W", "B", "Sy", "Fel"],
-    "book": 2
+    "book": 2,
+    "rank": 203
   },
   {
     "slug": "hard-knott",
@@ -932,7 +1028,8 @@
     "latitude": 54.411026,
     "longitude": -3.185029,
     "classifications": ["Ma", "5", "Dew", "W", "B", "Sy", "Fel"],
-    "book": 4
+    "book": 4,
+    "rank": 150
   },
   {
     "slug": "harrison-stickle",
@@ -943,7 +1040,8 @@
     "latitude": 54.456898,
     "longitude": -3.109455,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 3
+    "book": 3,
+    "rank": 69
   },
   {
     "slug": "hart-crag",
@@ -954,7 +1052,8 @@
     "latitude": 54.492259,
     "longitude": -2.975615,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 1
+    "book": 1,
+    "rank": 27
   },
   {
     "slug": "hart-side",
@@ -965,19 +1064,8 @@
     "latitude": 54.568719,
     "longitude": -2.992938,
     "classifications": ["N", "sSim", "W", "B", "Sy", "Fel"],
-    "book": 1
-  },
-  {
-    "slug": "harter-fell-s",
-    "name": "Harter Fell",
-    "secondaryName": "Southern",
-    "height": 654,
-    "prominence": 276,
-    "gridRef": "SD218997",
-    "latitude": 54.386898,
-    "longitude": -3.204538,
-    "classifications": ["Ma", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 4
+    "book": 1,
+    "rank": 61
   },
   {
     "slug": "harter-fell-fe",
@@ -989,7 +1077,21 @@
     "latitude": 54.476414,
     "longitude": -2.835323,
     "classifications": ["Hu", "Sim", "Hew", "N", "sMa", "W", "B", "Sy", "Fel"],
-    "book": 2
+    "book": 2,
+    "rank": 47
+  },
+  {
+    "slug": "harter-fell-s",
+    "name": "Harter Fell",
+    "secondaryName": "Southern",
+    "height": 654,
+    "prominence": 276,
+    "gridRef": "SD218997",
+    "latitude": 54.386898,
+    "longitude": -3.204538,
+    "classifications": ["Ma", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
+    "book": 4,
+    "rank": 111
   },
   {
     "slug": "hartsop-above-how",
@@ -1000,7 +1102,8 @@
     "latitude": 54.499595,
     "longitude": -2.953939,
     "classifications": ["s5", "W", "B", "Sy", "Fel"],
-    "book": 1
+    "book": 1,
+    "rank": 137
   },
   {
     "slug": "hartsop-dodd",
@@ -1011,7 +1114,8 @@
     "latitude": 54.498538,
     "longitude": -2.910448,
     "classifications": ["N", "sSim", "W", "B", "Sy", "Fel"],
-    "book": 2
+    "book": 2,
+    "rank": 125
   },
   {
     "slug": "haycock",
@@ -1022,7 +1126,8 @@
     "latitude": 54.484568,
     "longitude": -3.321576,
     "classifications": ["Sim", "Hew", "N", "sHu", "W", "B", "Sy", "Fel"],
-    "book": 7
+    "book": 7,
+    "rank": 36
   },
   {
     "slug": "haystacks",
@@ -1033,7 +1138,8 @@
     "latitude": 54.507243,
     "longitude": -3.247321,
     "classifications": ["5", "Dew", "W", "B", "Sy", "Fel"],
-    "book": 7
+    "book": 7,
+    "rank": 131
   },
   {
     "slug": "helm-crag",
@@ -1044,7 +1150,8 @@
     "latitude": 54.475026,
     "longitude": -3.040823,
     "classifications": ["4", "W", "B", "Sy", "Fel"],
-    "book": 3
+    "book": 3,
+    "rank": 201
   },
   {
     "slug": "helvellyn",
@@ -1066,7 +1173,8 @@
       "Fel",
       "CoH"
     ],
-    "book": 1
+    "book": 1,
+    "rank": 3
   },
   {
     "slug": "hen-comb",
@@ -1077,7 +1185,8 @@
     "latitude": 54.550848,
     "longitude": -3.343261,
     "classifications": ["Hu", "5", "Dew", "sMa", "W", "B", "Sy", "Fel"],
-    "book": 7
+    "book": 7,
+    "rank": 171
   },
   {
     "slug": "heron-pike",
@@ -1088,7 +1197,8 @@
     "latitude": 54.466063,
     "longitude": -2.995126,
     "classifications": ["N", "sSim", "W", "B", "Sy"],
-    "book": 1
+    "book": 1,
+    "rank": 127
   },
   {
     "slug": "high-crag",
@@ -1099,7 +1209,8 @@
     "latitude": 54.514628,
     "longitude": -3.267412,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 7
+    "book": 7,
+    "rank": 65
   },
   {
     "slug": "high-hartsop-dodd",
@@ -1110,19 +1221,8 @@
     "latitude": 54.488614,
     "longitude": -2.93769,
     "classifications": ["W", "B", "Sy", "Fel"],
-    "book": 1
-  },
-  {
-    "slug": "high-pike-n",
-    "name": "High Pike",
-    "secondaryName": "Northern",
-    "height": 658,
-    "prominence": 69,
-    "gridRef": "NY318350",
-    "latitude": 54.705407,
-    "longitude": -3.058742,
-    "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 5
+    "book": 1,
+    "rank": 164
   },
   {
     "slug": "high-pike-e",
@@ -1134,7 +1234,21 @@
     "latitude": 54.470976,
     "longitude": -2.966791,
     "classifications": ["W", "B", "Sy", "Fel"],
-    "book": 1
+    "book": 1,
+    "rank": 109
+  },
+  {
+    "slug": "high-pike-n",
+    "name": "High Pike",
+    "secondaryName": "Northern",
+    "height": 658,
+    "prominence": 69,
+    "gridRef": "NY318350",
+    "latitude": 54.705407,
+    "longitude": -3.058742,
+    "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
+    "book": 5,
+    "rank": 107
   },
   {
     "slug": "high-raise-c",
@@ -1146,7 +1260,8 @@
     "latitude": 54.475962,
     "longitude": -3.111268,
     "classifications": ["Ma", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 3
+    "book": 3,
+    "rank": 57
   },
   {
     "slug": "high-raise-fe",
@@ -1158,7 +1273,8 @@
     "latitude": 54.513367,
     "longitude": -2.853779,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 2
+    "book": 2,
+    "rank": 31
   },
   {
     "slug": "high-rigg",
@@ -1169,7 +1285,8 @@
     "latitude": 54.588432,
     "longitude": -3.071568,
     "classifications": ["Ma", "3", "W", "B", "Sy", "Fel"],
-    "book": 3
+    "book": 3,
+    "rank": 209
   },
   {
     "slug": "high-seat",
@@ -1180,7 +1297,8 @@
     "latitude": 54.552632,
     "longitude": -3.103765,
     "classifications": ["Hu", "Sim", "Dew", "W", "B", "Sy", "Fel"],
-    "book": 3
+    "book": 3,
+    "rank": 129
   },
   {
     "slug": "high-spy",
@@ -1191,7 +1309,8 @@
     "latitude": 54.535559,
     "longitude": -3.185141,
     "classifications": ["Hu", "Sim", "Hew", "N", "sMa", "W", "B", "Sy", "Fel"],
-    "book": 6
+    "book": 6,
+    "rank": 113
   },
   {
     "slug": "high-stile",
@@ -1202,7 +1321,8 @@
     "latitude": 54.521522,
     "longitude": -3.287851,
     "classifications": ["W", "B"],
-    "book": 7
+    "book": 7,
+    "rank": 30
   },
   {
     "slug": "high-street",
@@ -1213,7 +1333,8 @@
     "latitude": 54.491691,
     "longitude": -2.86486,
     "classifications": ["Ma", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 2
+    "book": 2,
+    "rank": 25
   },
   {
     "slug": "high-tove",
@@ -1224,7 +1345,8 @@
     "latitude": 54.53886,
     "longitude": -3.100209,
     "classifications": ["W", "B", "Sy", "Fel"],
-    "book": 3
+    "book": 3,
+    "rank": 167
   },
   {
     "slug": "hindscarth",
@@ -1235,7 +1357,8 @@
     "latitude": 54.537828,
     "longitude": -3.213755,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 6
+    "book": 6,
+    "rank": 73
   },
   {
     "slug": "holme-fell",
@@ -1246,7 +1369,8 @@
     "latitude": 54.396301,
     "longitude": -3.056527,
     "classifications": ["Ma", "3", "W", "B", "Sy", "Fel"],
-    "book": 4
+    "book": 4,
+    "rank": 213
   },
   {
     "slug": "hopegill-head",
@@ -1257,7 +1381,8 @@
     "latitude": 54.588082,
     "longitude": -3.26166,
     "classifications": ["Sim", "Hew", "N", "sHu", "W", "B", "Sy", "Fel"],
-    "book": 6
+    "book": 6,
+    "rank": 53
   },
   {
     "slug": "ill-bell",
@@ -1268,7 +1393,8 @@
     "latitude": 54.462017,
     "longitude": -2.870837,
     "classifications": ["Hu", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 2
+    "book": 2,
+    "rank": 60
   },
   {
     "slug": "illgill-head",
@@ -1279,7 +1405,8 @@
     "latitude": 54.432782,
     "longitude": -3.283,
     "classifications": ["Ma", "Sim", "Dew", "W", "B", "Sy", "Fel"],
-    "book": 4
+    "book": 4,
+    "rank": 128
   },
   {
     "slug": "kentmere-pike",
@@ -1290,7 +1417,8 @@
     "latitude": 54.462673,
     "longitude": -2.826033,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 2
+    "book": 2,
+    "rank": 72
   },
   {
     "slug": "kidsty-pike",
@@ -1301,7 +1429,8 @@
     "latitude": 54.505513,
     "longitude": -2.854959,
     "classifications": ["N", "W", "B", "Sy", "Fel"],
-    "book": 2
+    "book": 2,
+    "rank": 46
   },
   {
     "slug": "kirk-fell",
@@ -1312,7 +1441,8 @@
     "latitude": 54.483323,
     "longitude": -3.244123,
     "classifications": ["Ma", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 7
+    "book": 7,
+    "rank": 32
   },
   {
     "slug": "knott",
@@ -1323,7 +1453,8 @@
     "latitude": 54.686982,
     "longitude": -3.093322,
     "classifications": ["Ma", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 5
+    "book": 5,
+    "rank": 82
   },
   {
     "slug": "knott-rigg",
@@ -1334,7 +1465,8 @@
     "latitude": 54.558701,
     "longitude": -3.242613,
     "classifications": ["5", "Dew", "W", "B", "Sy", "Fel"],
-    "book": 6
+    "book": 6,
+    "rank": 145
   },
   {
     "slug": "lank-rigg",
@@ -1345,7 +1477,8 @@
     "latitude": 54.494793,
     "longitude": -3.403972,
     "classifications": ["Hu", "5", "Dew", "W", "B", "Sy", "Fel"],
-    "book": 7
+    "book": 7,
+    "rank": 153
   },
   {
     "slug": "latrigg",
@@ -1356,7 +1489,8 @@
     "latitude": 54.612291,
     "longitude": -3.117565,
     "classifications": ["3", "W", "B", "Sy", "Fel"],
-    "book": 5
+    "book": 5,
+    "rank": 206
   },
   {
     "slug": "ling-fell",
@@ -1367,7 +1501,8 @@
     "latitude": 54.645249,
     "longitude": -3.272325,
     "classifications": ["3", "sHu", "W", "B", "Sy", "Fel"],
-    "book": 6
+    "book": 6,
+    "rank": 205
   },
   {
     "slug": "lingmell",
@@ -1378,7 +1513,8 @@
     "latitude": 54.462803,
     "longitude": -3.2213,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 4
+    "book": 4,
+    "rank": 29
   },
   {
     "slug": "lingmoor-fell",
@@ -1389,7 +1525,8 @@
     "latitude": 54.432067,
     "longitude": -3.07641,
     "classifications": ["Ma", "4", "W", "B", "Sy", "Fel"],
-    "book": 4
+    "book": 4,
+    "rank": 184
   },
   {
     "slug": "little-hart-crag",
@@ -1400,7 +1537,8 @@
     "latitude": 54.481916,
     "longitude": -2.947169,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 1
+    "book": 1,
+    "rank": 120
   },
   {
     "slug": "little-mell-fell",
@@ -1411,7 +1549,8 @@
     "latitude": 54.608024,
     "longitude": -2.894465,
     "classifications": ["Ma", "5", "Dew", "W", "B", "Sy", "Fel"],
-    "book": 1
+    "book": 1,
+    "rank": 173
   },
   {
     "slug": "loadpot-hill",
@@ -1422,7 +1561,8 @@
     "latitude": 54.554737,
     "longitude": -2.842072,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 2
+    "book": 2,
+    "rank": 101
   },
   {
     "slug": "loft-crag",
@@ -1433,7 +1573,8 @@
     "latitude": 54.454429,
     "longitude": -3.115975,
     "classifications": ["N", "sSim", "W", "B", "Sy", "Fel"],
-    "book": 3
+    "book": 3,
+    "rank": 98
   },
   {
     "slug": "long-side",
@@ -1444,7 +1585,8 @@
     "latitude": 54.645496,
     "longitude": -3.165618,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 5
+    "book": 5,
+    "rank": 71
   },
   {
     "slug": "longlands-fell",
@@ -1455,7 +1597,8 @@
     "latitude": 54.708411,
     "longitude": -3.125313,
     "classifications": ["4", "W", "B", "Sy", "Fel"],
-    "book": 5
+    "book": 5,
+    "rank": 179
   },
   {
     "slug": "lonscale-fell",
@@ -1466,7 +1609,8 @@
     "latitude": 54.634357,
     "longitude": -3.108518,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 5
+    "book": 5,
+    "rank": 80
   },
   {
     "slug": "lords-seat",
@@ -1477,7 +1621,8 @@
     "latitude": 54.627823,
     "longitude": -3.233984,
     "classifications": ["Ma", "5", "Dew", "W", "B", "Sy", "Fel"],
-    "book": 6
+    "book": 6,
+    "rank": 147
   },
   {
     "slug": "loughrigg-fell",
@@ -1488,7 +1633,8 @@
     "latitude": 54.437454,
     "longitude": -3.008355,
     "classifications": ["Ma", "3", "W", "B", "Sy", "Fel"],
-    "book": 3
+    "book": 3,
+    "rank": 211
   },
   {
     "slug": "low-fell",
@@ -1499,7 +1645,8 @@
     "latitude": 54.591358,
     "longitude": -3.336608,
     "classifications": ["Ma", "4", "W", "B", "Sy", "Fel"],
-    "book": 7
+    "book": 7,
+    "rank": 197
   },
   {
     "slug": "low-pike",
@@ -1510,7 +1657,8 @@
     "latitude": 54.462069,
     "longitude": -2.967985,
     "classifications": ["W", "B", "Sy", "Fel"],
-    "book": 1
+    "book": 1,
+    "rank": 172
   },
   {
     "slug": "maiden-moor",
@@ -1521,7 +1669,8 @@
     "latitude": 54.553174,
     "longitude": -3.181585,
     "classifications": ["W", "B", "Sy", "Fel"],
-    "book": 6
+    "book": 6,
+    "rank": 139
   },
   {
     "slug": "mardale-ill-bell",
@@ -1532,7 +1681,8 @@
     "latitude": 54.483418,
     "longitude": -2.854112,
     "classifications": ["W", "B", "Sy", "Fel", "xN"],
-    "book": 2
+    "book": 2,
+    "rank": 59
   },
   {
     "slug": "meal-fell",
@@ -1543,7 +1693,8 @@
     "latitude": 54.693795,
     "longitude": -3.113923,
     "classifications": ["5", "Dew", "W", "B", "Sy", "Fel"],
-    "book": 5
+    "book": 5,
+    "rank": 149
   },
   {
     "slug": "mellbreak",
@@ -1554,7 +1705,8 @@
     "latitude": 54.555581,
     "longitude": -3.318258,
     "classifications": ["Ma", "5", "Dew", "W", "B", "Sy", "Fel"],
-    "book": 7
+    "book": 7,
+    "rank": 168
   },
   {
     "slug": "middle-dodd",
@@ -1565,7 +1717,8 @@
     "latitude": 54.477939,
     "longitude": -2.931566,
     "classifications": ["W", "B", "Sy", "Fel"],
-    "book": 1
+    "book": 1,
+    "rank": 112
   },
   {
     "slug": "middle-fell",
@@ -1576,7 +1729,8 @@
     "latitude": 54.453249,
     "longitude": -3.311327,
     "classifications": ["Hu", "5", "Dew", "W", "B", "Sy", "Fel"],
-    "book": 7
+    "book": 7,
+    "rank": 135
   },
   {
     "slug": "mungrisdale-common",
@@ -1587,7 +1741,8 @@
     "latitude": 54.653432,
     "longitude": -3.070132,
     "classifications": ["W", "Sy"],
-    "book": 5
+    "book": 5,
+    "rank": 121
   },
   {
     "slug": "nab-scar",
@@ -1598,7 +1753,8 @@
     "latitude": 54.456414,
     "longitude": -2.995833,
     "classifications": ["W", "B", "Sy", "Fel"],
-    "book": 1
+    "book": 1,
+    "rank": 190
   },
   {
     "slug": "nethermost-pike",
@@ -1609,7 +1765,8 @@
     "latitude": 54.518993,
     "longitude": -3.015446,
     "classifications": ["N", "sSim", "W", "B", "Sy", "Fel"],
-    "book": 1
+    "book": 1,
+    "rank": 9
   },
   {
     "slug": "outerside",
@@ -1620,7 +1777,8 @@
     "latitude": 54.582169,
     "longitude": -3.222175,
     "classifications": ["5", "Dew", "W", "B", "Sy", "Fel"],
-    "book": 6
+    "book": 6,
+    "rank": 142
   },
   {
     "slug": "pavey-ark",
@@ -1631,7 +1789,8 @@
     "latitude": 54.461494,
     "longitude": -3.105214,
     "classifications": ["N", "W", "B", "Sy", "Fel"],
-    "book": 3
+    "book": 3,
+    "rank": 89
   },
   {
     "slug": "pike-of-blisco",
@@ -1642,7 +1801,8 @@
     "latitude": 54.428111,
     "longitude": -3.124925,
     "classifications": ["Ma", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 4
+    "book": 4,
+    "rank": 86
   },
   {
     "slug": "pike-of-stickle",
@@ -1653,7 +1813,8 @@
     "latitude": 54.456402,
     "longitude": -3.121366,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 3
+    "book": 3,
+    "rank": 83
   },
   {
     "slug": "pillar",
@@ -1664,7 +1825,8 @@
     "latitude": 54.497479,
     "longitude": -3.281134,
     "classifications": ["Ma", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 7
+    "book": 7,
+    "rank": 8
   },
   {
     "slug": "place-fell",
@@ -1675,7 +1837,8 @@
     "latitude": 54.544278,
     "longitude": -2.920741,
     "classifications": ["Ma", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 2
+    "book": 2,
+    "rank": 108
   },
   {
     "slug": "raise",
@@ -1686,7 +1849,8 @@
     "latitude": 54.547718,
     "longitude": -3.017473,
     "classifications": ["Sim", "Hew", "N", "sHu", "W", "B", "Sy", "Fel"],
-    "book": 1
+    "book": 1,
+    "rank": 12
   },
   {
     "slug": "rampsgill-head",
@@ -1697,7 +1861,8 @@
     "latitude": 54.507176,
     "longitude": -2.862853,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 2
+    "book": 2,
+    "rank": 39
   },
   {
     "slug": "rannerdale-knotts",
@@ -1708,7 +1873,8 @@
     "latitude": 54.552643,
     "longitude": -3.289032,
     "classifications": ["3", "W", "B", "Sy", "Fel"],
-    "book": 6
+    "book": 6,
+    "rank": 210
   },
   {
     "slug": "raven-crag",
@@ -1719,7 +1885,8 @@
     "latitude": 54.559231,
     "longitude": -3.07872,
     "classifications": ["4", "W", "B", "Sy", "Fel"],
-    "book": 3
+    "book": 3,
+    "rank": 186
   },
   {
     "slug": "red-pike-b",
@@ -1731,7 +1898,8 @@
     "latitude": 54.527438,
     "longitude": -3.298529,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 7
+    "book": 7,
+    "rank": 62
   },
   {
     "slug": "red-pike-w",
@@ -1743,7 +1911,8 @@
     "latitude": 54.483922,
     "longitude": -3.289879,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 7
+    "book": 7,
+    "rank": 26
   },
   {
     "slug": "red-screes",
@@ -1754,7 +1923,8 @@
     "latitude": 54.47058,
     "longitude": -2.932556,
     "classifications": ["Ma", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 1
+    "book": 1,
+    "rank": 49
   },
   {
     "slug": "rest-dodd",
@@ -1765,7 +1935,8 @@
     "latitude": 54.514946,
     "longitude": -2.878033,
     "classifications": ["Hu", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 2
+    "book": 2,
+    "rank": 93
   },
   {
     "slug": "robinson",
@@ -1776,7 +1947,8 @@
     "latitude": 54.540818,
     "longitude": -3.235284,
     "classifications": ["Ma", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 6
+    "book": 6,
+    "rank": 67
   },
   {
     "slug": "rossett-pike",
@@ -1787,7 +1959,8 @@
     "latitude": 54.457935,
     "longitude": -3.159804,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 4
+    "book": 4,
+    "rank": 115
   },
   {
     "slug": "rosthwaite-fell",
@@ -1798,7 +1971,8 @@
     "latitude": 54.502198,
     "longitude": -3.14685,
     "classifications": ["5", "Dew", "W", "B", "Sy", "Fel"],
-    "book": 4
+    "book": 4,
+    "rank": 148
   },
   {
     "slug": "sail",
@@ -1809,7 +1983,8 @@
     "latitude": 54.571328,
     "longitude": -3.241806,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 6
+    "book": 6,
+    "rank": 51
   },
   {
     "slug": "sale-fell",
@@ -1820,7 +1995,8 @@
     "latitude": 54.655627,
     "longitude": -3.250157,
     "classifications": ["Hu", "3", "W", "B", "Sy", "Fel"],
-    "book": 6
+    "book": 6,
+    "rank": 208
   },
   {
     "slug": "sallows",
@@ -1831,7 +2007,8 @@
     "latitude": 54.428122,
     "longitude": -2.869995,
     "classifications": ["5", "Dew", "W", "B", "Sy", "Fel"],
-    "book": 2
+    "book": 2,
+    "rank": 166
   },
   {
     "slug": "scafell",
@@ -1842,7 +2019,8 @@
     "latitude": 54.447498,
     "longitude": -3.224731,
     "classifications": ["Hu", "F", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 4
+    "book": 4,
+    "rank": 2
   },
   {
     "slug": "scafell-pike",
@@ -1866,7 +2044,8 @@
       "CoU",
       "CoA"
     ],
-    "book": 4
+    "book": 4,
+    "rank": 1
   },
   {
     "slug": "scar-crags",
@@ -1877,7 +2056,8 @@
     "latitude": 54.574968,
     "longitude": -3.225966,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 6
+    "book": 6,
+    "rank": 102
   },
   {
     "slug": "scoat-fell",
@@ -1888,7 +2068,8 @@
     "latitude": 54.490904,
     "longitude": -3.299239,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 7
+    "book": 7,
+    "rank": 22
   },
   {
     "slug": "seat-sandal",
@@ -1899,7 +2080,8 @@
     "latitude": 54.494857,
     "longitude": -3.014027,
     "classifications": ["Ma", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 1
+    "book": 1,
+    "rank": 68
   },
   {
     "slug": "seatallan",
@@ -1910,7 +2092,8 @@
     "latitude": 54.464065,
     "longitude": -3.328274,
     "classifications": ["Ma", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 7
+    "book": 7,
+    "rank": 94
   },
   {
     "slug": "seathwaite-fell",
@@ -1921,7 +2104,8 @@
     "latitude": 54.481131,
     "longitude": -3.191438,
     "classifications": ["W", "B", "Sy", "Fel"],
-    "book": 4
+    "book": 4,
+    "rank": 130
   },
   {
     "slug": "selside-pike",
@@ -1932,7 +2116,8 @@
     "latitude": 54.49308,
     "longitude": -2.787925,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 2
+    "book": 2,
+    "rank": 110
   },
   {
     "slug": "sergeant-man",
@@ -1943,7 +2128,8 @@
     "latitude": 54.470362,
     "longitude": -3.102552,
     "classifications": ["W", "B", "Sy", "Fel", "xN"],
-    "book": 3
+    "book": 3,
+    "rank": 70
   },
   {
     "slug": "sergeants-crag",
@@ -1954,7 +2140,8 @@
     "latitude": 54.492531,
     "longitude": -3.122463,
     "classifications": ["5", "Dew", "W", "B", "Sy", "Fel"],
-    "book": 3
+    "book": 3,
+    "rank": 141
   },
   {
     "slug": "sheffield-pike",
@@ -1965,7 +2152,8 @@
     "latitude": 54.554936,
     "longitude": -2.977002,
     "classifications": ["Sim", "Hew", "N", "sHu", "W", "B", "Sy", "Fel"],
-    "book": 1
+    "book": 1,
+    "rank": 99
   },
   {
     "slug": "shipman-knotts",
@@ -1976,7 +2164,8 @@
     "latitude": 54.448577,
     "longitude": -2.814707,
     "classifications": ["W", "B", "Sy", "Fel"],
-    "book": 2
+    "book": 2,
+    "rank": 133
   },
   {
     "slug": "silver-how",
@@ -1987,7 +2176,8 @@
     "latitude": 54.450696,
     "longitude": -3.04289,
     "classifications": ["3", "W", "B", "Sy", "Fel"],
-    "book": 3
+    "book": 3,
+    "rank": 202
   },
   {
     "slug": "skiddaw",
@@ -1998,7 +2188,8 @@
     "latitude": 54.6514,
     "longitude": -3.147761,
     "classifications": ["Ma", "F", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 5
+    "book": 5,
+    "rank": 4
   },
   {
     "slug": "skiddaw-little-man",
@@ -2009,7 +2200,8 @@
     "latitude": 54.639911,
     "longitude": -3.137629,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 5
+    "book": 5,
+    "rank": 15
   },
   {
     "slug": "slight-side",
@@ -2020,7 +2212,8 @@
     "latitude": 54.434392,
     "longitude": -3.219575,
     "classifications": ["W", "B", "Sy", "Fel", "xN"],
-    "book": 4
+    "book": 4,
+    "rank": 58
   },
   {
     "slug": "sour-howes",
@@ -2031,7 +2224,8 @@
     "latitude": 54.421166,
     "longitude": -2.883579,
     "classifications": ["4", "W", "B", "Sy"],
-    "book": 2
+    "book": 2,
+    "rank": 180
   },
   {
     "slug": "souther-fell",
@@ -2042,7 +2236,8 @@
     "latitude": 54.653236,
     "longitude": -3.001663,
     "classifications": ["5", "Dew", "W", "B", "Sy", "Fel"],
-    "book": 5
+    "book": 5,
+    "rank": 163
   },
   {
     "slug": "st-sunday-crag",
@@ -2053,7 +2248,8 @@
     "latitude": 54.511949,
     "longitude": -2.975867,
     "classifications": ["Ma", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 1
+    "book": 1,
+    "rank": 23
   },
   {
     "slug": "starling-dodd",
@@ -2064,18 +2260,8 @@
     "latitude": 54.529725,
     "longitude": -3.327207,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 7
-  },
-  {
-    "slug": "stell-fell",
-    "name": "Steel Fell",
-    "height": 553,
-    "prominence": 80,
-    "gridRef": "NY319111",
-    "latitude": 54.49115,
-    "longitude": -3.052179,
-    "classifications": ["5", "Dew", "W", "B", "Sy", "Fel"],
-    "book": 3
+    "book": 7,
+    "rank": 122
   },
   {
     "slug": "steel-knotts",
@@ -2086,7 +2272,8 @@
     "latitude": 54.555245,
     "longitude": -2.866807,
     "classifications": ["4", "W", "B", "Sy", "Fel"],
-    "book": 2
+    "book": 2,
+    "rank": 195
   },
   {
     "slug": "steeple",
@@ -2097,7 +2284,20 @@
     "latitude": 54.493389,
     "longitude": -3.302174,
     "classifications": ["N", "sSim", "W", "B", "Sy", "Fel"],
-    "book": 7
+    "book": 7,
+    "rank": 28
+  },
+  {
+    "slug": "stell-fell",
+    "name": "Steel Fell",
+    "height": 553,
+    "prominence": 80,
+    "gridRef": "NY319111",
+    "latitude": 54.49115,
+    "longitude": -3.052179,
+    "classifications": ["5", "Dew", "W", "B", "Sy", "Fel"],
+    "book": 3,
+    "rank": 146
   },
   {
     "slug": "stone-arthur",
@@ -2108,18 +2308,8 @@
     "latitude": 54.474276,
     "longitude": -3.008366,
     "classifications": ["W", "B", "Sy", "Fel"],
-    "book": 1
-  },
-  {
-    "slug": "caudale-moor",
-    "name": "Caudale Moor",
-    "height": 763,
-    "prominence": 171,
-    "gridRef": "NY417100",
-    "latitude": 54.48206,
-    "longitude": -2.90008,
-    "classifications": ["Ma", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 2
+    "book": 1,
+    "rank": 174
   },
   {
     "slug": "stybarrow-dodd",
@@ -2130,7 +2320,8 @@
     "latitude": 54.561164,
     "longitude": -3.017391,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 1
+    "book": 1,
+    "rank": 21
   },
   {
     "slug": "swirl-how",
@@ -2141,7 +2332,8 @@
     "latitude": 54.39523,
     "longitude": -3.12153,
     "classifications": ["Hu", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 4
+    "book": 4,
+    "rank": 33
   },
   {
     "slug": "tarn-crag-c",
@@ -2153,7 +2345,8 @@
     "latitude": 54.474295,
     "longitude": -3.076006,
     "classifications": ["W", "B", "Sy", "Fel"],
-    "book": 3
+    "book": 3,
+    "rank": 151
   },
   {
     "slug": "tarn-crag-fe",
@@ -2165,7 +2358,8 @@
     "latitude": 54.463458,
     "longitude": -2.790658,
     "classifications": ["Ma", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 2
+    "book": 2,
+    "rank": 104
   },
   {
     "slug": "the-knott",
@@ -2176,7 +2370,8 @@
     "latitude": 54.506316,
     "longitude": -2.870821,
     "classifications": ["W", "B", "Sy", "xN"],
-    "book": 2
+    "book": 2,
+    "rank": 66
   },
   {
     "slug": "the-nab",
@@ -2187,18 +2382,8 @@
     "latitude": 54.528902,
     "longitude": -2.875675,
     "classifications": ["5", "Dew", "W", "B", "Sy"],
-    "book": 2
-  },
-  {
-    "slug": "coniston-old-man",
-    "name": "Old Man of Coniston",
-    "height": 802,
-    "prominence": 415,
-    "gridRef": "SD272978",
-    "latitude": 54.370658,
-    "longitude": -3.121445,
-    "classifications": ["Ma", "Sim", "Hew", "N", "W", "B", "Sy", "Fel", "CoH"],
-    "book": 4
+    "book": 2,
+    "rank": 138
   },
   {
     "slug": "thornthwaite-crag",
@@ -2209,7 +2394,8 @@
     "latitude": 54.482611,
     "longitude": -2.878976,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 2
+    "book": 2,
+    "rank": 44
   },
   {
     "slug": "thunacar-knott",
@@ -2220,7 +2406,8 @@
     "latitude": 54.462189,
     "longitude": -3.112653,
     "classifications": ["N", "sSim", "W", "B", "Sy", "Fel"],
-    "book": 3
+    "book": 3,
+    "rank": 76
   },
   {
     "slug": "troutbeck-tongue",
@@ -2231,7 +2418,8 @@
     "latitude": 54.449961,
     "longitude": -2.892312,
     "classifications": ["3", "W", "B", "Sy", "Fel"],
-    "book": 2
+    "book": 2,
+    "rank": 207
   },
   {
     "slug": "ullock-pike",
@@ -2242,7 +2430,8 @@
     "latitude": 54.648261,
     "longitude": -3.17247,
     "classifications": ["W", "B", "Sy", "Fel", "xN"],
-    "book": 5
+    "book": 5,
+    "rank": 96
   },
   {
     "slug": "ullscarf",
@@ -2253,7 +2442,8 @@
     "latitude": 54.499923,
     "longitude": -3.095518,
     "classifications": ["Hu", "Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 3
+    "book": 3,
+    "rank": 75
   },
   {
     "slug": "walla-crag",
@@ -2264,7 +2454,8 @@
     "latitude": 54.581608,
     "longitude": -3.120377,
     "classifications": ["W", "B", "Sy", "Fel"],
-    "book": 3
+    "book": 3,
+    "rank": 204
   },
   {
     "slug": "wandope",
@@ -2275,7 +2466,20 @@
     "latitude": 54.566335,
     "longitude": -3.257091,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 6
+    "book": 6,
+    "rank": 52
+  },
+  {
+    "slug": "wansfell",
+    "name": "Wansfell",
+    "height": 487,
+    "prominence": 148,
+    "gridRef": "NY403051",
+    "latitude": 54.438194,
+    "longitude": -2.921751,
+    "classifications": ["Hu", "4", "sMa", "W", "Fel"],
+    "book": 2,
+    "rank": 178
   },
   {
     "slug": "watsons-dodd",
@@ -2286,7 +2490,8 @@
     "latitude": 54.566917,
     "longitude": -3.028995,
     "classifications": ["W", "B", "Sy", "Fel"],
-    "book": 1
+    "book": 1,
+    "rank": 41
   },
   {
     "slug": "wether-hill",
@@ -2297,7 +2502,8 @@
     "latitude": 54.543239,
     "longitude": -2.842469,
     "classifications": ["W", "B", "Sy", "Fel", "xN"],
-    "book": 2
+    "book": 2,
+    "rank": 103
   },
   {
     "slug": "wetherlam",
@@ -2308,7 +2514,8 @@
     "latitude": 54.400488,
     "longitude": -3.097981,
     "classifications": ["Hu", "Sim", "Hew", "N", "sMa", "W", "B", "Sy", "Fel"],
-    "book": 4
+    "book": 4,
+    "rank": 56
   },
   {
     "slug": "whin-rigg",
@@ -2319,7 +2526,8 @@
     "latitude": 54.420162,
     "longitude": -3.309916,
     "classifications": ["5", "Dew", "W", "B", "Sy", "Fel"],
-    "book": 4
+    "book": 4,
+    "rank": 156
   },
   {
     "slug": "whinlatter",
@@ -2330,7 +2538,8 @@
     "latitude": 54.614855,
     "longitude": -3.254033,
     "classifications": ["W", "B", "Sy", "Fel"],
-    "book": 6
+    "book": 6,
+    "rank": 165
   },
   {
     "slug": "white-side",
@@ -2341,7 +2550,8 @@
     "latitude": 54.540913,
     "longitude": -3.025048,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 1
+    "book": 1,
+    "rank": 16
   },
   {
     "slug": "whiteless-pike",
@@ -2352,7 +2562,8 @@
     "latitude": 54.559368,
     "longitude": -3.269294,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 6
+    "book": 6,
+    "rank": 106
   },
   {
     "slug": "whiteside",
@@ -2363,7 +2574,8 @@
     "latitude": 54.585912,
     "longitude": -3.285161,
     "classifications": ["N", "W", "B", "Sy", "Fel"],
-    "book": 6
+    "book": 6,
+    "rank": 84
   },
   {
     "slug": "yewbarrow",
@@ -2374,7 +2586,8 @@
     "latitude": 54.464889,
     "longitude": -3.27686,
     "classifications": ["Hu", "Sim", "Hew", "N", "sMa", "W", "B", "Sy", "Fel"],
-    "book": 7
+    "book": 7,
+    "rank": 123
   },
   {
     "slug": "yoke",
@@ -2385,6 +2598,7 @@
     "latitude": 54.452928,
     "longitude": -2.868716,
     "classifications": ["Sim", "Hew", "N", "W", "B", "Sy", "Fel"],
-    "book": 2
+    "book": 2,
+    "rank": 85
   }
 ]

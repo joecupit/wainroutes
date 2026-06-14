@@ -44,9 +44,7 @@ export default function MapFilters() {
     return () => clearTimeout(handler);
   }, [heightBuffer]);
   useEffect(() => {
-    if (filters.height[0] == 290 && filters.height[1] == 978) {
-      setHeightBuffer([290, 978]);
-    }
+    setHeightBuffer(filters.height);
   }, [filters.height]);
 
   return (
@@ -77,7 +75,7 @@ export default function MapFilters() {
               name="book"
               value={0}
               active={filters.region === 0}
-              onChange={() => updateFilter("book", undefined)}
+              onChange={() => updateFilter("region", undefined)}
             >
               All Regions <span>214</span>
             </RadioButton>
@@ -87,7 +85,7 @@ export default function MapFilters() {
                 value={bookId}
                 key={bookId}
                 active={filters.region === bookId}
-                onChange={() => updateFilter("book", String(bookId))}
+                onChange={() => updateFilter("region", String(bookId))}
                 bookId={bookId}
               >
                 {BookTitles[bookId].slice(4)} <span>{BookTotals[bookId]}</span>

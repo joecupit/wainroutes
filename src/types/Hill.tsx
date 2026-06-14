@@ -41,6 +41,7 @@ type Hill = {
 
   classifications: (keyof typeof Classifications)[];
   book: 1 | 2 | 3 | 4 | 5 | 6 | 7;
+  rank: number;
 
   nearbyHills?: { slug: string; name: string }[];
 };

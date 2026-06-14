@@ -11,7 +11,6 @@ export async function generateMetadata({ params }: ParamsProps) {
   const { region } = await params;
   const regionVal = regionSlugs[String(region)];
   const regionName = BookTitles[regionVal];
-  console.log(region, regionVal, regionName);
 
   return createPageMetadata({
     title: `${regionName} Interactive Wainwright Map`,
