@@ -2,7 +2,7 @@ import styles from "./ListSection.module.css";
 import buttonStyles from "@/styles/buttons.module.css";
 
 import Link from "next/link";
-import type { SimplifiedHill } from "../page";
+import type { SimplifiedHill } from "../contexts/WainwrightsContext";
 import { displayElevation } from "@/utils/unitConversions";
 import { BookTitles } from "@/types/Hill";
 import { RightIcon } from "@/icons/PhosphorIcons";

@@ -1,7 +1,7 @@
 import styles from "./MapSection.module.css";
 
 import MapMarker from "@/types/MapMarker";
-import { SimplifiedHill } from "../page";
+import { SimplifiedHill } from "../contexts/WainwrightsContext";
 
 import MapFilters from "../components/MapFilters";
 import Map from "../components/Map";

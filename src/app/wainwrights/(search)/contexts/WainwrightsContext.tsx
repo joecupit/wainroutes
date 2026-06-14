@@ -11,13 +11,23 @@ import {
   useRef,
   useState,
 } from "react";
-import { useSearchParams } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 
-import { SimplifiedHill } from "../page";
-import { BookTitles } from "@/types/Hill";
+import Hill, { BookTitles } from "@/types/Hill";
 import MapMarker from "@/types/MapMarker";
 
 import { getHillMarkers } from "@/utils/getMapMarkers";
+import { regionSlugs } from "../constants";
+
+export type SimplifiedHill = {
+  slug: Hill["slug"];
+  name: Hill["name"];
+  secondaryName: Hill["secondaryName"];
+  height: Hill["height"];
+  prominence: Hill["prominence"];
+  book: Hill["book"];
+  walks: string[];
+};
 
 type FilterState = {
   searchTerm: string;
@@ -67,7 +77,11 @@ export function WainwrightsProvider({
   allHills: SimplifiedHill[];
   children: React.ReactNode;
 }) {
+  const router = useRouter();
   const searchParams = useSearchParams();
+  const searchParamsString = searchParams.toString();
+  const URLParams = useParams();
+  const region = String(URLParams.region);
 
   const [activePoint, setActivePoint] = useState<string | null>(null);
 
@@ -76,11 +90,10 @@ export function WainwrightsProvider({
 
   const hillMarkers = useMemo(() => {
     return getHillMarkers();
-  }, [getHillMarkers]);
+  }, []);
 
   // FILTERS
-  const [filters, setFilters] = useState<FilterState>(initialFilterState);
-  useEffect(() => {
+  const filters: FilterState = useMemo(() => {
     setActivePoint(null);
     const newFilters = { ...initialFilterState } as FilterState;
 
@@ -89,11 +102,16 @@ export function WainwrightsProvider({
     } else {
       newFilters.searchTerm = "";
     }
-    if (searchParams.get("book")) {
-      newFilters.region = Number(searchParams.get("book"));
+    if (region && region !== "undefined") {
+      newFilters.region = regionSlugs[region];
     } else {
       newFilters.region = 0;
     }
+    // if (searchParams.get("book")) {
+    //   newFilters.region = Number(searchParams.get("book"));
+    // } else {
+    //   newFilters.region = 0;
+    // }
     if (searchParams.get("height")) {
       newFilters.height = searchParams
         .get("height")
@@ -105,11 +123,14 @@ export function WainwrightsProvider({
 
     newFilters.withWalk = searchParams.get("walk") === "yes";
 
-    setFilters(newFilters);
-  }, [searchParams]);
+    return newFilters;
+  }, [region, searchParamsString]);
   const updateFilter = useCallback(
     (keys: string | string[], values?: string | string[]) => {
-      const params = new URLSearchParams(searchParams);
+      console.log(searchParamsString);
+
+      const params = new URLSearchParams(searchParamsString);
+      let newRegion = String(region);
 
       if (
         typeof keys === "string" &&
@@ -123,23 +144,32 @@ export function WainwrightsProvider({
         const key = keys[i];
         const val = values ? values[i] : undefined;
 
-        if (val && val.length > 0) params.set(key, val);
-        else params.delete(key);
+        if (key == "book") {
+          newRegion = val
+            ? Object.keys(regionSlugs)[Number(val) - 1]
+            : "undefined";
+        } else {
+          if (val && val.length > 0) params.set(key, val);
+          else params.delete(key);
+        }
       }
 
       params.sort();
       if (params.toString().length > 0)
-        window.history.replaceState(
-          {},
-          "",
-          `/wainwrights?${params.toString()}`,
+        router.replace(
+          `/wainwrights${newRegion !== "undefined" ? `/region/${newRegion}` : ""}?${params.toString()}`,
+          { scroll: false },
         );
-      else window.history.replaceState({}, "", "/wainwrights");
+      else
+        router.replace(
+          `/wainwrights${newRegion !== "undefined" ? `/region/${newRegion}` : ""}`,
+          { scroll: false },
+        );
     },
-    [searchParams],
+    [region, searchParamsString],
   );
   const resetFilters = useCallback(() => {
-    window.history.replaceState({}, "", "/wainwrights");
+    router.replace("/wainwrights", { scroll: false });
 
     resetRef.current?.classList.add(mapStyles.animate);
     setTimeout(() => {

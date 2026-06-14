@@ -8,10 +8,9 @@ import { displayElevation } from "@/utils/unitConversions";
 import { CloseIconSmall } from "@/icons/PhosphorIcons";
 
 import { useEffect, useMemo } from "react";
-import { useWainwrights } from "../contexts/WainwrightsContext";
 import LakeMap from "@/components/Map/Map";
 import Link from "next/link";
-import { SimplifiedHill } from "../page";
+import { SimplifiedHill, useWainwrights } from "../contexts/WainwrightsContext";
 
 export default function Map({
   simplifiedHillData,
